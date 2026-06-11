@@ -15,18 +15,23 @@ st.title("Practice Test")
 questions = st.session_state.questions
 username = st.session_state.username
 
-reveal_mode = st.sidebar.radio(
-    "Answer reveal",
-    ["Show answers at the end", "Show answers as I go"],
-    index=0,
-)
-reveal_as_you_go = reveal_mode == "Show answers as I go"
-
 if "pt_state" not in st.session_state:
     st.session_state.pt_state = "idle"
 
+pt_state = st.session_state.pt_state
+
+if pt_state in ("idle", "in_progress"):
+    reveal_mode = st.sidebar.radio(
+        "Answer reveal",
+        ["Show answers at the end", "Show answers as I go"],
+        index=0,
+    )
+    reveal_as_you_go = reveal_mode == "Show answers as I go"
+else:
+    reveal_as_you_go = False
+
 # ── IDLE ──────────────────────────────────────────────────────────────────────
-if st.session_state.pt_state == "idle":
+if pt_state == "idle":
     st.write(
         "This test has **35 questions** drawn from all subelements, "
         "weighted to match the real General Class exam. You need **26/35** to pass."
@@ -39,7 +44,7 @@ if st.session_state.pt_state == "idle":
         st.rerun()
 
 # ── IN PROGRESS ───────────────────────────────────────────────────────────────
-elif st.session_state.pt_state == "in_progress":
+elif pt_state == "in_progress":
     exam = st.session_state.pt_exam
     idx = st.session_state.pt_index
     question = exam[idx]
@@ -96,7 +101,7 @@ elif st.session_state.pt_state == "in_progress":
                 st.rerun()
 
 # ── COMPLETE ──────────────────────────────────────────────────────────────────
-elif st.session_state.pt_state == "complete":
+elif pt_state == "complete":
     exam = st.session_state.pt_exam
     answers = st.session_state.pt_answers
     correct_count = sum(1 for i, q in enumerate(exam) if answers.get(i) == q["correct"])
@@ -117,6 +122,7 @@ elif st.session_state.pt_state == "complete":
             st.write(f"**Correct answer:** {q['correct']}. {q['answers'][q['correct']]}")
 
     if st.button("Start New Test", type="primary"):
-        for key in ["pt_state", "pt_exam", "pt_index", "pt_answers"]:
+        st.session_state.pt_state = "idle"
+        for key in ["pt_exam", "pt_index", "pt_answers"]:
             st.session_state.pop(key, None)
         st.rerun()
