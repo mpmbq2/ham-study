@@ -41,12 +41,13 @@ def parse_pool_text(text: str) -> list[dict]:
         question_lines: list[str] = []
         ans_re = re.compile(r"^([A-D])\.\s+(.+)$")
         footnote_re = re.compile(r"\s*\[\d+\.\d+[^\]]*\]$")
+        standalone_footnote_re = re.compile(r"^\[[^\]]+\]$")
 
         for line in lines:
             m = ans_re.match(line)
             if m:
                 answers[m.group(1)] = footnote_re.sub("", m.group(2)).strip()
-            elif not answers:
+            elif not answers and not standalone_footnote_re.match(line):
                 question_lines.append(line)
 
         question_text = " ".join(question_lines).strip()
