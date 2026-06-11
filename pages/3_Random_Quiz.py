@@ -51,7 +51,7 @@ if not submitted:
         "Select your answer:",
         options=list(question["answers"].keys()),
         format_func=lambda k: f"{k}. {question['answers'][k]}",
-        key=f"rq_radio_{question['id']}",
+        key=f"rq_radio_{st.session_state.rq_session_total}_{question['id']}",
         index=None,
     )
     if st.button("Submit", disabled=choice is None, type="primary"):
