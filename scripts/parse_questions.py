@@ -40,11 +40,12 @@ def parse_pool_text(text: str) -> list[dict]:
         answers: dict[str, str] = {}
         question_lines: list[str] = []
         ans_re = re.compile(r"^([A-D])\.\s+(.+)$")
+        footnote_re = re.compile(r"\s*\[\d+\.\d+[^\]]*\]$")
 
         for line in lines:
             m = ans_re.match(line)
             if m:
-                answers[m.group(1)] = m.group(2).strip()
+                answers[m.group(1)] = footnote_re.sub("", m.group(2)).strip()
             elif not answers:
                 question_lines.append(line)
 
@@ -67,7 +68,8 @@ def parse_pool_text(text: str) -> list[dict]:
 
 
 def main() -> None:
-    pool_path = Path("data/pool.txt")
+    root = Path(__file__).parent.parent
+    pool_path = root / "data" / "pool.txt"
     if not pool_path.exists():
         print(
             f"ERROR: {pool_path} not found.\n"
@@ -80,7 +82,7 @@ def main() -> None:
     questions = parse_pool_text(text)
     print(f"Parsed {len(questions)} questions")
 
-    out = Path("data/general_class_questions.json")
+    out = root / "data" / "general_class_questions.json"
     out.parent.mkdir(exist_ok=True)
     out.write_text(json.dumps(questions, indent=2, ensure_ascii=False))
     print(f"Written to {out}")
