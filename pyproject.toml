@@ -1,7 +1,7 @@
 [project]
 name = "ham-study"
 version = "0.1.0"
-description = "Add your description here"
+description = "Ham Radio General Class license study dashboard"
 requires-python = ">=3.11"
 dependencies = [
     "anthropic>=0.28.0",
@@ -17,3 +17,7 @@ dependencies = [
 dev = [
     "pytest>=9.0.3",
 ]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
