@@ -13,7 +13,10 @@ load_dotenv()
 def _get_bucket():
     creds_json = os.environ.get("GOOGLE_APPLICATION_CREDENTIALS_JSON")
     if creds_json:
-        info = json.loads(creds_json)
+        try:
+            info = json.loads(creds_json)
+        except json.JSONDecodeError as exc:
+            raise ValueError("GOOGLE_APPLICATION_CREDENTIALS_JSON is not valid JSON") from exc
         creds = service_account.Credentials.from_service_account_info(
             info,
             scopes=["https://www.googleapis.com/auth/cloud-platform"],
@@ -30,7 +33,10 @@ def load_history(username: str) -> list[dict]:
     blob = bucket.blob(f"history/{username}.json")
     if not blob.exists():
         return []
-    return json.loads(blob.download_as_text())
+    try:
+        return json.loads(blob.download_as_text())
+    except json.JSONDecodeError:
+        return []
 
 
 def _write_history(username: str, history: list[dict]) -> None:
