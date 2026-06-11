@@ -3,11 +3,8 @@ import os
 from collections import defaultdict
 from datetime import datetime, timezone
 
-from dotenv import load_dotenv
 from google.cloud import storage
 from google.oauth2 import service_account
-
-load_dotenv()
 
 
 def _get_bucket():
