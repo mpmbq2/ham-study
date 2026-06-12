@@ -1,0 +1,560 @@
+---
+title: "G7: Practical Circuits"
+---
+
+This section covers the functional circuits that make a radio station work — power supplies that convert AC mains power to clean DC, amplifiers that boost signals, digital logic building blocks, oscillators that generate precise frequencies, filters that separate wanted from unwanted signals, and the receiver architectures that chain all these together. Every concept is developed from first principles before connecting to the exam questions.
+
+---
+
+## Power Supplies — Rectification and Filtering
+
+A linear power supply chain: **AC mains → transformer → rectifier → filter → regulator → DC output**. We will trace each stage.
+
+### Rectification
+
+AC alternates polarity. A DC supply needs one-polarity current only. A **rectifier** uses diodes to convert AC to pulsating DC.
+
+**Half-wave rectifier**: A single diode. It passes only the positive half-cycles of the AC sine wave — the negative half-cycles are blocked. During each positive half-cycle, current flows; during each negative half-cycle, nothing flows. Output: a series of positive pulses separated by gaps. **Only one diode is required.** The ripple frequency equals the AC line frequency (60 Hz in North America). Only half of the available AC energy is converted to DC — inefficient, but simple.
+
+::: {.callout-note collapse="true"}
+## G7A04: What is characteristic of a half-wave rectifier in a power supply?
+
+- **A) Only one diode is required**
+- B) The ripple frequency is twice that of a full-wave rectifier
+- C) More current can be drawn from the half-wave rectifier
+- D) The output voltage is two times the peak input voltage
+:::
+
+::: {.callout-note collapse="true"}
+## G7A05: What portion of the AC cycle is converted to DC by a half-wave rectifier?
+
+- A) 90 degrees
+- **B) 180 degrees**
+- C) 270 degrees
+- D) 360 degrees
+:::
+
+**Full-wave rectifier**: Uses two diodes with a center-tapped transformer (the two diodes take turns, one conducting during each half-cycle), or four diodes in a bridge configuration. Both half-cycles of AC contribute to the DC output — 360° of the AC cycle are converted. The output is a continuous series of positive pulses at **twice the AC frequency** (120 Hz in North America). Full-wave rectifiers are more efficient and easier to filter.
+
+::: {.callout-note collapse="true"}
+## G7A03: Which type of rectifier circuit uses two diodes and a center-tapped transformer?
+
+- **A) Full-wave**
+- B) Full-wave bridge
+- C) Half-wave
+- D) Synchronous
+:::
+
+::: {.callout-note collapse="true"}
+## G7A06: What portion of the AC cycle is converted to DC by a full-wave rectifier?
+
+- A) 90 degrees
+- B) 180 degrees
+- C) 270 degrees
+- **D) 360 degrees**
+:::
+
+::: {.callout-note collapse="true"}
+## G7A07: What is the output waveform of an unfiltered full-wave rectifier connected to a resistive load?
+
+- **A) A series of DC pulses at twice the frequency of the AC input**
+- B) A series of DC pulses at the same frequency as the AC input
+- C) A sine wave at half the frequency of the AC input
+- D) A steady DC voltage
+:::
+
+### Filtering
+
+The pulsating DC from a rectifier still contains large **ripple** — voltage oscillations at the rectifier frequency. A **filter capacitor** placed across the output smooths this: the capacitor charges to the peak during each pulse, then discharges into the load between peaks, maintaining the voltage. The larger the capacitance, the less the voltage drops between peaks, and the smoother the DC.
+
+A **filter network** uses both capacitors and inductors. Inductors impede rapid current changes, preventing sudden surges; capacitors absorb voltage fluctuations. Together, they produce smoother DC.
+
+::: {.callout-note collapse="true"}
+## G7A02: Which of the following components are used in a power supply filter network?
+
+- A) Diodes
+- B) Transformers and transducers
+- **C) Capacitors and inductors**
+- D) All these choices are correct
+:::
+
+**Bleeder resistor**: A resistor connected permanently across the power supply output. It serves two critical purposes:
+
+1. **Safety**: When the supply is turned off, the filter capacitors remain charged at full voltage — potentially lethal. The bleeder resistor slowly discharges them, removing the shock hazard.
+2. **Regulation**: It provides a minimum load current, improving voltage regulation at light loads.
+
+::: {.callout-note collapse="true"}
+## G7A01: What is the function of a power supply bleeder resistor?
+
+- A) It acts as a fuse for excess voltage
+- **B) It discharges the filter capacitors when power is removed**
+- C) It removes shock hazards from the induction coils
+- D) It eliminates ground loop current
+:::
+
+### Switchmode power supply (SMPS)
+
+A **switchmode (or switching) power supply** uses a fundamentally different approach than a linear supply. Instead of using a large 60 Hz transformer and a linear regulator, it:
+
+1. Converts the DC (from a rectified mains input) into a high-frequency AC signal (typically 50 kHz–1 MHz) using switching transistors.
+2. Transforms this high-frequency AC with a small, lightweight transformer.
+3. Rectifies and filters the result.
+
+The key insight: transformer size is inversely proportional to frequency — a transformer operating at 100 kHz can be 1000× smaller (by volume and weight) than one operating at 60 Hz for the same power. **High-frequency operation allows the use of smaller components.** SMPS are now the standard for amateur radio transceivers.
+
+Trade-off: the switching transistors generate broad-spectrum RF interference that can be picked up by a nearby receiver.
+
+::: {.callout-note collapse="true"}
+## G7A08: Which of the following is characteristic of a switchmode power supply as compared to a linear power supply?
+
+- A) Faster switching time makes higher output voltage possible
+- B) Fewer circuit components are required
+- **C) High-frequency operation allows the use of smaller components**
+- D) Inherently more stable
+:::
+
+### Schematic symbols (Figure G7-1)
+
+The exam includes a figure with numbered schematic symbols. Key identifications:
+
+- **Symbol 1 (G7A09)**: Field effect transistor (FET) — three terminals (gate, drain, source), with the gate shown as a line separated from the channel by a gap.
+- **Symbol 5 (G7A10)**: Zener diode — a diode symbol with a bent (Z-shaped) cathode bar.
+- **Symbol 2 (G7A11)**: NPN junction transistor — base line with two diagonal lines (emitter and collector), emitter arrow pointing outward from base.
+- **Symbol 6 (G7A12)**: Solid core transformer — two coil symbols with solid parallel lines between them (representing the iron core).
+- **Symbol 7 (G7A13)**: Tapped inductor — a coil symbol with a tap connection mid-winding.
+
+::: {.callout-note collapse="true"}
+## G7A09: Which symbol in figure G7-1 represents a field effect transistor?
+
+- A) Symbol 2
+- B) Symbol 5
+- **C) Symbol 1**
+- D) Symbol 4
+:::
+
+::: {.callout-note collapse="true"}
+## G7A10: Which symbol in figure G7-1 represents a Zener diode?
+
+- A) Symbol 4
+- B) Symbol 1
+- C) Symbol 11
+- **D) Symbol 5**
+:::
+
+::: {.callout-note collapse="true"}
+## G7A11: Which symbol in figure G7-1 represents an NPN junction transistor?
+
+- A) Symbol 1
+- **B) Symbol 2**
+- C) Symbol 7
+- D) Symbol 11
+:::
+
+::: {.callout-note collapse="true"}
+## G7A12: Which symbol in Figure G7-1 represents a solid core transformer?
+
+- A) Symbol 4
+- B) Symbol 7
+- **C) Symbol 6**
+- D) Symbol 1
+:::
+
+::: {.callout-note collapse="true"}
+## G7A13: Which symbol in Figure G7-1 represents a tapped inductor?
+
+- **A) Symbol 7**
+- B) Symbol 11
+- C) Symbol 6
+- D) Symbol 1
+:::
+
+---
+
+## Amplifier Classes and Efficiency
+
+An amplifier takes a small input signal and produces a proportionally larger output signal, drawing power from a DC supply. The **class** of an amplifier describes the fraction of each input cycle during which the active device (transistor or tube) is actually conducting current.
+
+### Class A
+
+In Class A operation, the active device is biased so that it conducts during **100% of the input cycle** (360°). The device is always "on" in the middle of its active region. This means the output faithfully reproduces every part of the input waveform — excellent linearity. **Class A can amplify any modulation type**, including SSB and AM where amplitude accuracy is critical.
+
+The cost: even with no signal applied, the device draws significant quiescent current from the DC supply. Efficiency is typically only **25–30%** — most of the DC power becomes heat, not RF output. In a Class A amplifier, the active device operates as a **continuously variable resistor**, modulating the current flow in proportion to the input voltage.
+
+::: {.callout-note collapse="true"}
+## G7B04: In a Class A amplifier, what percentage of the time does the amplifying device conduct?
+
+- **A) 100%**
+- B) More than 50% but less than 100%
+- C) 50%
+- D) Less than 50%
+:::
+
+### Class C
+
+In Class C operation, the active device conducts for **less than 50% of the cycle** — typically only 90–120° out of 360°. Short pulses of current are fed into a **resonant LC tank circuit**, which "rings" at its natural frequency and produces a continuous sine wave output. The tank circuit reconstructs the complete waveform from the short current pulses.
+
+Class C is highly efficient — typically **70–80%** — because the device draws current only briefly. But it is highly non-linear: amplitude information in the input signal is destroyed. Class C amplifiers are only appropriate for modes with **constant amplitude** — CW (continuous wave Morse code) and FM (frequency modulation, where the carrier amplitude does not vary). Class C is **not suitable for SSB or AM**, where amplitude accuracy is essential.
+
+::: {.callout-note collapse="true"}
+## G7B02: Which of these classes of amplifiers has the highest efficiency?
+
+- A) Class A
+- B) Class B
+- C) Class AB
+- **D) Class C**
+:::
+
+::: {.callout-note collapse="true"}
+## G7B11: For which of the following modes is a Class C power stage appropriate for amplifying a modulated signal?
+
+- A) SSB
+- **B) FM**
+- C) AM
+- D) All these choices are correct
+:::
+
+### Amplifier efficiency
+
+**Efficiency** is the ratio of useful RF output power to total DC input power:
+
+$$\text{Efficiency} = \frac{P_{\text{RF out}}}{P_{\text{DC in}}} \times 100\%$$
+
+A 100 W RF output amplifier drawing 400 W of DC power operates at 25% efficiency — the other 300 W are dissipated as heat in the amplifier.
+
+::: {.callout-note collapse="true"}
+## G7B08: How is the efficiency of an RF power amplifier determined?
+
+- A) Divide the DC input power by the DC output power
+- **B) Divide the RF output power by the DC input power**
+- C) Multiply the RF input power by the reciprocal of the RF output power
+- D) Add the RF input power to the DC output power
+:::
+
+### Linear amplifiers
+
+A **linear amplifier** produces an output waveform that is an amplified but otherwise accurate replica of the input. The output is linearly proportional to the input. This is essential for SSB — if the amplifier distorts the amplitude envelope, the audio recovered at the receiver will be garbled.
+
+::: {.callout-note collapse="true"}
+## G7B10: Which of the following describes a linear amplifier?
+
+- A) Any RF power amplifier used in conjunction with an amateur transceiver
+- **B) An amplifier in which the output preserves the input waveform**
+- C) A Class C high efficiency amplifier
+- D) An amplifier used as a frequency multiplier
+:::
+
+### Neutralization
+
+In RF amplifiers, there is always some parasitic (stray) capacitance between the output (plate or drain) and the input (grid or gate). At radio frequencies, RF energy can couple back from output to input through this capacitance. If the fed-back signal is in phase with the input signal and the loop gain is sufficient, the amplifier will **oscillate** — generating its own signal rather than amplifying the intended one. **Neutralization** cancels this feedback by introducing an equal and opposite signal (typically through a small neutralizing capacitor) to eliminate the feedback path, restoring stable operation.
+
+::: {.callout-note collapse="true"}
+## G7B01: What is the purpose of neutralizing an amplifier?
+
+- A) To limit the modulation index
+- **B) To eliminate self-oscillations**
+- C) To cut off the final amplifier during standby periods
+- D) To keep the carrier on frequency
+:::
+
+---
+
+## Digital Logic Circuits
+
+Digital circuits work with signals that have only two valid states: logic high (1) and logic low (0), typically represented by ~5 V and ~0 V (TTL), or ~3.3 V and ~0 V (CMOS).
+
+### AND gate
+
+An **AND gate** is a fundamental logic element with two (or more) inputs and one output. The output is logic 1 **only when all inputs are simultaneously logic 1**. If any input is 0, the output is 0. This mirrors the Boolean AND operation: "A AND B" is true only when both A is true AND B is true.
+
+Truth table for a 2-input AND gate:
+
+| Input A | Input B | Output |
+|---------|---------|--------|
+| 0 | 0 | 0 |
+| 0 | 1 | 0 |
+| 1 | 0 | 0 |
+| 1 | 1 | **1** |
+
+::: {.callout-note collapse="true"}
+## G7B03: Which of the following describes the function of a two-input AND gate?
+
+- A) Output is high when either or both inputs are low
+- **B) Output is high only when both inputs are high**
+- C) Output is low when either or both inputs are high
+- D) Output is low only when both inputs are high
+:::
+
+### Shift register
+
+A **shift register** is a chain of flip-flops (binary storage elements) connected so that data shifts one position along the chain with each clock pulse. With each clock edge, the bit in position 1 moves to position 2, the bit in position 2 moves to position 3, and so on. A new bit is loaded into position 1 from the input. Applications: serial-to-parallel conversion (receiving a serial bit stream and presenting all bits simultaneously), delay lines, and building blocks for more complex digital systems.
+
+::: {.callout-note collapse="true"}
+## G7B06: What is a shift register?
+
+- **A) A clocked array of circuits that passes data in steps along the array**
+- B) An array of operational amplifiers used for tri-state arithmetic operations
+- C) A digital mixer
+- D) An analog mixer
+:::
+
+### Binary counters
+
+A **binary counter** counts pulses in binary. An n-bit counter has 2ⁿ distinct states. A **3-bit binary counter** cycles through 2³ = **8 states**: 000, 001, 010, 011, 100, 101, 110, 111 (0 through 7 in decimal), then resets to 000 on the 8th pulse.
+
+::: {.callout-note collapse="true"}
+## G7B05: How many states does a 3-bit binary counter have?
+
+- A) 3
+- B) 6
+- **C) 8**
+- D) 16
+:::
+
+---
+
+## Oscillators
+
+An **oscillator** is a circuit that generates a continuous AC signal without any external AC input — it sustains itself using positive feedback. The requirements for sustained oscillation (the **Barkhausen criterion**):
+
+1. **Total loop gain ≥ 1**: The amplifier must amplify the fed-back signal at least enough to overcome losses in the loop.
+2. **Total loop phase shift = 0° (or 360°)**: The fed-back signal must arrive in phase with the original input so that it reinforces — not cancels — the oscillation.
+
+The basic components of a sine wave oscillator are **a filter (frequency-determining network) and an amplifier operating in a feedback loop**. The filter (typically an LC tank circuit or quartz crystal) selects the frequency at which the phase condition is met; the amplifier sustains the oscillation against resistive losses.
+
+::: {.callout-note collapse="true"}
+## G7B07: Which of the following are basic components of a sine wave oscillator?
+
+- A) An amplifier and a divider
+- B) A frequency multiplier and a mixer
+- C) A circulator and a filter operating in a feed-forward loop
+- **D) A filter and an amplifier operating in a feedback loop**
+:::
+
+### LC oscillators
+
+An **LC oscillator** uses an inductor-capacitor resonant tank circuit as the frequency-determining element. The tank circuit resonates at:
+
+$$f_0 = \frac{1}{2\pi\sqrt{LC}}$$
+
+At this frequency, the inductive reactance X_L = ωL exactly equals the capacitive reactance X_C = 1/(ωC). Energy sloshes back and forth between the magnetic field in the inductor and the electric field in the capacitor — like a pendulum. The oscillator amplifier compensates for resistive losses to sustain the oscillation indefinitely.
+
+Changing L or C tunes the frequency — LC oscillators are inherently variable. Common types: **Hartley** (tapped inductor for feedback), **Colpitts** (capacitive voltage divider for feedback).
+
+::: {.callout-note collapse="true"}
+## G7B09: What determines the frequency of an LC oscillator?
+
+- A) The number of stages in the counter
+- B) The number of stages in the divider
+- **C) The inductance and capacitance in the tank circuit**
+- D) The time delay of the lag circuit
+:::
+
+---
+
+## Filters
+
+A **filter** is a two-port network that passes some frequencies and attenuates others. Filters are named by what they pass.
+
+### Low-pass filter
+
+A **low-pass filter (LPF)** passes frequencies below its **cutoff frequency** (f_c) and attenuates frequencies above. Used at transmitter outputs to suppress harmonics — unwanted signals at integer multiples of the fundamental frequency that would cause interference on other bands.
+
+The cutoff frequency is defined as the **−3 dB point** — the frequency where the output power falls to **half the passband power** (P_out = P_in/2, which is −3 dB in log scale, i.e., 10 log(1/2) = −3 dB). Above the cutoff, the filter increasingly attenuates the signal.
+
+::: {.callout-note collapse="true"}
+## G7C12: What is the frequency above which a low-pass filter's output power is less than half the input power?
+
+- A) Notch frequency
+- B) Neper frequency
+- **C) Cutoff frequency**
+- D) Rolloff frequency
+:::
+
+### Band-pass filter
+
+A **band-pass filter** passes a range of frequencies between a lower and upper cutoff. The **bandwidth** is measured between the two **half-power (−3 dB) frequencies** — the upper frequency where output power drops to half the passband power, and the lower frequency where it does the same. This definition gives a consistent, unambiguous measure regardless of filter shape.
+
+::: {.callout-note collapse="true"}
+## G7C14: The bandwidth of a band-pass filter is measured between what two frequencies?
+
+- **A) Upper and lower half-power**
+- B) Cutoff and rolloff
+- C) Pole and zero
+- D) Image and harmonic
+:::
+
+### Filter specifications
+
+**Insertion loss** (also called passband loss): The power lost in the passband — ideally zero (0 dB) for a perfect filter. In practice, all real filters attenuate the desired signal slightly. Insertion loss specifies a filter's attenuation *inside* its passband.
+
+::: {.callout-note collapse="true"}
+## G7C07: What term specifies a filter's attenuation inside its passband?
+
+- **A) Insertion loss**
+- B) Return loss
+- C) Q
+- D) Ultimate rejection
+:::
+
+**Ultimate rejection** (also called stopband attenuation): How much the filter attenuates signals outside its passband — specifies a filter's *maximum ability to reject signals outside its passband*. A filter with 60 dB ultimate rejection reduces an out-of-band signal's power by a factor of one million.
+
+::: {.callout-note collapse="true"}
+## G7C13: What term specifies a filter's maximum ability to reject signals outside its passband?
+
+- A) Notch depth
+- B) Rolloff
+- C) Insertion loss
+- **D) Ultimate rejection**
+:::
+
+### DSP filters
+
+A **digital signal processing (DSP) filter** performs filtering computationally rather than with passive L-C components. In a DSP filter, the incoming signal is digitized (analog-to-digital converter), mathematical operations are applied to the digital samples, and the result is converted back to analog (or kept digital for further processing).
+
+DSP filters offer a **wide range of filter bandwidths and shapes**. An LC filter's shape is determined by its physical components — changing the filter requires changing parts. A DSP filter's shape is determined by its coefficients in software — reconfiguring it is instantaneous and free. Extremely steep roll-offs, precise passbands, and adaptive filters that track interference are all straightforward in DSP but impractical or impossible in analog hardware.
+
+::: {.callout-note collapse="true"}
+## G7C06: Which of the following is an advantage of a digital signal processing (DSP) filter compared to an analog filter?
+
+- **A) A wide range of filter bandwidths and shapes can be created**
+- B) Fewer digital components are required
+- C) Mixing products are greatly reduced
+- D) The DSP filter is much more effective at VHF frequencies
+:::
+
+---
+
+## Modulators, Demodulators, and Impedance Matching
+
+### Balanced modulator
+
+A **balanced modulator** mixes the audio signal with the carrier in a circuit designed so that the carrier is cancelled in the output. The result is a **double-sideband suppressed-carrier (DSB-SC)** signal — it contains the upper sideband and lower sideband, but the carrier itself is absent. This is the first stage in generating an SSB signal.
+
+::: {.callout-note collapse="true"}
+## G7C02: What output is produced by a balanced modulator?
+
+- A) Frequency modulated RF
+- B) Audio with equalized frequency response
+- C) Audio extracted from the modulation signal
+- **D) Double-sideband modulated RF**
+:::
+
+### Sideband selection filter
+
+After the balanced modulator produces a DSB-SC signal, a sharp **filter** (typically a crystal filter with steep skirts) selects **one sideband** and rejects the other. The output is a single-sideband signal with suppressed carrier — the SSB signal ready for amplification and transmission.
+
+::: {.callout-note collapse="true"}
+## G7C01: What circuit is used to select one of the sidebands from a balanced modulator?
+
+- A) Carrier oscillator
+- **B) Filter**
+- C) IF amplifier
+- D) RF amplifier
+:::
+
+### Product detector
+
+A **product detector** is used in SSB and CW receivers to demodulate the received signal. It multiplies (mixes) the received IF signal by a locally generated carrier from a Beat Frequency Oscillator (BFO). The mixing product is the difference frequency — the original audio. The product detector effectively "reinserts" the carrier that was suppressed at the transmitter, recovering the modulating signal.
+
+::: {.callout-note collapse="true"}
+## G7C04: How is a product detector used?
+
+- A) Used in test gear to detect spurious mixing products
+- B) Used in a transmitter to perform frequency multiplication
+- C) Used in an FM receiver to filter out unwanted sidebands
+- **D) Used in a single sideband receiver to extract the modulated signal**
+:::
+
+### Impedance matching transformer
+
+A transmitter's final amplifier is designed to operate into a specific load impedance — typically 50 Ω. If the antenna feedline presents a different impedance, maximum power transfer is not achieved and the transmitter may be stressed. An **impedance matching transformer** at the transmitter output presents the **desired impedance to the transmitter and feed line** simultaneously, allowing both to operate at their optimum conditions.
+
+::: {.callout-note collapse="true"}
+## G7C03: What is one reason to use an impedance matching transformer at a transmitter output?
+
+- A) To minimize transmitter power output
+- **B) To present the desired impedance to the transmitter and feed line**
+- C) To reduce power supply ripple
+- D) To minimize radiation resistance
+:::
+
+---
+
+## Superheterodyne Receivers, SDR, and DDS
+
+### The superheterodyne principle
+
+The **superheterodyne receiver** (invented by Edwin Armstrong, 1918) is the dominant radio receiver architecture. Its key insight: instead of trying to amplify and filter signals across a wide range of radio frequencies (which requires variable, high-Q filters that are difficult to build), convert the received signal to a fixed **intermediate frequency (IF)** and do most of the signal processing there.
+
+The conversion is done by a **mixer** — a non-linear circuit that multiplies two signals. When signals at f_RF and f_LO are fed into a mixer, the output contains (among other products) their sum and difference: f_LO + f_RF and |f_LO − f_RF|. The desired output is the difference: f_IF = |f_LO − f_RF|. To tune across a band, the **local oscillator (LO)** is varied while the IF remains fixed, and the IF filter provides selectivity.
+
+::: {.callout-note collapse="true"}
+## G8B01 (preview): Which mixer input is varied or tuned to convert signals of different frequencies to an intermediate frequency (IF)?
+
+*(See G8 for the full treatment of this concept.)*
+:::
+
+### Receiver sensitivity
+
+**Receiver sensitivity** (the ability to detect weak signals) is determined by the noise introduced early in the receive chain — primarily by the first amplifier or mixer. The **noise figure** of these stages sets the noise floor. Reducing noise figure (by using a low-noise amplifier as the first stage) directly improves sensitivity.
+
+All three of these factors affect sensitivity: input amplifier gain (more gain brings weak signals above the noise floor), demodulator stage bandwidth (wider bandwidth admits more noise), and input amplifier noise figure (lower noise figure means a lower noise floor).
+
+::: {.callout-note collapse="true"}
+## G7C08: Which parameter affects receiver sensitivity?
+
+- A) Input amplifier gain
+- B) Demodulator stage bandwidth
+- C) Input amplifier noise figure
+- **D) All these choices are correct**
+:::
+
+### Direct Digital Synthesis (DDS)
+
+A **DDS** (Direct Digital Synthesis) generates a precise frequency digitally. A digital accumulator increments a phase register at a rate determined by a frequency control word. The phase value addresses a lookup table containing a digitized sine wave. A digital-to-analog converter converts the table output to an analog sine wave. By changing the frequency control word, the output frequency changes almost instantaneously while maintaining phase continuity.
+
+Key advantage: **variable output frequency with the stability of a crystal oscillator** — the DDS clock is crystal-derived, so all output frequencies inherit the crystal's frequency accuracy and stability.
+
+::: {.callout-note collapse="true"}
+## G7C05: Which of the following is characteristic of a direct digital synthesizer (DDS)?
+
+- A) Extremely narrow tuning range
+- B) Relatively high-power output
+- C) Pure sine wave output
+- **D) Variable output frequency with the stability of a crystal oscillator**
+:::
+
+### Software Defined Radio (SDR)
+
+In a **software-defined radio (SDR)**, most of the signal processing that was formerly done in dedicated hardware — filtering, demodulation, modulation — is instead performed in software running on a general-purpose processor or FPGA. The key technique enabling this is **I/Q (In-phase/Quadrature) modulation and demodulation**.
+
+The received signal is split into two paths. One path is multiplied by the local oscillator (LO) directly — producing the **I (in-phase)** component. The other path is multiplied by the LO shifted by exactly **90°** — producing the **Q (quadrature)** component. The 90° phase difference between I and Q allows the software to determine both the amplitude and phase of the signal at every moment, enabling any demodulation mode to be implemented purely in software.
+
+::: {.callout-note collapse="true"}
+## G7C09: What is the phase difference between the I and Q RF signals that software-defined radio (SDR) equipment uses for modulation and demodulation?
+
+- A) Zero
+- **B) 90 degrees**
+- C) 180 degrees
+- D) 45 degrees
+:::
+
+::: {.callout-note collapse="true"}
+## G7C10: What is an advantage of using I-Q modulation with software-defined radios (SDRs)?
+
+- A) The need for high resolution analog-to-digital converters is eliminated
+- **B) All types of modulation can be created with appropriate processing**
+- C) Minimum detectible signal level is reduced
+- D) Automatic conversion of the signal from digital to analog
+:::
+
+In an SDR, functions traditionally implemented as separate hardware circuits — filters, detectors, modulators — are all performed in software.
+
+::: {.callout-note collapse="true"}
+## G7C11: Which of these functions is performed by software in a software-defined radio (SDR)?
+
+- A) Filtering
+- B) Detection
+- C) Modulation
+- **D) All these choices are correct**
+:::
