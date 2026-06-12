@@ -1,0 +1,604 @@
+---
+title: "G8: Signals and Emissions"
+---
+
+This section covers how information is impressed onto radio waves (modulation), how those signals are analyzed and displayed, and the digital modes used in modern amateur radio. We start with first principles of the carrier concept, then work through each modulation type, signal analysis techniques, and digital encoding methods.
+
+---
+
+## The Carrier Principle
+
+A **carrier** is a continuous sine wave at a specific radio frequency. By itself, it carries no information — it is just a periodic oscillation at a fixed amplitude and frequency. To transmit information (voice, data, video), one property of the carrier must be varied in proportion to the information signal. This is **modulation**.
+
+Three properties of a sine wave can be modulated:
+- **Amplitude** (AM family)
+- **Frequency** (FM family)
+- **Phase** (PM family)
+
+The modulated signal can propagate through space, be received and amplified, and then **demodulated** — the reverse process that extracts the original information from the carrier variation.
+
+---
+
+## Amplitude Modulation (AM)
+
+In **AM (amplitude modulation)**, the instantaneous amplitude (envelope) of the carrier varies in proportion to the audio signal. When audio is louder, the carrier swings to higher peak amplitude; when quieter, to lower amplitude.
+
+In the frequency domain, an AM signal consists of:
+- The carrier at frequency f_c
+- An **upper sideband (USB)** at f_c + f_audio
+- A **lower sideband (LSB)** at f_c − f_audio
+
+Both sidebands carry identical information. The **bandwidth** of an AM signal is twice the highest audio frequency — for 3 kHz audio, the AM bandwidth is 6 kHz.
+
+### The modulation envelope
+
+The **modulation envelope** of an AM signal is the waveform traced by connecting the peak values of the modulated RF signal over time. On an oscilloscope, it forms the outline of the AM waveform. The envelope traces the shape of the original audio signal — wider excursions mean louder audio, narrower excursions mean quieter audio.
+
+::: {.callout-note collapse="true"}
+## G8A11: What is the modulation envelope of an AM signal?
+
+- **A) The waveform created by connecting the peak values of the modulated signal**
+- B) The carrier frequency that contains the signal
+- C) Spurious signals that envelop nearby frequencies
+- D) The bandwidth of the modulated signal
+:::
+
+### Overmodulation and flat-topping
+
+When the audio signal is too large — when the modulation depth exceeds 100% — the carrier amplitude is driven to zero on negative peaks. The envelope is **clipped flat** at zero (it cannot go negative). This is called **flat-topping**. The flat portions of the waveform in the time domain correspond, in the frequency domain, to sharp harmonic sidebands extending far outside the normal bandwidth. This **excessive bandwidth** causes interference (splatter) to adjacent channels.
+
+::: {.callout-note collapse="true"}
+## G8A10: What is meant by the term "flat-topping," when referring to an amplitude-modulated phone signal?
+
+- A) Signal distortion caused by insufficient collector current
+- B) The transmitter's automatic level control (ALC) is properly adjusted
+- **C) Signal distortion caused by excessive drive or speech levels**
+- D) The transmitter's carrier is properly suppressed
+:::
+
+::: {.callout-note collapse="true"}
+## G8A08: Which of the following is an effect of overmodulation?
+
+- A) Insufficient audio
+- B) Insufficient bandwidth
+- C) Frequency drift
+- **D) Excessive bandwidth**
+:::
+
+### What type of modulation varies amplitude
+
+**Amplitude modulation** is the modulation type in which the instantaneous power level (and thus amplitude) of the RF signal varies in proportion to the modulating signal.
+
+::: {.callout-note collapse="true"}
+## G8A05: What type of modulation varies the instantaneous power level of the RF signal?
+
+- A) Power modulation
+- B) Phase modulation
+- C) Frequency modulation
+- **D) Amplitude modulation**
+:::
+
+### Reactance modulator
+
+A **reactance modulator** is a circuit that, when connected to an oscillator, varies a reactance (capacitance or inductance) in the oscillator circuit in response to the modulating signal. Varying the reactance shifts the oscillator's resonant frequency — this produces **frequency modulation**, not AM. A reactance modulator connected to a transmitter RF amplifier stage produces FM (or phase modulation, which is closely related).
+
+::: {.callout-note collapse="true"}
+## G8A04: What emission is produced by a reactance modulator connected to a transmitter RF amplifier stage?
+
+- A) Multiplex modulation
+- **B) Phase modulation**
+- C) Amplitude modulation
+- D) Pulse modulation
+:::
+
+---
+
+## Single Sideband (SSB)
+
+**SSB** removes the carrier and one sideband from an AM signal, transmitting only a single sideband. Advantages over full AM:
+
+- **Half the bandwidth**: An SSB signal is approximately 3 kHz wide (the audio bandwidth) compared to 6 kHz for AM.
+- **All power in the information-bearing sideband**: In full AM, 2/3 of the total power is wasted in the carrier; in SSB, all transmitted power is useful.
+- **Better range per watt**: The combination of narrower bandwidth (lower noise) and all-useful-power gives SSB roughly a 9 dB advantage over AM — corresponding to 8× more effective radiated power.
+
+SSB is the **narrowest-bandwidth phone emission** of the standard modulation types.
+
+::: {.callout-note collapse="true"}
+## G8A07: Which of the following phone emissions uses the narrowest bandwidth?
+
+- **A) Single sideband**
+- B) Vestigial sideband
+- C) Phase modulation
+- D) Frequency modulation
+:::
+
+---
+
+## Frequency Modulation (FM)
+
+In **FM (frequency modulation)**, the instantaneous frequency of the carrier varies in proportion to the amplitude of the audio signal. The carrier amplitude remains constant at all times. Louder audio = greater frequency swing; quieter audio = smaller frequency swing.
+
+### Key FM terms
+
+**Deviation**: The maximum frequency swing from the carrier's center frequency. Standard amateur narrowband FM uses ±5 kHz deviation. The carrier swings between (f_c − 5 kHz) and (f_c + 5 kHz).
+
+**Modulation index** (β): Deviation divided by the highest modulating audio frequency. β = Δf / f_m. For 5 kHz deviation and 3 kHz audio, β = 5/3 ≈ 1.67. The modulation index determines how many significant sidebands the FM signal contains (Bessel function analysis).
+
+**Bandwidth (Carson's rule)**: BW ≈ 2 × (Δf + f_m). For ±5 kHz deviation and 3 kHz maximum audio: BW = 2 × (5 + 3) = **16 kHz**.
+
+::: {.callout-note collapse="true"}
+## G8B06: What is the total bandwidth of an FM phone transmission having 5 kHz deviation and 3 kHz modulating frequency?
+
+- A) 3 kHz
+- B) 5 kHz
+- C) 8 kHz
+- **D) 16 kHz**
+:::
+
+**Frequency deviation and multiplier stages**: To generate a stable FM signal at VHF (say 146.52 MHz) from a lower-frequency crystal-controlled oscillator (say 12.21 MHz), multiplier stages are used. Each multiplication stage multiplies both the carrier frequency and the frequency deviation by the same factor. Starting from 12.21 MHz and multiplying to 146.52 MHz requires a multiplication factor of 146.52 / 12.21 ≈ 12. If the desired deviation at 146.52 MHz is 5 kHz, the oscillator needs only 5000 / 12 ≈ **416.7 Hz** of deviation. The multiplier stages scale this up proportionally.
+
+::: {.callout-note collapse="true"}
+## G8B07: What is the frequency deviation for a 12.21 MHz reactance modulated oscillator in a 5 kHz deviation, 146.52 MHz FM phone transmitter?
+
+- A) 101.75 Hz
+- **B) 416.7 Hz**
+- C) 5 kHz
+- D) 60 kHz
+:::
+
+### FM name and definition
+
+::: {.callout-note collapse="true"}
+## G8A03: What is the name of the process that changes the instantaneous frequency of an RF wave to convey information?
+
+- A) Frequency convolution
+- B) Frequency transformation
+- C) Frequency conversion
+- **D) Frequency modulation**
+:::
+
+---
+
+## Phase Modulation (PM) and QPSK
+
+### Phase modulation
+
+In **phase modulation (PM)**, the phase angle of the carrier is varied in proportion to the modulating signal. PM and FM are closely related — the instantaneous frequency is the time derivative of the instantaneous phase. A reactance modulator that introduces a phase shift to the carrier signal rather than directly changing its frequency produces phase modulation.
+
+::: {.callout-note collapse="true"}
+## G8A02: What is the name of the process that changes the phase angle of an RF signal to convey information?
+
+- A) Phase convolution
+- **B) Phase modulation**
+- C) Phase transformation
+- D) Phase inversion
+:::
+
+### QPSK
+
+**PSK (Phase Shift Keying)** encodes digital data by shifting the carrier phase between discrete states. In **BPSK (Binary PSK)**, two states: 0° and 180° — one bit per symbol. In **QPSK (Quadrature PSK)**, four states: 0°, 90°, 180°, 270° — each state encodes **2 bits per symbol**.
+
+**QPSK31** is a digital mode that uses QPSK modulation at 31.25 baud. It carries twice the data of BPSK31 in approximately the same bandwidth because it encodes two bits per symbol. QPSK31 also provides **error correction capability** through differential encoding, and it is **sideband sensitive** (upper vs. lower sideband affects the encoding). All three are true of QPSK31.
+
+::: {.callout-note collapse="true"}
+## G8A12: What is QPSK modulation?
+
+- A) Modulation using quasi-parallel to serial conversion to reduce bandwidth
+- B) Modulation using quadra-pole sideband keying to generate spread spectrum signals
+- C) Modulation using Fast Fourier Transforms to generate frequencies at the first, second, third, and fourth harmonics of the carrier frequency to improve noise immunity
+- **D) Modulation in which digital data is transmitted using 0-, 90-, 180- and 270-degrees phase shift to represent pairs of bits**
+:::
+
+::: {.callout-note collapse="true"}
+## G8A06: Which of the following is characteristic of QPSK31?
+
+- A) It is sideband sensitive
+- B) Its encoding provides error correction
+- C) Its bandwidth is approximately the same as BPSK31
+- **D) All these choices are correct**
+:::
+
+### FT8 modulation
+
+**FT8** uses **8-tone frequency shift keying (8-GFSK)** — eight discrete frequencies, each encoding 3 bits per symbol. The Gaussian frequency shaping reduces bandwidth by smoothing transitions between tones.
+
+::: {.callout-note collapse="true"}
+## G8A09: What type of modulation is used by FT8?
+
+- **A) 8-tone frequency shift keying**
+- B) Vestigial sideband
+- C) Amplitude compressed AM
+- D) 8-bit direct sequence spread spectrum
+:::
+
+---
+
+## Link Budgets and RF System Analysis
+
+### Link budget
+
+A **link budget** is a systematic accounting of all the gains and losses in a radio communication path from transmitter output to receiver input. The budget includes:
+
+- Transmitter output power (dBW or dBm)
+- Feed line losses (negative, in dB)
+- Transmit antenna gain (positive, in dBi)
+- Path loss (negative — the free-space attenuation over distance)
+- Receive antenna gain (positive, in dBi)
+- Receive feed line losses (negative, in dB)
+
+The result is the received power level. Comparing this to the receiver's minimum required signal level gives the link margin.
+
+The link budget is defined as the **sum of transmit power and antenna gains minus system losses as seen at the receiver**.
+
+::: {.callout-note collapse="true"}
+## G8A13: What is a link budget?
+
+- A) The financial costs associated with operating a radio link
+- B) The sum of antenna gains minus system losses
+- **C) The sum of transmit power and antenna gains minus system losses as seen at the receiver**
+- D) The difference between transmit power and receiver sensitivity
+:::
+
+### Link margin
+
+**Link margin** is the difference between the actual received signal level and the minimum level required for successful communication. A positive link margin means the system has spare capacity — it can absorb fading, interference, or increased path loss and still maintain the link. A larger margin means a more robust, reliable link.
+
+::: {.callout-note collapse="true"}
+## G8A14: What is link margin?
+
+- A) The opposite of fade margin
+- **B) The difference between received power level and minimum required signal level at the input to the receiver**
+- C) Transmit power minus receiver sensitivity
+- D) Receiver sensitivity plus 3 dB
+:::
+
+---
+
+## Mixing, Heterodyning, and Intermodulation
+
+### Heterodyning
+
+**Heterodyning** (from the Greek for "different force") is the process of mixing two signals of different frequencies in a non-linear circuit to produce new frequencies at their sum and difference. It is the basis of all superheterodyne receivers and many transmitter architectures.
+
+::: {.callout-note collapse="true"}
+## G8B03: What is another term for the mixing of two RF signals?
+
+- **A) Heterodyning**
+- B) Synthesizing
+- C) Frequency inversion
+- D) Phase inversion
+:::
+
+### Mixer outputs
+
+A **mixer** is a non-linear circuit that multiplies two input signals. When a signal at f_LO (local oscillator) and f_RF (received radio frequency) are mixed, the output contains signals at their **sum (f_LO + f_RF) and difference (|f_LO − f_RF|)**. The desired output is typically the difference: the intermediate frequency f_IF = |f_LO − f_RF|. The LO is varied to tune across the band while maintaining a fixed IF.
+
+::: {.callout-note collapse="true"}
+## G8B11: What combination of a mixer's Local Oscillator (LO) and RF input frequencies is found in the output?
+
+- A) The ratio
+- B) The average
+- **C) The sum and difference**
+- D) The arithmetic product
+:::
+
+### Tuning the mixer
+
+To receive different RF frequencies, the **local oscillator** is tuned — the RF input is fixed at whatever frequency is being received, but the LO is varied to produce a constant IF output.
+
+::: {.callout-note collapse="true"}
+## G8B01: Which mixer input is varied or tuned to convert signals of different frequencies to an intermediate frequency (IF)?
+
+- A) Image frequency
+- **B) Local oscillator**
+- C) RF input
+- D) Beat frequency oscillator
+:::
+
+### Image frequency
+
+A signal at f_LO + f_IF (when the desired signal is at f_LO − f_IF) also down-converts to the same IF. This undesired signal is the **image**. It is rejected by a preselector filter (bandpass filter) before the mixer. Image rejection is a key receiver performance parameter.
+
+::: {.callout-note collapse="true"}
+## G8B02: What is the term for interference from a signal at twice the IF frequency from the desired signal?
+
+- A) Quadrature response
+- **B) Image response**
+- C) Mixer interference
+- D) Intermediate interference
+:::
+
+### Frequency multiplier
+
+In a VHF FM transmitter, a **multiplier stage** generates a harmonic of a lower-frequency signal to reach the desired operating frequency. It selects one specific harmonic of the input frequency using a resonant circuit. Both the carrier frequency and the frequency deviation are multiplied by the same factor.
+
+::: {.callout-note collapse="true"}
+## G8B04: What is the stage in a VHF FM transmitter that generates a harmonic of a lower frequency signal to reach the desired operating frequency?
+
+- A) Mixer
+- B) Reactance modulator
+- C) Balanced converter
+- **D) Multiplier**
+:::
+
+### Intermodulation distortion (IMD)
+
+When two or more signals are present simultaneously in a non-linear circuit (an overloaded receiver preamplifier, for example), they interact to produce **intermodulation products** — spurious signals at frequencies not present in the original inputs. If two signals at f1 and f2 are present, intermodulation products appear at frequencies nf1 ± mf2 where n and m are integers.
+
+**Odd-order intermodulation products** (where |n| + |m| is odd) are the most troublesome because they fall near the original signal frequencies. The most important are the **third-order products**: 2f1 − f2 and 2f2 − f1. These land just outside (or between) the original signals, where they cannot be filtered out without also removing the desired signals.
+
+::: {.callout-note collapse="true"}
+## G8B05: Which intermodulation products are closest to the original signal frequencies?
+
+- A) Second harmonics
+- B) Even-order
+- **C) Odd-order**
+- D) Intercept point
+:::
+
+::: {.callout-note collapse="true"}
+## G8B12: What process combines two signals in a non-linear circuit to produce unwanted spurious outputs?
+
+- **A) Intermodulation**
+- B) Heterodyning
+- C) Detection
+- D) Rolloff
+:::
+
+::: {.callout-note collapse="true"}
+## G8B13: Which of the following is an odd-order intermodulation product of frequencies F1 and F2?
+
+- A) 5F1-3F2
+- B) 3F1-F2
+- **C) 2F1-F2**
+- D) All these choices are correct
+:::
+
+### Receiver bandwidth matching
+
+The receiver bandwidth should match the signal bandwidth. Too wide → more noise is admitted → degraded signal-to-noise ratio. Too narrow → the signal's edges are clipped → distorted audio or data errors. Matching gives the **best signal-to-noise ratio**.
+
+::: {.callout-note collapse="true"}
+## G8B09: Why is it good to match receiver bandwidth to the bandwidth of the operating mode?
+
+- A) It is required by FCC rules
+- B) It minimizes power consumption in the receiver
+- C) It improves impedance matching of the antenna
+- **D) It results in the best signal-to-noise ratio**
+:::
+
+### Symbol rate and bandwidth
+
+Higher symbol rate (more symbols per second) requires proportionally wider bandwidth to accommodate the faster signal transitions. This is a fundamental limit — you cannot increase data rate without proportionally increasing bandwidth (the Nyquist theorem).
+
+::: {.callout-note collapse="true"}
+## G8B10: What is the relationship between transmitted symbol rate and bandwidth?
+
+- A) Symbol rate and bandwidth are not related
+- **B) Higher symbol rates require wider bandwidth**
+- C) Lower symbol rates require wider bandwidth
+- D) Bandwidth is half the symbol rate
+:::
+
+### Duty cycle
+
+**Duty cycle** is the fraction of time the transmitter is transmitting at full power. FM and unmodulated carriers have 100% duty cycle — they are always on. SSB voice has a much lower duty cycle — the carrier drops during pauses in speech, and the average power is considerably below peak power.
+
+Duty cycle is critical for **transmitter thermal design**. A transmitter rated for 100 W average power on SSB voice may overheat if operated at that same power level in a 100% duty cycle digital mode (RTTY, FT8 in beacon mode, etc.) — the heat dissipation is much higher.
+
+::: {.callout-note collapse="true"}
+## G8B08: Why is it important to know the duty cycle of the mode you are using when transmitting?
+
+- A) To aid in tuning your transmitter
+- **B) Some modes have high duty cycles that could exceed the transmitter's average power rating**
+- C) To allow time for the other station to break in during a transmission
+- D) To prevent overmodulation
+:::
+
+### FSK direct generation
+
+**FSK (Frequency Shift Keying)** can be generated directly by changing an oscillator's output frequency in response to a digital control signal — no audio tones involved, just direct frequency switching.
+
+::: {.callout-note collapse="true"}
+## G8A01: How is direct binary FSK modulation generated?
+
+- A) By keying an FM transmitter with a sub-audible tone
+- **B) By changing an oscillator's frequency directly with a digital control signal**
+- C) By using a transceiver's computer data interface protocol to change frequencies
+- D) By reconfiguring the CW keying input to act as a tone generator
+:::
+
+---
+
+## Digital Modes — Encoding, Error Correction, and Displays
+
+### Baudot code
+
+**Baudot code** is a 5-bit character encoding used in RTTY (radioteletype). With 5 bits, there are only 2⁵ = 32 possible codes — not enough for the full alphabet, digits, and punctuation. Baudot uses a **shift mechanism**: a special code switches between the "letters" set (A–Z and some symbols) and the "figures" set (0–9 and punctuation). It uses additional start and stop bits for synchronization.
+
+::: {.callout-note collapse="true"}
+## G8C04: Which of the following describes Baudot code?
+
+- A) A 7-bit code with start, stop, and parity bits
+- B) A code using error detection and correction
+- **C) A 5-bit code with additional start and stop bits**
+- D) A code using SELCAL and LISTEN
+:::
+
+### Packet radio frame
+
+A **packet radio** frame is a structured unit of data. The **header** contains routing and handling information — source and destination addresses, control information — that allows packet-switching networks to route the frame to its destination. The payload (data) follows the header.
+
+::: {.callout-note collapse="true"}
+## G8C03: What part of a packet radio frame contains the routing and handling information?
+
+- A) Directory
+- B) Preamble
+- **C) Header**
+- D) Trailer
+:::
+
+### ARQ — Automatic Repeat reQuest
+
+**ARQ** is an error-correction protocol based on acknowledgment. The receiver checks each received packet for errors (typically using a CRC — cyclic redundancy check). If the packet is received correctly, it sends an **ACK** (acknowledgment). If the packet contains errors, it sends a **NAK** (negative acknowledgment) — "I received this packet but it had errors; please retransmit." If too many retransmission attempts fail (typically because propagation has degraded), the **connection is dropped**.
+
+::: {.callout-note collapse="true"}
+## G8C05: In an ARQ mode, what is meant by a NAK response to a transmitted packet?
+
+- **A) Request retransmission of the packet**
+- B) Packet was received without error
+- C) Receiving station connected and ready for transmissions
+- D) Entire file received correctly
+:::
+
+::: {.callout-note collapse="true"}
+## G8C06: What action results from a failure to exchange information due to excessive transmission attempts when using an ARQ mode?
+
+- A) The checksum overflows
+- **B) The connection is dropped**
+- C) Packets will be routed incorrectly
+- D) Encoding reverts to the default character set
+:::
+
+### FEC — Forward Error Correction
+
+**FEC** adds **redundant information** to the transmitted data stream. The receiver uses this redundancy to detect and correct errors without requesting retransmission. FEC is essential in one-way communication paths (broadcasts) and in modes where propagation is so poor that ARQ retransmission would be impractical. FT8, WSPR, and other weak-signal modes rely heavily on FEC.
+
+::: {.callout-note collapse="true"}
+## G8C10: How does forward error correction (FEC) allow the receiver to correct data errors?
+
+- A) By controlling transmitter output power for optimum signal strength
+- B) By using the Varicode character set
+- **C) By transmitting redundant information with the data**
+- D) By using a parity bit with each character
+:::
+
+### FT8 — a weak-signal mode
+
+**FT8** can receive signals with very low signal-to-noise ratios — signals buried deep in noise that would be completely inaudible to human ears. Its combination of narrow bandwidth (50 Hz), 15-second transmission periods, and powerful FEC (LDPC code) allows decoding signals at −20 dB SNR or below in a 2500 Hz reference bandwidth.
+
+::: {.callout-note collapse="true"}
+## G8C07: Which of the following narrow-band digital modes can receive signals with very low signal-to-noise ratios?
+
+- A) MSK144
+- **B) FT8**
+- C) AMTOR
+- D) MFSK32
+:::
+
+### FSK signal identification
+
+In **FSK**, two discrete audio tones represent "mark" (logic 1) and "space" (logic 0). They are identified as **mark and space** — specific audio frequencies that the receiver demodulator distinguishes. Swapping which frequency is mark and which is space results in inverted (garbled) copy.
+
+::: {.callout-note collapse="true"}
+## G8C11: How are the two separate frequencies of a Frequency Shift Keyed (FSK) signal identified?
+
+- A) Dot and dash
+- B) On and off
+- C) High and low
+- **D) Mark and space**
+:::
+
+### PSK31 characteristics
+
+**PSK31** uses **Varicode** — a variable-length binary code where common letters (E, T, A, etc.) are assigned short codes and rare letters (Q, X, Z) get longer codes. This reduces average character length and speeds up transmission for typical English text. However, **upper-case letters use longer Varicode bit sequences** than lower-case — using ALL CAPS in PSK31 noticeably slows transmission speed and is considered poor practice ("shouting" in two senses).
+
+::: {.callout-note collapse="true"}
+## G8C12: Which type of code is used for sending characters in a PSK31 signal?
+
+- **A) Varicode**
+- B) Viterbi
+- C) Volumetric
+- D) Binary
+:::
+
+::: {.callout-note collapse="true"}
+## G8C08: Which of the following statements is true about PSK31?
+
+- A) Upper case letters are sent with more power
+- **B) Upper case letters use longer Varicode bit sequences and thus slow down transmission**
+- C) Error correction is used to ensure accurate message reception
+- D) Higher power is needed as compared to RTTY for similar error rates
+:::
+
+### Waterfall display
+
+A **waterfall display** is a time-frequency visualization of radio signals. The axes are:
+
+- **Horizontal axis**: Frequency
+- **Vertical axis**: Time (newest signals at the top, scrolling downward — hence "waterfall")
+- **Color/brightness**: Signal strength (intensity)
+
+This lets the operator see both the current spectrum and the recent history — essential for identifying digital modes, spotting rare DX, and monitoring propagation changes.
+
+::: {.callout-note collapse="true"}
+## G8C14: Which of the following describes a waterfall display?
+
+- A) Frequency is horizontal, signal strength is vertical, time is intensity
+- B) Frequency is vertical, signal strength is intensity, time is horizontal
+- **C) Frequency is horizontal, signal strength is intensity, time is vertical**
+- D) Frequency is vertical, signal strength is horizontal, time is intensity
+:::
+
+**Overmodulated PSK31**: A clean PSK31 signal shows a narrow double-bar pattern on the waterfall. If the audio drive level is too high, causing overmodulation (clipping), **vertical lines appear on either side** of the signal — key clicks that indicate the signal is wider than intended.
+
+::: {.callout-note collapse="true"}
+## G8C13: What is indicated on a waterfall display by one or more vertical lines on either side of a data mode or RTTY signal?
+
+- A) Long path propagation
+- B) Backscatter propagation
+- C) Insufficient modulation
+- **D) Overmodulation**
+:::
+
+### WSPR — Weak Signal Propagation Reporter
+
+**WSPR** (pronounced "whisper") is a weak-signal digital beacon mode used to assess HF propagation. A WSPR station transmits a brief, precisely formatted signal on a standard frequency. Receiving stations worldwide report the decoded calls, signal reports, and locations to the wsprnet.org database, creating a real-time map of propagation paths. WSPR operates in an extremely narrow bandwidth (~6 Hz) and uses powerful FEC, allowing propagation assessment with milliwatt power levels.
+
+::: {.callout-note collapse="true"}
+## G8C02: Which digital mode is used as a low-power beacon for assessing HF propagation?
+
+- **A) WSPR**
+- B) MFSK16
+- C) PSK31
+- D) SSB-SC
+:::
+
+### FT8 signal report
+
+In FT8 (and most WSJT-X modes), signal reports are given in **dB SNR relative to the noise floor in a 2500 Hz reference bandwidth**. A report of **+3** means the signal is 3 dB above the noise floor in a 2500 Hz reference bandwidth — a marginally detectable signal. Reports of −20 or lower are common in weak-signal FT8 QSOs.
+
+::: {.callout-note collapse="true"}
+## G8C15: What does an FT8 signal report of +3 mean?
+
+- A) The signal is 3 times the noise level of an equivalent SSB signal
+- B) The signal is S3 (weak signals)
+- **C) The signal-to-noise ratio is equivalent to +3dB in a 2.5 kHz bandwidth**
+- D) The signal is 3 dB over S9
+:::
+
+### Mesh network nodes
+
+**AREDN (Amateur Radio Emergency Data Network)** nodes form a peer-to-peer mesh network. Each node can communicate with multiple other nodes. If one node fails, packets can be routed via alternate paths through other nodes — the network has no single point of failure. This resilience is crucial for emergency communications.
+
+::: {.callout-note collapse="true"}
+## G8C09: Which is true of mesh network microwave nodes?
+
+- A) Having more nodes increases signal strengths
+- **B) If one node fails, a packet may still reach its target station via an alternate node**
+- C) Links between two nodes in a network may have different frequencies and bandwidths
+- D) More nodes reduce overall microwave out of band interference
+:::
+
+### Digital voice modes
+
+**DMR (Digital Mobile Radio), D-STAR, and System Fusion (YSF)** are the three most common digital voice modes in amateur radio. They encode voice digitally, allow call-sign-based routing, and support linking via the internet to repeaters worldwide.
+
+::: {.callout-note collapse="true"}
+## G8C16: Which of the following provide digital voice modes?
+
+- A) WSPR, MFSK16, and EasyPAL
+- B) FT8, FT4, and FST4
+- C) Winlink, PACTOR II, and PACTOR III
+- **D) DMR, D-STAR, and SystemFusion**
+:::
