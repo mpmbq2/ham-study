@@ -1,0 +1,392 @@
+---
+title: "G6: Circuit Components"
+---
+
+This section surveys the physical components that populate every amateur radio circuit — from the lead-acid battery powering your mobile rig to the tiny ferrite bead suppressing RF on a USB cable. For each component, we start from the underlying physics, then connect to the practical behavior and the exam questions that test it.
+
+---
+
+## Batteries
+
+A battery converts stored chemical energy into electrical energy through electrochemical reactions. The most common battery in amateur radio is the **lead-acid battery** — the same chemistry as a standard automobile battery.
+
+A 12-volt lead-acid battery is actually a series stack of six cells, each nominally 2 volts. Under full charge, each cell reaches about 2.1 V; under load, 2.0 V is typical; the safe minimum discharge voltage per cell is approximately **1.75 V**. Multiplied across six cells: 6 × 1.75 V = **10.5 V minimum discharge voltage** for the full battery. Discharging below this threshold causes irreversible sulfation of the lead plates, permanently reducing capacity.
+
+A battery's **internal resistance** is the resistance of the electrolyte and electrode material inside the cell itself. When you draw current, some voltage drops across this internal resistance — just as current through any resistor produces a voltage drop. A battery with *low* internal resistance can deliver high discharge currents with minimal voltage drop under load. This matters for high-current radio transmitters: a transmitter drawing 20 A from a battery with 0.1 Ω internal resistance loses 2 V internally (20 A × 0.1 Ω = 2 V drop). Lower internal resistance → less voltage sag → more stable supply voltage under transmit loads.
+
+::: {.callout-note collapse="true"}
+## G6A01: What is the minimum allowable discharge voltage for maximum life of a standard 12-volt lead-acid battery?
+
+- A) 6 volts
+- B) 8.5 volts
+- **C) 10.5 volts**
+- D) 12 volts
+:::
+
+::: {.callout-note collapse="true"}
+## G6A02: What is an advantage of batteries with low internal resistance?
+
+- A) Long life
+- **B) High discharge current**
+- C) High voltage
+- D) Rapid recharge
+:::
+
+---
+
+## Resistors
+
+A **resistor** is a two-terminal component that impedes current flow and dissipates electrical energy as heat. Its key specifications are resistance (ohms, Ω) and power rating (watts — the maximum rate of heat dissipation before failure).
+
+Types you will encounter:
+
+- **Carbon composition**: Carbon particles embedded in a binder. Common, inexpensive, tolerates brief overloads.
+- **Metal film**: A thin film of resistive metal deposited on a ceramic cylinder. More precise (1% tolerance common) and more stable over temperature.
+- **Wire-wound**: A length of resistive wire (such as nichrome) wound on a ceramic form. Handles high power but — critically — a coil of wire is an inductor. Any coil creates a magnetic field when current flows, storing energy inductively. At radio frequencies, this parasitic inductance becomes significant, making the component behave partly as an inductor rather than a pure resistor. The inductance "makes circuit performance unpredictable" — an RF circuit designed assuming a resistor gets an unintended inductive reactance instead. **Wire-wound resistors must never be used in RF circuits.**
+
+::: {.callout-note collapse="true"}
+## G6A06: Why should wire-wound resistors not be used in RF circuits?
+
+- A) The resistor's tolerance value would not be adequate
+- **B) The resistor's inductance could make circuit performance unpredictable**
+- C) The resistor could overheat
+- D) The resistor's internal capacitance would detune the circuit
+:::
+
+---
+
+## Capacitors
+
+A **capacitor** stores energy in an electric field between two conductive plates separated by a dielectric (electrically insulating material). The capacitance C (farads) depends on the plate area, plate separation, and dielectric constant of the insulating material.
+
+### Electrolytic capacitors
+
+Electrolytic capacitors use a metallic oxide layer as the dielectric — the layer is formed by an electrochemical process and is extremely thin (nanometers), giving very high capacitance per unit volume. The key characteristics:
+
+- **High capacitance for a given volume** — orders of magnitude more than a comparable ceramic capacitor.
+- **Polarized** — the oxide layer is stable only when the correct terminal is at higher voltage. Reversing polarity or applying AC destroys the oxide layer rapidly (sometimes violently). Always observe polarity markings.
+- **Used for power supply filtering** — where large capacitance is needed to smooth DC.
+
+Low-voltage ceramic capacitors (disc or surface-mount chip types) are small, non-polarized, inexpensive, and temperature-stable. They are **comparatively low cost** and well-suited for bypassing and RF coupling.
+
+::: {.callout-note collapse="true"}
+## G6A04: Which of the following is characteristic of an electrolytic capacitor?
+
+- A) Tight tolerance
+- B) Much less leakage than any other type
+- **C) High capacitance for a given volume**
+- D) Inexpensive RF capacitor
+:::
+
+::: {.callout-note collapse="true"}
+## G6A08: Which of the following is characteristic of low voltage ceramic capacitors?
+
+- A) Tight tolerance
+- B) High stability
+- C) High capacitance for given volume
+- **D) Comparatively low cost**
+:::
+
+---
+
+## Inductors and Ferrite Cores
+
+An **inductor** is a coil of wire that stores energy in a magnetic field. When current flows through a coil, each turn of wire generates a magnetic field. The fields of adjacent turns reinforce each other, creating a concentrated magnetic field inside and around the coil. Inductance (henries, H) measures how much magnetic flux (and thus stored energy) results from a given current.
+
+### Ferrite cores and their mixes
+
+**Ferrite** is a ceramic magnetic material composed of iron oxide combined with other metal oxides. Its key property is high magnetic permeability (μ) — it concentrates magnetic flux far more efficiently than air. Threading a ferrite core through or around an inductor's coil multiplies the inductance by a factor equal to the relative permeability (μᵣ), which ranges from tens to thousands depending on the ferrite formulation.
+
+Different ferrite **mixes** (chemical compositions) have dramatically different permeability and loss characteristics as a function of frequency. A mix optimized for audio frequencies (Mix 77, for example) becomes extremely lossy at HF, making it useless as an efficient inductor but useful as a lossy choke. A mix optimized for VHF (Mix 61) remains low-loss there. **The composition, or "mix," of the ferrite material determines its performance at different frequencies.**
+
+::: {.callout-note collapse="true"}
+## G6B01: What determines the performance of a ferrite core at different frequencies?
+
+- A) Its conductivity
+- B) Its thickness
+- **C) The composition, or "mix," of materials used**
+- D) The ratio of outer diameter to inner diameter
+:::
+
+### Toroidal inductors
+
+A **toroid** is a donut-shaped (annular) form. Winding wire around a toroidal ferrite core creates a toroidal inductor. The toroidal geometry has a powerful advantage: the magnetic field lines follow a closed loop entirely inside the core material, with virtually no field escaping outside the core. This self-shielding means:
+
+- Very little RF is radiated by the inductor (low interference to nearby circuits).
+- The inductor is highly immune to external magnetic fields (low interference from the environment).
+- Multiple toroids can be placed close together without coupling to each other.
+
+The advantages combine: large inductance values are achievable (due to the ferrite), the ferrite mix can be optimized for the operating frequency, and the magnetic field is almost entirely confined inside the core.
+
+::: {.callout-note collapse="true"}
+## G6B05: What is an advantage of using a ferrite core toroidal inductor?
+
+- A) Large values of inductance may be obtained
+- B) The magnetic properties of the core may be optimized for a specific range of frequencies
+- C) Most of the magnetic field is contained in the core
+- **D) All these choices are correct**
+:::
+
+### Self-resonant frequency
+
+Every real inductor has **parasitic capacitance** — small capacitive coupling between adjacent turns of wire, since two conductors separated by an insulator (air or the coil form) form a capacitor. This parasitic capacitance is in parallel with the inductance. At the **self-resonant frequency**, the parasitic capacitance resonates with the inductance (they exchange energy back and forth like a spring-mass system). Above the self-resonant frequency, the parasitic capacitance dominates — the component no longer stores energy magnetically but rather electrically, and it **acts as a capacitor** rather than an inductor.
+
+::: {.callout-note collapse="true"}
+## G6A11: What happens when an inductor is operated above its self-resonant frequency?
+
+- A) Its reactance increases
+- B) Harmonics are generated
+- **C) It becomes capacitive**
+- D) Catastrophic failure is likely
+:::
+
+### Ferrite beads
+
+A **ferrite bead** is a small ferrite cylinder placed over a wire or lead. At low frequencies, the bead presents negligible impedance — the intended signal passes freely through the wire. At high frequencies (RF), the ferrite's loss mechanism converts the RF energy to heat rather than allowing it to propagate. This creates a high-impedance path that blocks **common-mode RF currents** — currents that flow on the outside of coaxial cable shields or on equipment chassis, causing interference, rather than through the intended signal path.
+
+::: {.callout-note collapse="true"}
+## G6B10: How does a ferrite bead or core reduce common-mode RF current on the shield of a coaxial cable?
+
+- **A) By creating an impedance in the current's path**
+- B) It converts common-mode current to differential mode current
+- C) By creating an out-of-phase current to cancel the common-mode current
+- D) Ferrites expel magnetic fields
+:::
+
+---
+
+## Diodes
+
+### Semiconductor physics
+
+A **semiconductor** is a material with electrical conductivity between that of a conductor (copper) and an insulator (glass). Conductivity can be controlled by introducing impurities — a process called **doping**.
+
+**N-type semiconductor**: Doped with atoms having one extra valence electron beyond the crystal's normal bonding (phosphorus in silicon, for example). These extra electrons are free to move → extra free electrons as majority carriers.
+
+**P-type semiconductor**: Doped with atoms having one fewer valence electron (boron in silicon). Each missing electron leaves a "hole" — a vacancy that behaves like a positive charge carrier, moving in the opposite direction from electrons.
+
+### The P-N junction diode
+
+When p-type and n-type materials are joined, electrons from the n-side diffuse across the boundary and fill holes on the p-side. This creates a **depletion region** — a thin zone depleted of free carriers — that acts as a potential-energy barrier.
+
+**Forward bias** (positive voltage to p-side): The external voltage opposes the barrier, shrinks the depletion region, and allows current to flow freely — but only after the voltage exceeds the **forward threshold voltage** (also called the forward voltage drop).
+
+**Reverse bias** (positive voltage to n-side): The barrier widens. Almost no current flows. The diode blocks current.
+
+The forward threshold voltage depends on the semiconductor material:
+
+- **Silicon diode**: ~0.7 V (sometimes stated as 0.6 V). Silicon has a bandgap of 1.12 eV.
+- **Germanium diode**: ~0.3 V. Germanium has a narrower bandgap (0.67 eV), so less energy is required to forward-bias it.
+
+::: {.callout-note collapse="true"}
+## G6A03: What is the approximate forward threshold voltage of a germanium diode?
+
+- A) 0.1 volt
+- **B) 0.3 volts**
+- C) 0.7 volts
+- D) 1.0 volts
+:::
+
+::: {.callout-note collapse="true"}
+## G6A05: What is the approximate forward threshold voltage of a silicon junction diode?
+
+- A) 0.1 volt
+- B) 0.3 volts
+- **C) 0.7 volts**
+- D) 1.0 volts
+:::
+
+### LED — Light-Emitting Diode
+
+In some semiconductor materials (gallium arsenide, gallium nitride), when electrons cross the junction and recombine with holes, the released energy is emitted as photons (light) rather than heat. The diode glows when **forward biased** — it emits light when current is flowing in the forward direction through the junction.
+
+::: {.callout-note collapse="true"}
+## G6B08: How is an LED biased when emitting light?
+
+- A) In the tunnel-effect region
+- B) At the Zener voltage
+- C) Reverse biased
+- **D) Forward biased**
+:::
+
+### Zener diode
+
+A **Zener diode** is engineered for controlled reverse breakdown. At a precisely defined voltage (the Zener voltage, V_Z), the reverse current increases sharply while the voltage across the diode remains nearly constant. This makes the Zener diode useful as a **voltage reference or shunt regulator** — it clamps a voltage rail to a fixed value.
+
+### Varactor diode
+
+The width of the depletion region increases with reverse-bias voltage. Since a wider depletion region means a larger plate separation (like a capacitor), and since capacitance decreases with plate separation, the **varactor diode's capacitance decreases as reverse voltage increases**. This voltage-controlled capacitance makes varactors ideal for electronically tuned oscillators and PLL (phase-locked loop) circuits.
+
+### PIN diode
+
+A **PIN diode** has a thick Intrinsic (undoped) layer sandwiched between the p and n regions. At RF frequencies, this intrinsic layer can be conductively controlled by the DC bias: forward bias fills the intrinsic layer with carriers (low RF resistance); reverse bias clears it (high RF resistance). Result: a DC-controlled RF switch that can handle significant RF power.
+
+---
+
+## Transistors
+
+### Bipolar Junction Transistor (BJT)
+
+A **BJT** has three semiconductor regions: base (B), collector (C), and emitter (E). In an NPN transistor: the emitter is n-type, the base is a thin p-type layer, and the collector is n-type. A small base current controls a much larger collector-to-emitter current — this is amplification.
+
+As a **switch**, the BJT operates at two extreme points:
+
+- **Saturation**: Both the base-emitter and base-collector junctions are forward biased. The transistor is fully on — maximum collector current flows, and the collector-emitter voltage drops nearly to zero.
+- **Cutoff**: The base-emitter junction is at zero or reverse bias. No base current flows → no collector current flows. The transistor is fully off.
+
+A digital circuit drives the BJT between saturation (logic 1 output) and cutoff (logic 0 output), with no time spent in the intermediate linear region.
+
+::: {.callout-note collapse="true"}
+## G6A07: What are the operating points for a bipolar transistor used as a switch?
+
+- **A) Saturation and cutoff**
+- B) The active region (between cutoff and saturation)
+- C) Peak and valley current points
+- D) Enhancement and depletion modes
+:::
+
+### MOSFET — Metal-Oxide-Semiconductor Field Effect Transistor
+
+A **MOSFET** has three terminals: gate (G), drain (D), and source (S). The gate is physically separated from the semiconductor channel by an extremely thin layer of silicon dioxide (SiO₂) — an electrical insulator. Because the gate is insulated, it draws essentially zero current — the MOSFET is controlled entirely by the electric field from the gate voltage, not by gate current. This gives MOSFETs extremely high input impedance.
+
+The thin oxide layer is the key to MOSFET operation but also its vulnerability: **electrostatic discharge** can punch through the oxide and permanently destroy the device. Handle MOSFETs with ESD precautions.
+
+::: {.callout-note collapse="true"}
+## G6A09: Which of the following describes MOSFET construction?
+
+- A) The gate is formed by a back-biased junction
+- **B) The gate is separated from the channel by a thin insulating layer**
+- C) The source is separated from the drain by a thin insulating layer
+- D) The source is formed by depositing metal on silicon
+:::
+
+---
+
+## Vacuum Tubes
+
+Before transistors (invented 1947), all electronics used **vacuum tubes** — devices that control electron flow through vacuum. Even today, tubes appear in high-power HF amplifiers.
+
+**Thermionic emission**: Heating a metal cathode gives electrons enough energy to escape its surface. In a tube, the heated cathode releases electrons into the vacuum.
+
+A **triode** has three electrodes:
+
+- **Cathode**: The heated electron source.
+- **Plate (anode)**: Held at a high positive voltage; attracts electrons emitted by the cathode.
+- **Control grid**: A fine wire mesh placed between cathode and plate. Small voltage changes on the control grid modulate the electron stream — a small voltage variation at the grid produces a large current variation at the plate → amplification.
+
+::: {.callout-note collapse="true"}
+## G6A10: Which element of a vacuum tube regulates the flow of electrons between cathode and plate?
+
+- **A) Control grid**
+- B) Suppressor grid
+- C) Screen grid
+- D) Trigger electrode
+:::
+
+The **screen grid** (found in tetrodes and pentodes — four- and five-electrode tubes) is placed between the control grid and the plate. Its primary purpose: **reduce the capacitance between control grid and plate**. In a triode, this grid-to-plate capacitance creates feedback that can cause the amplifier to oscillate at high frequencies. The screen grid, biased at a fixed positive voltage, electrostatically shields the control grid from the plate, eliminating most of this feedback and allowing stable operation at much higher frequencies.
+
+::: {.callout-note collapse="true"}
+## G6A12: What is the primary purpose of a screen grid in a vacuum tube?
+
+- **A) To reduce grid-to-plate capacitance**
+- B) To increase efficiency
+- C) To increase the control grid resistance
+- D) To decrease plate resistance
+:::
+
+---
+
+## Integrated Circuits and MMICs
+
+An **integrated circuit (IC)** is an entire circuit — transistors, resistors, capacitors, and their interconnections — fabricated on a single chip of semiconductor material (typically silicon), typically just a few square millimeters.
+
+### Operational amplifier (op-amp)
+
+An **op-amp** is an analog IC with two inputs (inverting − and non-inverting +) and one output. Without feedback, its gain is enormous (10⁵ or more). With external feedback components, it can be configured as an amplifier with precise gain, a filter, an integrator, a comparator, and hundreds of other functions. The op-amp is the fundamental analog building block. It is an **analog** device.
+
+::: {.callout-note collapse="true"}
+## G6B06: What kind of device is an integrated circuit operational amplifier?
+
+- A) Digital
+- B) MMIC
+- C) Programmable Logic
+- **D) Analog**
+:::
+
+### CMOS vs. TTL
+
+**CMOS (Complementary Metal-Oxide-Semiconductor)** logic uses complementary pairs of N-channel and P-channel MOSFETs. In steady state, one transistor is fully on and the other fully off — negligible current flows through the supply. Current is only drawn during switching transitions (charging and discharging gate capacitances). **CMOS draws very low quiescent (static) power.**
+
+**TTL (Transistor-Transistor Logic)** uses bipolar junction transistors, which require base currents and have collector resistors that draw significant current even in steady state. TTL consumes substantially more power than CMOS.
+
+::: {.callout-note collapse="true"}
+## G6B03: Which of the following is an advantage of CMOS integrated circuits compared to TTL integrated circuits?
+
+- **A) Low power consumption**
+- B) High power handling capability
+- C) Better suited for RF amplification
+- D) Better suited for power supply regulation
+:::
+
+### MMIC — Monolithic Microwave Integrated Circuit
+
+An **MMIC** integrates active devices (transistors) and passive components (inductors, capacitors, transmission lines) on a single semiconductor die optimized for microwave frequencies (typically 1 GHz and above). An MMIC might contain a complete low-noise amplifier, mixer, or oscillator in a package barely 1 mm across. MMICs are used throughout VHF, UHF, and microwave amateur equipment — from preamps for weak-signal work to driver stages in transverters.
+
+::: {.callout-note collapse="true"}
+## G6B02: What is meant by the term MMIC?
+
+- A) Multi-Mode Integrated Circuit
+- **B) Monolithic Microwave Integrated Circuit**
+- C) Metal Monolayer Integrated Circuit
+- D) Mode Modulated Integrated Circuit
+:::
+
+---
+
+## RF Connectors
+
+At radio frequencies, a connector is not merely a mechanical joint — it is a section of transmission line. Poor connectors create impedance discontinuities (reflected power), allow RF leakage, and introduce loss. Key amateur RF connectors:
+
+**BNC (Bayonet Neill-Concelman)**: A bayonet-twist locking mechanism. Common on test equipment, portable radios, and receiving antennas. Rated to approximately **4 GHz** for low-SWR 50 Ω operation. Above this frequency, the geometry is no longer small compared to a wavelength and the connector degrades.
+
+::: {.callout-note collapse="true"}
+## G6B04: What is a typical upper frequency limit for low SWR operation of 50-ohm BNC connectors?
+
+- A) 50 MHz
+- B) 500 MHz
+- **C) 4 GHz**
+- D) 40 GHz
+:::
+
+**Type N**: A threaded connector with a larger, more precisely controlled geometry. **Moisture-resistant** and rated to 11 GHz or more. Used for higher-power and higher-frequency installations. A Type N connector is sometimes described as "a moisture-resistant RF connector useful to 10 GHz."
+
+::: {.callout-note collapse="true"}
+## G6B07: Which of the following describes a type N connector?
+
+- **A) A moisture-resistant RF connector useful to 10 GHz**
+- B) A small bayonet connector used for data circuits
+- C) A low noise figure VHF connector
+- D) A nickel plated version of the PL-259
+:::
+
+**SMA (SubMiniature version A)**: A small, precision threaded connector rated to 18 GHz or beyond. Now universal in SDR dongles, low-power microwave modules, and cellular/WiFi equipment. The threads are delicate — do not overtighten.
+
+::: {.callout-note collapse="true"}
+## G6B11: What is an SMA connector?
+
+- A) A type-S to type-M adaptor
+- **B) A small threaded connector suitable for signals up to several GHz**
+- C) A connector designed for serial multiple access signals
+- D) A type of push-on connector intended for high-voltage applications
+:::
+
+**RCA Phono jack**: The familiar consumer audio/video connector. Designed for audio frequencies and low-frequency video — not for RF. Used for **low-frequency or DC signal connections** (such as audio to/from a transceiver's accessory jack). It has no controlled impedance and is entirely unsuitable for RF signal routing.
+
+::: {.callout-note collapse="true"}
+## G6B12: Which of these connector types is commonly used for low frequency or dc signal connections to a transceiver?
+
+- A) PL-259
+- B) BNC
+- **C) RCA Phono**
+- D) Type N
+:::
