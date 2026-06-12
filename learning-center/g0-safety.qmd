@@ -1,0 +1,354 @@
+---
+title: "G0: Electrical and RF Safety"
+---
+
+This section covers two distinct but related safety domains: the biological effects of radio frequency (RF) electromagnetic fields and the FCC rules governing RF exposure, and conventional electrical safety — shock hazards, grounding, lightning protection, and tower climbing. Both domains involve real risks that amateur operators must understand and manage.
+
+---
+
+## RF Radiation and Biological Effects
+
+### Non-ionizing radiation
+
+RF electromagnetic radiation is **non-ionizing**. To understand what this means, consider the energy of a single photon: E = hf, where h = 6.626×10⁻³⁴ J·s (Planck's constant) and f is frequency. At 10 MHz, a single photon carries approximately 4×10⁻²⁶ joules — roughly 10⁻⁸ eV (electron-volts). To ionize a hydrogen atom (remove its electron) requires about 13.6 eV. To break a C-H chemical bond in a biological molecule requires about 4 eV. RF photons at amateur radio frequencies fall short of these thresholds by eight to nine orders of magnitude — they cannot ionize atoms or break chemical bonds.
+
+**Ionizing radiation** (X-rays, gamma rays, UV) can break chemical bonds and damage DNA directly. RF radiation cannot do this.
+
+### The thermal effect
+
+The primary biological effect of RF energy is **thermal** — RF energy is absorbed by tissue and converted to heat, exactly as in a microwave oven (which operates at 2.45 GHz). Tissue with high water content absorbs RF energy efficiently. At low power densities, the body's circulatory system dissipates the heat without harm. At high power densities (close to a high-power antenna, for example), local tissue heating can cause burns, cataracts (the lens of the eye has no blood supply and cannot dissipate heat), or other thermal injuries.
+
+::: {.callout-note collapse="true"}
+## G0A01: What is one way that RF energy can affect human body tissue?
+
+- **A) It heats body tissue**
+- B) It causes radiation poisoning
+- C) It causes the blood count to reach a dangerously low level
+- D) It cools body tissue
+:::
+
+---
+
+## FCC RF Exposure Limits and Evaluation
+
+### Maximum Permissible Exposure (MPE)
+
+The FCC has established **MPE (Maximum Permissible Exposure)** limits — maximum power density and field strength levels that people may be exposed to from amateur stations. The limits are based on frequency (different tissues absorb RF energy at different rates depending on frequency, with peak absorption for an adult human torso around 40–50 MHz) and exposure duration.
+
+Two tiers of exposure limits apply:
+
+- **Controlled environment**: The exposed person is aware of the RF and can take protective action. Higher exposure levels are permitted. Applies to the operator in the shack and anyone who has been informed of the RF environment.
+- **Uncontrolled environment**: The general public — neighbors, passersby — who are not aware of or in control of their exposure. More conservative (lower) limits apply.
+
+### What determines RF exposure
+
+RF exposure from a transmitted signal depends on multiple factors simultaneously — not just one:
+
+::: {.callout-note collapse="true"}
+## G0A02: Which of the following is used to determine RF exposure from a transmitted signal?
+
+- A) Its duty cycle
+- B) Its frequency
+- C) Its power density
+- **D) All these choices are correct**
+:::
+
+### Time averaging
+
+FCC RF exposure limits are not instantaneous limits — they are based on time-averaged exposure. **Time averaging** means the total RF exposure integrated over a specified period, divided by that period. For controlled environments, the averaging period is 6 minutes. For uncontrolled, it is 30 minutes. This allows, for example, a station that transmits for only part of the averaging period to use higher instantaneous power.
+
+::: {.callout-note collapse="true"}
+## G0A04: What does "time averaging" mean when evaluating RF radiation exposure?
+
+- A) The average amount of power developed by the transmitter over a specific 24-hour period
+- B) The average time it takes RF radiation to have any long-term effect on the body
+- C) The total time of the exposure
+- **D) The total RF exposure averaged over a certain period**
+:::
+
+**Duty cycle and time-averaged exposure**: A mode's duty cycle directly affects time-averaged exposure. FM at 100 W has a 100% duty cycle — full power is radiated continuously. SSB voice at 100 W PEP might have only 20–30% duty cycle averaged over a minute (carrier drops between words and during pauses). A **lower duty cycle permits greater average power levels** while remaining within time-averaged exposure limits.
+
+::: {.callout-note collapse="true"}
+## G0A07: What is the effect of modulation duty cycle on RF exposure?
+
+- **A) A lower duty cycle permits greater power levels to be transmitted**
+- B) A higher duty cycle permits greater power levels to be transmitted
+- C) Low duty cycle transmitters are exempt from RF exposure evaluation requirements
+- D) High duty cycle transmitters are exempt from RF exposure requirements
+:::
+
+### Evaluation requirements
+
+**All amateur stations are subject to FCC RF exposure rules**, regardless of power. However, stations below certain power thresholds on specific bands are **exempt from the requirement to perform a formal evaluation** — the FCC considers them too low-powered to pose a risk. Stations that exceed the exemption threshold must evaluate their compliance.
+
+::: {.callout-note collapse="true"}
+## G0A12: What stations are subject to the FCC rules on RF exposure?
+
+- A) All commercial stations; amateur radio stations are exempt
+- B) Only stations with antennas lower than one wavelength above the ground
+- C) Only stations transmitting more than 500 watts PEP
+- **D) All stations with a time-averaged transmission of more than one milliwatt**
+:::
+
+**How to evaluate compliance**: The FCC accepts multiple evaluation methods:
+
+::: {.callout-note collapse="true"}
+## G0A03: How can you determine that your station complies with FCC RF exposure regulations?
+
+- A) By calculation based on FCC OET Bulletin 65
+- B) By calculation based on computer modeling
+- C) By measurement of field strength using calibrated equipment
+- **D) All these choices are correct**
+:::
+
+**If evaluation shows exceedance**: If the evaluation reveals that RF energy from the station exceeds permissible limits, the operator must **take action to prevent human exposure to the excessive RF fields**. Actions include reducing power, increasing distance (moving the antenna farther from occupied areas), changing antenna type, limiting operating time, or restricting access to high-field areas.
+
+::: {.callout-note collapse="true"}
+## G0A05: What must you do if an evaluation of your station shows that the RF energy radiated by your station exceeds permissible limits for possible human absorption?
+
+- **A) Take action to prevent human exposure to the excessive RF fields**
+- B) File an Environmental Impact Statement (EIS-97) with the FCC
+- C) Secure written permission from your neighbors to operate above the controlled MPE limits
+- D) All these choices are correct
+:::
+
+**If station fails exemption criteria**: If the station's power and antenna configuration exceed the exemption threshold, a formal evaluation is required.
+
+::: {.callout-note collapse="true"}
+## G0A06: What must you do if your station fails to meet the FCC RF exposure exemption criteria?
+
+- **A) Perform an RF exposure evaluation in accordance with FCC OET Bulletin 65**
+- B) Contact the FCC for permission to transmit
+- C) Perform an RF exposure evaluation in accordance with World Meteorological Organization guidelines
+- D) Use an FCC-approved band-pass filter
+:::
+
+**Compliance steps**: The operator must evaluate compliance and prevent access to areas of high RF exposure.
+
+::: {.callout-note collapse="true"}
+## G0A08: Which of the following steps must an amateur operator take to ensure compliance with RF safety regulations?
+
+- A) Post a copy of FCC Part 97.13 in the station
+- B) Notify neighbors within a 100-foot radius of the antenna of the existence of the station and power levels
+- **C) Perform a routine RF exposure evaluation and prevent access to any identified high exposure areas**
+- D) All these choices are correct
+:::
+
+### Measuring RF field strength
+
+A **calibrated field strength meter with a calibrated antenna** can directly measure the actual RF field intensity at a given location. This allows direct verification of compliance rather than relying on calculations.
+
+::: {.callout-note collapse="true"}
+## G0A09: What type of instrument can be used to accurately measure an RF field strength?
+
+- A) A receiver with digital signal processing (DSP) noise reduction
+- **B) A calibrated field strength meter with a calibrated antenna**
+- C) An SWR meter with a peak-reading function
+- D) An oscilloscope with a high-stability crystal marker generator
+:::
+
+**Directional antennas and neighbors**: If a directional antenna's main lobe could expose a neighbor to more than the allowable uncontrolled limit, the operator must ensure the antenna cannot be pointed in their direction when they are present.
+
+::: {.callout-note collapse="true"}
+## G0A10: What should be done if evaluation shows that a neighbor might experience more than the allowable limit of RF exposure from the main lobe of a directional antenna?
+
+- A) Change to a non-polarized antenna with higher gain
+- B) Use an antenna with a higher front-to-back ratio
+- **C) Take precautions to ensure that the antenna cannot be pointed in their direction when they are present**
+- D) All these choices are correct
+:::
+
+**Indoor transmitting antennas**: An antenna inside the building can be much closer to people than an outdoor antenna. This proximity drastically increases field strength exposure. **MPE limits in occupied areas must not be exceeded** — careful evaluation is essential.
+
+::: {.callout-note collapse="true"}
+## G0A11: What precaution should be taken if you install an indoor transmitting antenna?
+
+- A) Locate the antenna close to your operating position to minimize feed-line radiation
+- B) Position the antenna along the edge of a wall to reduce parasitic radiation
+- **C) Make sure that MPE limits are not exceeded in occupied areas**
+- D) Make sure the antenna is properly shielded
+:::
+
+---
+
+## Electrical Safety Fundamentals
+
+### Shock hazard and current path
+
+Electric shock occurs when current flows through the human body. The lethal quantity is current, not voltage per se — but body resistance (typically 1,000 Ω when wet, up to 100,000 Ω when dry) determines the current for a given voltage: I = V/R. At 120 V AC across 1,000 Ω, current would be 120 mA — well above the 10–50 mA range that causes ventricular fibrillation. Household AC voltage is easily lethal.
+
+### Fuses and circuit breakers — NEC rules
+
+The National Electrical Code (NEC) is the US standard for safe electrical installation. In a **four-conductor 240 VAC circuit** (two ungrounded "hot" conductors, one neutral, one ground), only the **hot wires** must be fused or protected by circuit breakers. The neutral and ground conductors are not fused — interrupting them would leave the circuit energized but unprotected.
+
+::: {.callout-note collapse="true"}
+## G0B01: Which wire or wires in a four-conductor 240 VAC circuit should be attached to fuses or circuit breakers?
+
+- **A) Only the hot wires**
+- B) Only the neutral wire
+- C) Only the ground wire
+- D) All wires
+:::
+
+**Minimum wire size for 20 A circuit**: The NEC specifies minimum wire gauge based on the circuit breaker rating. For a 20 A circuit breaker, the minimum wire size is **AWG #12** (American Wire Gauge — lower AWG number = larger diameter = more current capacity).
+
+::: {.callout-note collapse="true"}
+## G0B02: According to the National Electrical Code, what is the minimum wire size that may be used safely for wiring with a 20-ampere circuit breaker?
+
+- A) AWG number 20
+- B) AWG number 16
+- **C) AWG number 12**
+- D) AWG number 8
+:::
+
+**Fuse sizing for AWG #14 wiring**: AWG #14 wire is rated for 15 A. The fuse must be sized to protect the wire — **15 amperes** is the appropriate fuse for a circuit using #14 wire. Using a larger fuse would allow the wire to overheat before the fuse blows.
+
+::: {.callout-note collapse="true"}
+## G0B03: Which size of fuse or circuit breaker would be appropriate to use with a circuit that uses AWG number 14 wiring?
+
+- A) 30 amperes
+- B) 25 amperes
+- C) 20 amperes
+- **D) 15 amperes**
+:::
+
+### NEC coverage
+
+The National Electrical Code covers the electrical safety of amateur radio station wiring — conductors and equipment installed within or on buildings.
+
+::: {.callout-note collapse="true"}
+## G0B06: Which of the following is covered by the National Electrical Code?
+
+- A) Acceptable bandwidth limits
+- B) Acceptable modulation limits
+- **C) Electrical safety of the station**
+- D) RF exposure limits of the human body
+:::
+
+### GFCI — Ground Fault Circuit Interrupter
+
+A **GFCI** continuously monitors the difference between current flowing in the hot conductor and current returning via the neutral. In a properly functioning circuit, these are equal. If even a small amount of current (as little as 5 mA) flows through an unintended path — such as through a person's body to ground — the GFCI detects the imbalance and trips in 25–40 ms, fast enough to prevent electrocution.
+
+::: {.callout-note collapse="true"}
+## G0B05: Which of the following conditions will cause a ground fault circuit interrupter (GFCI) to disconnect AC power?
+
+- A) Current flowing from one or more of the hot wires to the neutral wire
+- **B) Current flowing from one or more of the hot wires directly to ground**
+- C) Overvoltage on the hot wires
+- D) All these choices are correct
+:::
+
+### Lead-tin solder hazard
+
+**Lead (Pb)** is a cumulative neurotoxin that is absorbed through ingestion or inhalation. Lead-tin solder poses a risk of lead contamination if hands are not washed carefully after handling — particularly before eating or touching the face. **Lead can contaminate food** if hands are not washed thoroughly after soldering. Flux fumes (from rosin or other fluxes) are also irritating to the respiratory tract; ventilation is important.
+
+::: {.callout-note collapse="true"}
+## G0B10: Which of the following is a danger from lead-tin solder?
+
+- **A) Lead can contaminate food if hands are not washed carefully after handling the solder**
+- B) High voltages can cause lead-tin solder to disintegrate suddenly
+- C) Tin in the solder can "cold flow," causing shorts in the circuit
+- D) RF energy can convert the lead into a poisonous gas
+:::
+
+### Power supply interlock
+
+High-voltage power supplies (such as those in linear amplifiers, which may operate at 2,000–5,000 V DC) present a lethal shock hazard when the covers are removed. A **power supply interlock** is a safety switch — typically a microswitch or reed switch — that automatically disconnects the high voltage whenever a protective panel or cover is opened. This ensures that dangerous voltages are removed before a person can contact them.
+
+::: {.callout-note collapse="true"}
+## G0B12: What is the purpose of a power supply interlock?
+
+- A) To prevent unauthorized changes to the circuit that would void the manufacturer's warranty
+- B) To shut down the unit if it becomes too hot
+- **C) To ensure that dangerous voltages are removed if the cabinet is opened**
+- D) To shut off the power supply if too much voltage is produced
+:::
+
+---
+
+## Grounding and Lightning Protection
+
+### Lightning protection ground location
+
+**Lightning protection grounds** must be located **outside the building**, as close to where antenna cables enter the structure as possible. The goal is to divert lightning energy to earth before it enters the building — if the ground connection is inside the building, the lightning current must travel through the building structure to reach it, potentially damaging equipment and causing fires along the way.
+
+::: {.callout-note collapse="true"}
+## G0B04: Where should the station's lightning protection ground system be located?
+
+- A) As close to the station equipment as possible
+- **B) Outside the building**
+- C) Next to the closest power pole
+- D) Parallel to the water supply line
+:::
+
+### Lightning arrestors
+
+**Lightning arrestors** should be installed **where the feed lines enter the building** — at the building entry point. There, they provide a low-impedance path from the center conductor and shield of each coaxial cable to the lightning ground, preventing the lightning energy from traveling down the cable into the equipment.
+
+::: {.callout-note collapse="true"}
+## G0B13: Where should lightning arrestors be located?
+
+- **A) Where the feed lines enter the building**
+- B) On the antenna, opposite the feed point
+- C) In series with each ground lead
+- D) At the closest power pole ground electrode
+:::
+
+### Ground rod bonding
+
+Multiple ground rods must be **bonded together** (connected with heavy conductors) and to all other ground electrodes in the system. Without bonding, different ground points can be at different potentials during a lightning strike, driving large currents through equipment connected between them.
+
+::: {.callout-note collapse="true"}
+## G0B11: Which of the following is required for lightning protection ground rods?
+
+- A) They must be bonded to all buried water and gas lines
+- B) Bends in ground wires must be made as close as possible to a right angle
+- C) Lightning grounds must be connected to all ungrounded wiring
+- **D) They must be bonded together with all other grounds**
+:::
+
+### No solder in lightning grounds
+
+Solder melts at approximately 180–190 °C (for lead-tin solder). A lightning strike through a grounding conductor can heat it to thousands of degrees in microseconds. A soldered joint would instantly melt and open, disconnecting the ground exactly when it is most needed. All lightning protection ground connections must use **mechanical connections** — bolted lugs, compression connectors, or exothermic (Cadweld) connections — never solder.
+
+### Tower climbing safety
+
+Tower climbing is one of the more physically dangerous activities in amateur radio. Key safety requirements:
+
+- **Safety harness**: Always use a properly rated safety harness with fall arrest. Before climbing, **confirm that the harness is rated for the weight of the climber and that it is within its allowable service life** — harnesses have rated service lives (typically 5 years) and must be replaced if damaged or expired.
+
+::: {.callout-note collapse="true"}
+## G0B07: Which of these choices should be observed when climbing a tower using a safety harness?
+
+- A) Always hold on to the tower with one hand
+- **B) Confirm that the harness is rated for the weight of the climber and that it is within its allowable service life**
+- C) Ensure that all heavy tools are securely fastened to the harness
+- D) All these choices are correct
+:::
+
+- **Lock out and tag out**: Before climbing a tower that supports electrically powered devices (rotators, lighting, amplifiers), **all circuits supplying power to the tower must be locked out and tagged** — physically prevented from being re-energized while work is in progress.
+
+::: {.callout-note collapse="true"}
+## G0B08: What should be done before climbing a tower that supports electrically powered devices?
+
+- A) Notify the electric company that a person will be working on the tower
+- **B) Make sure all circuits that supply power to the tower are locked out and tagged**
+- C) Unground the base of the tower
+- D) All these choices are correct
+:::
+
+### Emergency generator safety
+
+Emergency generators in amateur radio stations (for power outages) have specific safety requirements:
+
+- **Ventilation**: Gasoline or propane generators produce carbon monoxide — a colorless, odorless, lethal gas. Generators must be operated in **well-ventilated areas**, never inside a building, garage, or enclosed space.
+- **Transfer switch**: A generator must have a proper transfer switch to prevent back-feeding power into the utility grid — back-fed power at a transformer would be stepped up to high voltage on the utility lines, creating an electrocution hazard for utility workers restoring power.
+
+::: {.callout-note collapse="true"}
+## G0B09: Which of the following is true of an emergency generator installation?
+
+- **A) The generator should be operated in a well-ventilated area**
+- B) The generator must be insulated from ground
+- C) Fuel should be stored near the generator for rapid refueling in case of an emergency
+- D) All these choices are correct
+:::
