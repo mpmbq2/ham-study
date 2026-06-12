@@ -1,0 +1,33 @@
+---
+title: "General Class Ham Radio — Learning Center"
+---
+
+This site teaches the complete content of the FCC Amateur Radio General Class (Element 3) exam from first principles. It is a textbook with inline self-checks — concepts are introduced in logical order, and exam questions appear only after the knowledge needed to answer them has been presented.
+
+## How to use this site
+
+Navigate using the sidebar. Work through each page in order, or jump to a topic you want to study. When you encounter a question box, you have seen everything you need to answer it. Click the box to reveal the answer choices — the **bolded** choice is correct.
+
+::: {.callout-note collapse="true"}
+## Example: click to reveal the answer choices
+
+- A) This is an incorrect answer
+- **B) This is the correct answer**
+- C) This is an incorrect answer
+- D) This is an incorrect answer
+:::
+
+## Contents
+
+| Section | Topic | Questions |
+|---|---|---|
+| [G1: Commission's Rules](g1-rules.qmd) | FCC regulations, privileges, licensing | 52 |
+| [G2: Operating Procedures](g2-operating.qmd) | On-air conduct, modes, nets, digital | 59 |
+| [G3: Radio Wave Propagation](g3-propagation.qmd) | Ionosphere, skip, MUF, solar effects | 37 |
+| [G4: Amateur Radio Practices](g4-practices.qmd) | Station setup, test equipment, interference | 60 |
+| [G5: Electrical Principles](g5-electrical.qmd) | Ohm's Law, AC, impedance, power, dB | 40 |
+| [G6: Circuit Components](g6-components.qmd) | Resistors, capacitors, diodes, transistors | 23 |
+| [G7: Practical Circuits](g7-circuits.qmd) | Power supplies, amplifiers, filters | 38 |
+| [G8: Signals and Emissions](g8-signals.qmd) | AM, FM, SSB, digital modulation, bandwidth | 42 |
+| [G9: Antennas and Feed Lines](g9-antennas.qmd) | Dipoles, verticals, Yagi, coax, SWR | 46 |
+| [G0: Electrical and RF Safety](g0-safety.qmd) | RF exposure, electrical safety, grounding | 25 |
