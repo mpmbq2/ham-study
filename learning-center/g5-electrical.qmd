@@ -6,6 +6,44 @@ This section covers the electrical principles underlying every circuit in your r
 
 ---
 
+## Where the Circuit Model Comes From: Fields First
+
+Before introducing voltage, current, and resistance, it is worth being honest about what they *are*. The everyday language of circuits — "charge flows through the wire and drops off its energy at the load" — is a convenient bookkeeping story, not the underlying physics. Knowing how that story is derived from the real physics will make the rest of this section click, and it is essential once you reach antennas and transmission lines, where the bookkeeping breaks down.
+
+### The full story: energy lives in the fields
+
+The complete description of electricity and magnetism is Maxwell's equations, and their central lesson for us is this: **energy is stored in, and transported by, electric and magnetic fields — not carried inside the electrons.** This matters because the electrons themselves barely move. The *drift velocity* of electrons in a typical wire is on the order of millimeters per minute, yet a lamp lights the instant you flip the switch. The energy clearly did not ride along with the charge carriers.
+
+What actually happens is that the moving and accumulated charges set up electric (**E**) and magnetic (**H**) fields in the space *around* the conductors, and energy flows through that space. The rigorous statement is the **Poynting vector**:
+
+$$\vec{S} = \vec{E} \times \vec{H} \quad \text{(watts per square meter)}$$
+
+This is the energy flux — the power per unit area flowing through space. Integrate it over a surface surrounding the conductors and you get the total power delivered. The conductors do not carry the energy in their copper; they act as *guides* that shape the surrounding E and H fields, and the energy travels in the field, largely in the insulating space between and around the wires. This is exactly why a coaxial cable carries energy in the dielectric between its conductors, and why an antenna can launch energy that leaves entirely as field, with no charge departing at all.
+
+### The lumped approximation: when fields collapse into V, I, and R
+
+Solving Maxwell's equations for every circuit would be intractable, so engineers use the **lumped-element model** — the world of voltage, current, and resistance. This model is not a different theory; it is what Maxwell's equations *reduce to* under one crucial condition:
+
+> **The circuit must be physically small compared to the wavelength of the signals it carries.**
+
+When that holds, the time it takes a field change to propagate across the circuit is negligible, and three simplifications fall out:
+
+1. **Voltage becomes well-defined.** In general, the work done moving a charge between two points depends on the path taken, because a changing magnetic field induces an electric field (Faraday's Law). But when the circuit is small and the magnetic flux through it is not changing too fast, that path-dependence vanishes. The energy-per-charge between two points becomes a single, path-independent number — and *that* number is what we call **voltage**.
+
+2. **Current is conserved at every node.** When charge is not piling up anywhere in the conductors (no significant changing electric flux mid-wire), whatever current flows into a junction must flow out. This is **Kirchhoff's Current Law**, and it is simply charge conservation once the field's displacement-current term is negligible.
+
+3. **The field energy gets localized into discrete components.** Instead of tracking fields spread through all of space, we package them into idealized parts: energy stored in concentrated **electric fields** becomes a **capacitor**, energy stored in concentrated **magnetic fields** becomes an **inductor**, and energy irreversibly converted to heat becomes a **resistor**. The wires connecting them are then treated as perfect, energy-free conductors.
+
+Under these conditions, the Poynting-vector energy flow through space is exactly reproduced by the simple product $P = V \times I$. The lumped formula is not an approximation of convenience that gives a *different* answer — it gives the *same* number as integrating $\vec{E} \times \vec{H}$, just expressed in the meter-friendly quantities you can actually measure with a voltmeter and an ammeter. The rest of this section works entirely in this lumped world.
+
+### Why radio operators must remember the fields
+
+The lumped model holds only while the circuit is small compared to a wavelength. At 60 Hz the wavelength is 5,000 km, so any household circuit is "small" and lumped analysis is flawless. But at HF and above, a wavelength shrinks to meters or less — comparable to the size of your feed line, your antenna, even components inside the radio. There, propagation delay across the circuit is *not* negligible, voltage stops being uniquely defined, and you must return to the field picture. This is precisely why this section ends with **transmission lines** and **impedance matching** (G5A10, G5C07) rather than treating coax as just "a wire": at radio frequencies, the energy genuinely lives in the fields, and the circuit shorthand is no longer enough.
+
+Keep this dual view in mind: **voltage and current are the bookkeeping; the fields are the physics.** Everything below uses the bookkeeping because it is simpler and exact within its domain — but the field story is always the deeper truth underneath.
+
+---
+
 ## The Four Fundamental Electrical Quantities
 
 All of electrical engineering rests on four measurable quantities. Understanding what they *are* physically — not just their formulas — makes everything downstream intuitive rather than arbitrary.
