@@ -1,0 +1,37 @@
+project:
+  type: website
+
+website:
+  title: "General Class Ham Radio — Learning Center"
+  sidebar:
+    style: "docked"
+    search: true
+    contents:
+      - index.qmd
+      - section: "Regulations"
+        contents:
+          - g1-rules.qmd
+          - g2-operating.qmd
+      - section: "Propagation & Practices"
+        contents:
+          - g3-propagation.qmd
+          - g4-practices.qmd
+      - section: "Electronics"
+        contents:
+          - g5-electrical.qmd
+          - g6-components.qmd
+          - g7-circuits.qmd
+      - section: "Signals & Antennas"
+        contents:
+          - g8-signals.qmd
+          - g9-antennas.qmd
+      - section: "Safety"
+        contents:
+          - g0-safety.qmd
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    toc-location: right
+    toc-depth: 3
