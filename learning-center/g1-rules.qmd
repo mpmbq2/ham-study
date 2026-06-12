@@ -1,0 +1,816 @@
+---
+title: "G1: Commission's Rules"
+---
+
+## How the FCC licenses amateur radio operators
+
+The **FCC** (Federal Communications Commission) is the United States government agency responsible for regulating all non-federal radio communication. Every radio transmitter in the US that is not operated by the federal government is ultimately governed by FCC rules. Amateur radio — colloquially called "ham radio" — is one of those regulated services, meaning you must hold a valid license before you are legally allowed to transmit.
+
+Why does the government require a license to talk on the radio? Radio waves do not respect property lines or borders. An improperly operated transmitter can interfere with air traffic control, emergency services, commercial broadcasts, or a neighbor's conversation across the globe. Licensing ensures that operators understand both the technical and legal requirements needed to be a responsible participant in a shared, finite resource: the electromagnetic spectrum.
+
+The legal foundation for amateur radio in the US is **FCC Part 97** — Title 47 of the *Code of Federal Regulations*, Part 97. Part 97 states the purposes of the Amateur Radio Service: advancing skills in radio communication and electronics, providing emergency communications capability, expanding the international pool of trained operators, and fostering international goodwill. Every rule in Part 97 can be traced back to one of those purposes.
+
+### License classes and privileges
+
+There are three amateur radio license classes, in ascending order of privilege:
+
+1. **Technician** — the entry level; primarily VHF/UHF privileges (frequencies above 30 MHz), with very limited HF access
+2. **General** — unlocks the majority of HF (high-frequency, 3–30 MHz) spectrum, enabling long-distance ("DX") communication worldwide
+3. **Amateur Extra** — the highest class; opens every remaining sub-segment of every band
+
+"**Privileges**" is the legal term for the specific frequencies, power levels, and transmission modes you are authorized to use. Each higher license class unlocks additional privileges that the lower classes do not have.
+
+You are currently studying for the General class exam. Passing it expands your access dramatically: you gain phone (voice) and CW (Morse code) privileges across the major HF bands, where signals routinely travel thousands of miles by bouncing off the ionosphere.
+
+### Volunteer Examiners and the exam system
+
+The FCC does not administer amateur radio exams directly. Instead, the exam system is run by a network of volunteers operating within a structure the FCC has formally authorized:
+
+- A **VEC** (Volunteer Examiner Coordinator) is an organization that the FCC has approved to coordinate the exam process. The ARRL (American Radio Relay League) is one of the largest VECs, but there are others.
+- A **VE** (Volunteer Examiner) is an individual licensed amateur who is accredited by a VEC to administer exams. VEs are the actual people who sit at the table with you during a test session.
+
+To become an accredited VE, you must:
+- Hold a General class license or higher
+- Be at least 18 years old
+- Be accredited by a VEC (not by the FCC directly)
+- Not have a conflict of interest with the candidate being examined
+
+A minimum of **3 accredited VEs** must be present to administer any exam session — a requirement ensuring that no single person has unchecked authority over who passes.
+
+A VE who holds a **General class license** may administer only the **Technician class exam** (Element 2). To administer the General exam (Element 3) or higher, the VE must hold an Amateur Extra license. This makes intuitive sense: you cannot legitimately certify knowledge that you yourself have not demonstrated.
+
+::: {.callout-note collapse="true"}
+## G1D02: What license examinations may you administer as an accredited Volunteer Examiner holding a General class operator license?
+
+- A) General and Technician
+- B) None, only Amateur Extra class licensees may be accredited
+- **C) Technician only**
+- D) Amateur Extra, General, and Technician
+:::
+
+::: {.callout-note collapse="true"}
+## G1D04: Who must observe the administration of a Technician class license examination?
+
+- **A) At least three Volunteer Examiners of General class or higher**
+- B) At least two Volunteer Examiners of General class or higher
+- C) At least two Volunteer Examiners of Technician class or higher
+- D) At least three Volunteer Examiners of Technician class
+:::
+
+::: {.callout-note collapse="true"}
+## G1D07: Volunteer Examiners are accredited by what organization?
+
+- A) The Federal Communications Commission
+- B) The Universal Licensing System
+- **C) A Volunteer Examiner Coordinator**
+- D) The Wireless Telecommunications Bureau
+:::
+
+::: {.callout-note collapse="true"}
+## G1D10: What is the minimum age that one must be to qualify as an accredited Volunteer Examiner?
+
+- A) 16 years
+- **B) 18 years**
+- C) 21 years
+- D) There is no age limit
+:::
+
+::: {.callout-note collapse="true"}
+## G1D08: Which of the following criteria must be met for a non-US citizen to be an accredited Volunteer Examiner?
+
+- A) The person must be a resident of the US for a minimum of 5 years
+- **B) The person must hold an FCC granted amateur radio license of General class or above**
+- C) The person's home citizenship must be in ITU region 2
+- D) None of these choices is correct; a non-US citizen cannot be a Volunteer Examiner
+:::
+
+### CSCE: your temporary credential
+
+When you pass an exam at a session, the VEs give you a **CSCE** — Certificate of Successful Completion of Examination. This is a paper document that serves as proof you passed the element, even before the FCC has updated its database with your new license class.
+
+A CSCE is valid for **365 days** (one year). During that window, you may operate on the frequencies corresponding to the license class shown on the CSCE, even if the FCC database has not yet been updated. If your upgrade is not reflected in the database before the CSCE expires, you must retest.
+
+::: {.callout-note collapse="true"}
+## G1D09: How long is a Certificate of Successful Completion of Examination (CSCE) valid for exam element credit?
+
+- A) 30 days
+- B) 180 days
+- **C) 365 days**
+- D) For as long as your current license is valid
+:::
+
+::: {.callout-note collapse="true"}
+## G1D03: On which of the following band segments may you operate if you are a Technician class operator and have an unexpired Certificate of Successful Completion of Examination (CSCE) for General class privileges?
+
+- A) Only the Technician band segments until your upgrade is posted in the FCC database
+- B) Only on the Technician band segments until you have a receipt for the FCC application fee payment
+- **C) On any General or Technician class band segment**
+- D) On any General or Technician class band segment except 30 meters and 60 meters
+:::
+
+::: {.callout-note collapse="true"}
+## G1D06: Until an upgrade to General class is shown in the FCC database, when must a Technician licensee identify with "AG" after their call sign?
+
+- **A) Whenever they operate using General class frequency privileges**
+- B) Whenever they operate on any amateur frequency
+- C) Whenever they operate using Technician frequency privileges
+- D) A special identifier is not required if their General class license application has been filed with the FCC
+:::
+
+### Expired licenses and reinstatement
+
+Amateur radio licenses are issued for a 10-year term. If a license expires, there is a **2-year grace period** during which you may renew the license without retesting — the FCC simply lets you pay the renewal fee. After the 2-year grace period has passed, the license is gone and you must earn it back through examination.
+
+However, there is a partial credit system for people who once held a General, Advanced, or Amateur Extra class license. If you can demonstrate that you previously held one of those classes, you may receive credit for the exam elements you originally passed, even if the license has long since expired. This prevents someone who spent years becoming an Extra class operator from having to start completely over after a long absence.
+
+If a previously held General class license has expired and the 2-year grace period is gone, the path back requires passing the Element 2 (Technician) exam again and demonstrating proof of the previous license grant.
+
+::: {.callout-note collapse="true"}
+## G1D01: Who may receive partial credit for the elements represented by an expired amateur radio license?
+
+- **A) Any person who can demonstrate that they once held an FCC-issued General, Advanced, or Amateur Extra class license that was not revoked by the FCC**
+- B) Anyone who held an FCC-issued amateur radio license that expired not less than 5 and not more than 15 years ago
+- C) Any person who previously held an amateur license issued by another country, but only if that country has a current reciprocal licensing agreement with the FCC
+- D) Only persons who once held an FCC issued Novice, Technician, or Technician Plus license
+:::
+
+::: {.callout-note collapse="true"}
+## G1D11: What action is required to obtain a new General class license after a previously held license has expired and the two-year grace period has passed?
+
+- A) They must have a letter from the FCC showing they once held an amateur or commercial license
+- B) There are no requirements other than being able to show a copy of the expired license
+- C) Contact the FCC to have the license reinstated
+- **D) The applicant must show proof of the appropriate expired license grant and pass the current Element 2 exam**
+:::
+
+---
+
+## Primary vs. secondary frequency allocations
+
+The radio spectrum is finite. Every frequency from a few kilohertz to tens of gigahertz is parceled out internationally by the **ITU** — the International Telecommunication Union, a specialized agency of the United Nations. The ITU divides the world into three regions for the purpose of spectrum allocation:
+
+- **Region 1**: Europe, Africa, the Middle East, and Russia
+- **Region 2**: North and South America (including the Caribbean)
+- **Region 3**: Asia and the Pacific
+
+The US and all of the Americas fall within **ITU Region 2**. This matters because frequency allocations can differ between regions — a frequency that is allocated to amateur radio in Region 2 may be allocated differently in Region 1.
+
+### Primary and secondary services
+
+Within any given frequency band, multiple services may be allocated. The ITU (and the FCC domestically) designates each allocation as either **primary** or **secondary**:
+
+- A **primary** service has priority. Its stations may operate without concern for other services sharing the band.
+- A **secondary** service operates "at sufferance." Secondary stations must:
+  1. Not cause harmful interference to primary users
+  2. Accept any interference that comes from primary users, with no recourse
+
+Amateur radio holds secondary status on several bands — most notably the 30-meter band (10.100–10.150 MHz), where the primary user is fixed services (commercial point-to-point links). When amateurs are secondary, they have no legal standing to complain about interference from the primary service and must immediately cease if they are interfering with it.
+
+::: {.callout-note collapse="true"}
+## G1E06: The frequency allocations of which ITU region apply to radio amateurs operating in North and South America?
+
+- A) Region 4
+- B) Region 3
+- **C) Region 2**
+- D) Region 1
+:::
+
+::: {.callout-note collapse="true"}
+## G1A06: Which of the following applies when the FCC rules designate the amateur service as a secondary user on a band?
+
+- A) Amateur stations must record the call sign of the primary service station before operating on a frequency assigned to that station
+- B) Amateur stations may use the band only during emergencies
+- **C) Amateur stations must not cause harmful interference to primary users and must accept interference from primary users**
+- D) Amateur stations may only operate during specific hours of the day, while primary users are permitted 24-hour use of the band
+:::
+
+---
+
+## General class HF band privileges — where you can transmit
+
+**HF** stands for High Frequency: the portion of the radio spectrum from 3 MHz to 30 MHz. These frequencies are special because they can travel enormous distances — sometimes completely around the Earth — by reflecting off the ionosphere (a layer of the upper atmosphere ionized by solar radiation). This "skip" propagation is why a 100-watt HF transmitter in New York can hold a conversation with a station in Japan.
+
+Amateur radio has numerous HF bands, each named by its approximate wavelength in meters. Wavelength and frequency have an inverse relationship: a longer wavelength means a lower frequency. The 80-meter band (around 3.5 MHz) has a wavelength of roughly 80 meters; the 10-meter band (around 28 MHz) has a wavelength of about 10 meters.
+
+### The four restricted bands
+
+The vast majority of HF bands give General class licensees full access across the entire band. But four bands have sub-segments reserved exclusively for Amateur Extra class licensees. Generals are not permitted to transmit in these Extra-only sub-segments. The four bands are:
+
+| Band | Frequency Range | Extra-only sub-segments (approximate) |
+|------|----------------|--------------------------------------|
+| 80 meters | 3.5–4.0 MHz | 3.500–3.525 MHz (CW), 3.525–3.600 MHz (CW/RTTY), voice: 3.600–3.700 MHz |
+| 40 meters | 7.0–7.3 MHz | 7.000–7.025 MHz (CW), 7.025–7.125 MHz |
+| 20 meters | 14.0–14.35 MHz | 14.000–14.025 MHz (CW), 14.025–14.150 MHz |
+| 15 meters | 21.0–21.45 MHz | 21.000–21.025 MHz (CW), 21.025–21.200 MHz |
+
+Mnemonic: **"Eight, Four, Two, One-Five"** — the 80, 40, 20, and 15 meter bands each have Extra-only sub-segments where General operators cannot transmit.
+
+Critically, when General class licensees are not permitted to use the *entire* voice portion of a band, the portion available to them is the **upper** (higher-frequency) portion of the voice segment. The Extra class has exclusive access to the lower-frequency edges; Generals start where that exclusive segment ends and operate upward.
+
+::: {.callout-note collapse="true"}
+## G1A01: On which HF and/or MF amateur bands are there portions where General class licensees cannot transmit?
+
+- A) 60 meters, 30 meters, 17 meters, and 12 meters
+- B) 160 meters, 60 meters, 15 meters, and 12 meters
+- **C) 80 meters, 40 meters, 20 meters, and 15 meters**
+- D) 80 meters, 20 meters, 15 meters, and 10 meters
+:::
+
+::: {.callout-note collapse="true"}
+## G1A08: Which HF bands have segments exclusively allocated to Amateur Extra licensees?
+
+- A) All HF bands
+- **B) 80 meters, 40 meters, 20 meters, and 15 meters**
+- C) All HF bands except 160 meters and 10 meters
+- D) 60 meters, 30 meters, 17 meters, and 12 meters
+:::
+
+::: {.callout-note collapse="true"}
+## G1A11: When General class licensees are not permitted to use the entire voice portion of a band, which portion of the voice segment is available to them?
+
+- A) The lower frequency portion
+- **B) The upper frequency portion**
+- C) The lower frequency portion on frequencies below 7.3 MHz, and the upper portion on frequencies above 14.150 MHz
+- D) The upper frequency portion on frequencies below 7.3 MHz, and the lower portion on frequencies above 14.150 MHz
+:::
+
+::: {.callout-note collapse="true"}
+## G1A05: On which of the following frequencies are General class licensees prohibited from operating as control operator?
+
+- **A) 7.125 MHz to 7.175 MHz**
+- B) 28.000 MHz to 28.025 MHz
+- C) 21.275 MHz to 21.300 MHz
+- D) All these choices are correct
+:::
+
+::: {.callout-note collapse="true"}
+## G1A09: Which of the following frequencies is within the General class portion of the 15-meter band?
+
+- A) 14250 kHz
+- B) 18155 kHz
+- **C) 21300 kHz**
+- D) 24900 kHz
+:::
+
+### The 10-meter band
+
+The **10-meter band** (28.000–29.700 MHz) is the highest-frequency (shortest-wavelength) HF band. General class has extensive privileges here. On 10 meters, General class licensees may transmit CW across the entire CW sub-band (28.000–28.300 MHz) — there are no Extra-only CW restrictions on this band. In fact, General class may transmit on the entire 10-meter band.
+
+A distinctive feature of 10 meters is its portion available for **repeater** use. Repeaters are automated relay stations that receive a signal on one frequency and simultaneously re-transmit it on another, dramatically extending the range of lower-powered mobile and handheld radios. The portion of 10 meters designated for repeater use is **29.5–29.7 MHz** (the portion above 29.5 MHz).
+
+::: {.callout-note collapse="true"}
+## G1A07: On which amateur frequencies in the 10-meter band may stations with a General class control operator transmit CW emissions?
+
+- A) 28.000 MHz to 28.025 MHz only
+- B) 28.000 MHz to 28.300 MHz only
+- C) 28.025 MHz to 28.300 MHz only
+- **D) The entire band**
+:::
+
+::: {.callout-note collapse="true"}
+## G1A10: What portion of the 10-meter band is available for repeater use?
+
+- A) The entire band
+- B) The portion between 28.1 MHz and 28.2 MHz
+- C) The portion between 28.3 MHz and 28.5 MHz
+- **D) The portion above 29.5 MHz**
+:::
+
+### The 60-meter band
+
+The **60-meter band** is unusual: unlike other amateur bands defined by a continuous range of frequencies, 60 meters consists of five specific channels near 5 MHz. These channels were carved out of spectrum previously used only by other services, and amateur access was added as secondary. Because of this heritage, the rules for 60 meters are unusually strict:
+
+- **Mode**: USB (Upper Sideband) phone only — no CW, no FM, no digital (except for specific narrow data modes)
+- **Power**: Maximum 100 W PEP **ERP** (Effective Radiated Power — the power measured relative to a reference antenna, not just at the transmitter output)
+- **Antenna**: If you use an antenna with gain higher than a half-wave dipole, you must reduce transmitter power to keep ERP at or below 100 W — and you must keep a record of your antenna's gain so you can demonstrate compliance
+
+The record-keeping requirement for antenna gain on 60 meters is a specific FCC rule that has no parallel on other bands.
+
+::: {.callout-note collapse="true"}
+## G1C04: Which of the following is required by the FCC rules when operating in the 60-meter band?
+
+- **A) If you are using an antenna other than a dipole, you must keep a record of the gain of your antenna**
+- B) You must keep a record of the date, time, frequency, power level, and stations worked
+- C) You must keep a record of all third-party traffic
+- D) You must keep a record of the manufacturer of your equipment and the antenna used
+:::
+
+---
+
+## Mode restrictions — CW-only and phone-prohibited bands
+
+**Mode** refers to the method used to encode information onto a radio signal. The major modes in amateur radio are:
+
+- **CW** (Continuous Wave): Morse code — the transmitter is keyed on and off to produce dots and dashes. CW occupies very little bandwidth and can be decoded even under poor signal conditions.
+- **Phone**: voice transmission. Includes SSB (Single Sideband), AM (Amplitude Modulation), and FM (Frequency Modulation).
+- **Image**: video or picture transmission. SSTV (Slow Scan Television) sends still images; facsimile (fax) transmits documents.
+- **Data/Digital**: computer-generated signals. Includes RTTY (Radio Teletype), packet radio, PSK31, and many others.
+
+FCC rules restrict which modes are permitted in different parts of the spectrum — largely to prevent wide-bandwidth modes from crowding out narrower ones at the busy lower edges of bands.
+
+### The 30-meter band: CW and data only
+
+The **30-meter band** (10.100–10.150 MHz) is narrow by amateur standards — only 50 kHz wide — and is shared internationally with fixed services (commercial point-to-point links) where amateurs are secondary users. To minimize conflict with those services and conserve the limited bandwidth, the FCC imposes a complete prohibition on phone and image transmissions on 30 meters. Only CW and data modes are permitted.
+
+This is not a sub-band restriction — it applies to the entire band. There is no segment of 30 meters where a General class licensee (or any amateur) may transmit voice.
+
+::: {.callout-note collapse="true"}
+## G1A02: On which of the following bands is phone operation prohibited?
+
+- A) 160 meters
+- **B) 30 meters**
+- C) 17 meters
+- D) 12 meters
+:::
+
+::: {.callout-note collapse="true"}
+## G1A03: On which of the following bands is image transmission prohibited?
+
+- A) 160 meters
+- **B) 30 meters**
+- C) 20 meters
+- D) 12 meters
+:::
+
+---
+
+## Transmitter power limits
+
+The FCC does not simply say "transmit at whatever power you want." Power limits exist because high-power transmitters cause more interference to other services sharing the spectrum, and because unnecessarily high power is wasteful. Part 97 actually contains an affirmative obligation: you must use the **minimum power necessary** to carry out the desired communication. This is not a guideline — it is a legal requirement.
+
+### How the FCC measures power: PEP
+
+The FCC specifies power limits in **PEP** — Peak Envelope Power. Understanding this term requires a brief excursion into signal physics:
+
+When you transmit voice via SSB (Single Sideband — the dominant HF voice mode), the power output of your transmitter varies continuously with the loudness of your voice. When you're silent, there's essentially no output. When you shout a loud vowel, the output spikes. PEP is defined as the **average power during one complete RF cycle at the highest amplitude point** of that modulated signal — in other words, the peak of the voice-power envelope, averaged over one radio-frequency cycle.
+
+PEP is:
+- Higher than average power (for SSB, average power over a conversation is much lower than PEP)
+- Lower than instantaneous peak voltage power
+- The legally specified measurement for FCC power limits
+
+::: {.callout-note collapse="true"}
+## G1C11: What measurement is specified by FCC rules that regulate maximum power?
+
+- A) RMS output from the transmitter
+- B) RMS input to the antenna
+- C) PEP input to the antenna
+- **D) PEP output from the transmitter**
+:::
+
+### Standard and special power limits
+
+The standard maximum HF power limit is **1500 W PEP** on most amateur bands. Two bands have lower limits:
+
+- **30 meters** (10.100–10.150 MHz): **200 W PEP maximum** — reflecting the band's secondary status and narrow width
+- **60 meters** (the five specific channels): **100 W PEP ERP maximum** — reflecting the unusual shared allocation
+
+Mnemonic: **"30m → 200W, 60m → 100W"**
+
+All other General-class-accessible HF bands, including 10 meters (28–29.7 MHz) and 1.8 MHz (160 meters), have the standard 1500 W limit.
+
+::: {.callout-note collapse="true"}
+## G1C01: What is the maximum transmitter power an amateur station may use on 10.140 MHz?
+
+- **A) 200 watts PEP output**
+- B) 1000 watts PEP output
+- C) 1500 watts PEP output
+- D) 2000 watts PEP output
+:::
+
+::: {.callout-note collapse="true"}
+## G1C02: What is the maximum transmitter power an amateur station may use on the 12-meter band?
+
+- A) 50 watts PEP output
+- B) 200 watts PEP output
+- **C) 1500 watts PEP output**
+- D) An effective radiated power equivalent to 100 watts from a half-wave dipole
+:::
+
+::: {.callout-note collapse="true"}
+## G1C05: What is the limit for transmitter power on the 28 MHz band for a General Class control operator?
+
+- A) 100 watts PEP output
+- B) 1000 watts PEP output
+- **C) 1500 watts PEP output**
+- D) 2000 watts PEP output
+:::
+
+::: {.callout-note collapse="true"}
+## G1C06: What is the limit for transmitter power on the 1.8 MHz band?
+
+- A) 200 watts PEP output
+- B) 1000 watts PEP output
+- C) 1200 watts PEP output
+- **D) 1500 watts PEP output**
+:::
+
+---
+
+## Bandwidth limits and digital protocols
+
+**Bandwidth** is the width of the frequency range a signal occupies. A Morse code signal may occupy only 100–200 Hz of spectrum; an FM voice signal may occupy 10–15 kHz; a high-definition video signal can require many megahertz. Narrow-bandwidth modes are more spectrally efficient — more signals can coexist in a given band.
+
+The FCC sets maximum bandwidth limits to prevent any station from occupying so much spectrum that it crowds out other users.
+
+### Digital signals below 30 MHz
+
+For data and digital emissions on frequencies below 30 MHz, the maximum permitted bandwidth is **2.8 kHz**. This is also the maximum bandwidth permitted for emissions on the 60-meter channels specifically. A signal that exceeds 2.8 kHz on these frequencies is not compliant with FCC rules, regardless of what mode generated it.
+
+### Using new digital protocols
+
+Amateur radio operators have always been experimenters. New digital modes are constantly being developed. The FCC's approach to novel digital protocols is pragmatic: you may use a new protocol on the air **without** seeking FCC approval in advance, and without filing a rule-making petition. The only requirement is that the technical characteristics of the protocol — the encoding, modulation, and structure — must be **publicly documented**. This ensures that other stations can identify the signal, understand what is being transmitted, and verify that no rules are being violated. Secrecy in digital protocols (which could be used to hide the content of messages from regulatory oversight) is not permitted.
+
+::: {.callout-note collapse="true"}
+## G1C03: What is the maximum bandwidth permitted by FCC rules for amateur radio stations transmitting on USB frequencies in the 60-meter band?
+
+- **A) 2.8 kHz**
+- B) 5.6 kHz
+- C) 1.8 kHz
+- D) 3 kHz
+:::
+
+::: {.callout-note collapse="true"}
+## G1C07: What must be done before using a new digital protocol on the air?
+
+- A) Type-certify equipment to FCC standards
+- B) Obtain an experimental license from the FCC
+- **C) Publicly document the technical characteristics of the protocol**
+- D) Submit a rule-making proposal to the FCC describing the codes and methods of the technique
+:::
+
+---
+
+## Antenna structures and beacon stations
+
+### Antenna structure height limits
+
+Antennas must physically be somewhere — often on towers, masts, or buildings. Tall structures can pose hazards to aviation, so the FAA (Federal Aviation Administration) and FCC coordinate on this. An antenna structure more than **200 feet (approximately 61 meters) above ground level** generally requires:
+
+- Notification to the FAA
+- Registration with the FCC
+
+Structures near public-use airports may face additional notification requirements even if they are under 200 feet, because an obstacle that is fine in a rural area could be a serious hazard in an aircraft approach path. But the 200-foot threshold is the baseline rule: below that height, and away from airports, no FAA/FCC notification is required.
+
+::: {.callout-note collapse="true"}
+## G1B01: What is the maximum height above ground for an antenna structure not near a public use airport without requiring notification to the FAA and registration with the FCC?
+
+- A) 50 feet
+- B) 100 feet
+- **C) 200 feet**
+- D) 250 feet
+:::
+
+### Beacon stations
+
+A **beacon station** is an amateur station that transmits a signal for a specific purpose: to allow other operators to assess radio propagation conditions. Instead of two-way conversation, a beacon simply broadcasts a continuous or pulsed signal on a known frequency. Operators around the world can listen to that beacon and determine how well signals are propagating from the beacon's location to their own.
+
+FCC rules for beacon stations:
+
+- The **purpose** is observation of propagation and reception — beacons exist to help the community understand the ionosphere, not to carry traffic or bulletins
+- No more than **one beacon station** may transmit in the same band from the same station location (prevents a single operator from monopolizing a propagation-assessment frequency)
+- **Power limit**: 100 W PEP output
+- **Automatically controlled beacons** (beacons that run without a human operator present) are permitted on specific HF frequencies: **28.200–28.300 MHz** on the 10-meter band, plus specific segments on other bands
+
+::: {.callout-note collapse="true"}
+## G1B02: With which of the following conditions must beacon stations comply?
+
+- **A) No more than one beacon station may transmit in the same band from the same station location**
+- B) The frequency must be coordinated with the National Beacon Organization
+- C) The frequency must be posted on the internet or published in a national periodical
+- D) All these choices are correct
+:::
+
+::: {.callout-note collapse="true"}
+## G1B03: Which of the following is a purpose of a beacon station as identified in the FCC rules?
+
+- **A) Observation of propagation and reception**
+- B) Automatic identification of repeaters
+- C) Transmission of bulletins of general interest to amateur radio licensees
+- D) All these choices are correct
+:::
+
+::: {.callout-note collapse="true"}
+## G1B09: On what HF frequencies are automatically controlled beacons permitted?
+
+- A) On any frequency if power is less than 1 watt
+- B) On any frequency if transmissions are in Morse code
+- C) 21.08 MHz to 21.09 MHz
+- **D) 28.20 MHz to 28.30 MHz**
+:::
+
+::: {.callout-note collapse="true"}
+## G1B10: What is the power limit for beacon stations?
+
+- A) 10 watts PEP output
+- B) 20 watts PEP output
+- **C) 100 watts PEP output**
+- D) 200 watts PEP output
+:::
+
+---
+
+## One-way transmissions, broadcasting, and permissible content
+
+### Broadcasting is prohibited
+
+Amateur radio is defined as a **two-way** communication service. The FCC explicitly prohibits "broadcasting" — transmitting information intended for reception by the general public at large. This distinction is important: regular radio stations (AM/FM) are broadcasting services; amateur radio is not. An amateur who transmits music for anyone with a receiver to enjoy, or who reads the news over the air for public consumption, is violating Part 97.
+
+However, certain **one-way transmissions** are permitted because they serve legitimate amateur or public-interest purposes:
+
+- **Beacon signals**: discussed above
+- **Control signals**: signals sent to control model aircraft, boats, or other remote devices
+- **Telemetry**: data transmitted by an unattended station (weather sensors, space payloads)
+- **Emergency transmissions**: when life or property is in danger
+- **Code practice**: transmissions to help people learn Morse code — the classic example is the W1AW code practice broadcasts run by the ARRL
+
+The key distinction is purpose: one-way transmissions that serve amateur education, public safety, or technical purposes are permitted. Commercial-style broadcasting is not.
+
+::: {.callout-note collapse="true"}
+## G1B04: Which of the following transmissions is permitted for all amateur stations?
+
+- A) Unidentified transmissions of less than 10 seconds duration for test purposes only
+- B) Automatic retransmission of other amateur signals by any amateur station
+- **C) Occasional retransmission of weather and propagation forecast information from US government stations**
+- D) Encrypted messages, if not intended to facilitate a criminal act
+:::
+
+::: {.callout-note collapse="true"}
+## G1B05: Which of the following one-way transmissions are permitted?
+
+- A) Unidentified test transmissions of less than 10 seconds in duration
+- **B) Transmissions to assist with learning the International Morse code**
+- C) Regular transmissions offering equipment for sale, if intended for amateur radio use
+- D) All these choices are correct
+:::
+
+### State and local antenna regulations
+
+The FCC has federal jurisdiction over radio communications, which means it can preempt state and local laws that conflict with federal radio policy. In the context of amateur antennas, this preemption is codified in a doctrine known as **PRB-1** (after the FCC proceeding that established it).
+
+Under PRB-1, state and local governments *may* regulate amateur antennas, but only under strict conditions:
+- The regulation must **reasonably accommodate** amateur radio communications
+- The regulation must represent the **minimum practical restriction** needed to accomplish a legitimate local government purpose (such as aesthetic concerns or structural safety)
+- An outright ban on all external antennas is not permitted
+
+This means a city can require that antennas be painted to match a house, or limit height in residential zones — but it cannot simply prohibit amateur antennas entirely.
+
+::: {.callout-note collapse="true"}
+## G1B06: Under what conditions are state and local governments permitted to regulate amateur radio antenna structures?
+
+- A) Under no circumstances, FCC rules take priority
+- B) At any time and to any extent necessary to accomplish a legitimate purpose of the state or local entity, provided that proper filings are made with the FCC
+- C) Only when such structures exceed 50 feet in height and are clearly visible 1,000 feet from the structure
+- **D) Amateur Service communications must be reasonably accommodated, and regulations must constitute the minimum practical to accommodate a legitimate purpose of the state or local entity**
+:::
+
+### Abbreviations, procedural signals, and communication with foreign stations
+
+Amateur radio has a long tradition of shorthand. **Q-codes** (like QSL for "I acknowledge receipt" or QRM for "I'm experiencing interference") and other abbreviations are used constantly to make communication more efficient. The FCC's position on this is liberal: abbreviations and procedural signals may be used freely, as long as they do not **obscure the meaning** of the communication. The prohibition is against using code to deliberately hide what is being said — not against efficiency or tradition.
+
+Communicating with amateur stations in other countries is generally permitted. The key rule: you may communicate with stations in any country **unless** that country's administration has formally notified the ITU that it objects to such communications. In practice, very few countries have filed such objections. This is a permissive default — you don't need to verify that a country has explicitly allowed it; you only need to avoid countries that have explicitly forbidden it.
+
+::: {.callout-note collapse="true"}
+## G1B07: What are the restrictions on the use of abbreviations or procedural signals in the amateur service?
+
+- A) Only "Q" signals are permitted
+- **B) They may be used if they do not obscure the meaning of a message**
+- C) They are not permitted
+- D) They are limited to those expressly listed in Part 97 of the FCC rules
+:::
+
+::: {.callout-note collapse="true"}
+## G1B08: When is it permissible to communicate with amateur stations in countries outside the areas administered by the Federal Communications Commission?
+
+- A) Only when the foreign country has a formal third-party agreement filed with the FCC
+- **B) When the contact is with amateurs in any country except those whose administrations have notified the ITU that they object to such communications**
+- C) Only when the contact is with amateurs licensed by a country which is a member of the United Nations, or by a territory possessed by such a country
+- D) Only when the contact is with amateurs licensed by a country which is a member of the International Amateur Radio Union, or by a territory possessed by such a country
+:::
+
+### Who determines "good amateur practice"?
+
+Part 97 contains a phrase that appears deceptively simple: operators must follow "good engineering and good amateur practice" in all respects not covered by specific rules. Who decides what that means?
+
+The answer is the **FCC** — not the ARRL, not the IEEE, not any amateur organization, not the control operator's personal judgment. The FCC has final authority over what constitutes good practice when the specific rules are silent. In practice, the FCC often looks to technical standards organizations for guidance, but the legal determination rests with the Commission.
+
+::: {.callout-note collapse="true"}
+## G1B11: Who or what determines "good engineering and good amateur practice," as applied to the operation of an amateur station in all respects not covered by the Part 97 rules?
+
+- **A) The FCC**
+- B) The control operator
+- C) The IEEE
+- D) The ITU
+:::
+
+---
+
+## Control operators, control types, and remote operation
+
+### The control operator requirement
+
+Every amateur radio station that is transmitting must have a designated **control operator** — a licensed amateur who is responsible for the proper operation of the station at that moment. The control operator's license class determines the privileges available: if a General class operator is running the station, only General class privileges apply, even if the station hardware belongs to an Extra class licensee.
+
+The location where the control operator function is performed is called the **control point**. This is a legal term — the control point is where someone must be able to immediately cease transmissions if needed.
+
+### Three types of station control
+
+**1. Local control**
+The control operator is physically present at the control point, which is co-located with the transmitter. The operator can directly see and touch the equipment. This is the most common form of operation — sitting at your radio station.
+
+**2. Remote control**
+The control operator is physically away from the transmitter but connected to it via a real-time link — an internet connection, a phone line, or a control radio link. The operator can monitor what the transmitter is doing and can immediately shut it down if necessary. A growing number of amateurs operate their home stations remotely from their offices or on travel.
+
+**3. Automatic control**
+The station operates entirely without a control operator being present or monitoring in real time. This is permitted only for specific purposes: beacons (which transmit set signals on set schedules) and digipeaters (which automatically relay digital packets). For most purposes, automatic control is not permitted.
+
+### Remote operation across national boundaries
+
+Remote control raises interesting jurisdictional questions. When you sit at your laptop in one country and operate a radio in another country, which nation's rules apply?
+
+- **Operating a US station from outside the US**: You must hold a valid US amateur license. You are operating a US station — FCC rules apply.
+- **Operating a foreign station from the US**: The rules of the foreign station's country apply. You must comply with whatever that country's licensing and operating rules require.
+- **Operating a station in South America from the US via the internet**: The regulations of the **remote station's country** (South America) apply — not the FCC's rules. You are operating a foreign station, so that nation's regulations govern the operation.
+
+This last point surprises many people. It seems counterintuitive that sitting at your computer in the US means you're subject to another country's laws — but legally, the transmitter is in South America, and the transmitter's jurisdiction controls.
+
+::: {.callout-note collapse="true"}
+## G1D05: When operating a US station by remote control from outside the country, what license is required of the control operator?
+
+- **A) A US operator/primary station license**
+- B) Only an appropriate US operator/primary license and a special remote station permit from the FCC
+- C) Only a license from the foreign country, as long as the call sign includes identification of portable operation in the US
+- D) A license from the foreign country and a special remote station permit from the FCC
+:::
+
+::: {.callout-note collapse="true"}
+## G1D12: When operating a station in South America by remote control over the internet from the US, what regulations apply?
+
+- A) Those of both the remote station's country and the FCC
+- B) Those of the remote station's country and the FCC's third-party regulations
+- **C) Only those of the remote station's country**
+- D) Only those of the FCC
+:::
+
+### Automatic control and digital stations
+
+Automatically controlled stations transmitting **RTTY** (Radio TeleType — an older digital mode still widely used) or other data emissions may only communicate with other automatically controlled digital stations within specific sub-bands where automatic operation is permitted. The rule exists to keep automated machine-to-machine traffic confined to predictable frequency ranges, away from bands where human operators are having conversations.
+
+If you want an automatically controlled digital station to communicate with another automatically controlled digital station outside the designated automatic control sub-bands, you must use a station that is under **local or remote control** — a human must be actively in charge.
+
+::: {.callout-note collapse="true"}
+## G1E03: What is required to conduct communications with a digital station operating under automatic control outside the automatic control band segments?
+
+- **A) The station initiating the contact must be under local or remote control**
+- B) The interrogating transmission must be made by another automatically controlled station
+- C) No third-party traffic may be transmitted
+- D) The control operator of the interrogating station must hold an Amateur Extra class license
+:::
+
+::: {.callout-note collapse="true"}
+## G1E04: Which of the following conditions require a licensed amateur radio operator to take specific steps to avoid harmful interference to other users or facilities?
+
+- A) When operating within one mile of an FCC Monitoring Station
+- B) When using a band where the Amateur Service is secondary
+- C) When a station is transmitting spread spectrum emissions
+- **D) All these choices are correct**
+:::
+
+::: {.callout-note collapse="true"}
+## G1E11: On what bands may automatically controlled stations transmitting RTTY or data emissions communicate with other automatically controlled digital stations?
+
+- A) On any band segment where digital operation is permitted
+- B) Anywhere in the non-phone segments of the 10-meter or shorter wavelength bands
+- C) Only in the non-phone Extra Class segments of the bands
+- **D) Anywhere in the 6-meter or shorter wavelength bands, and in limited segments of some of the HF bands**
+:::
+
+---
+
+## Third-party communications
+
+### What is a third party?
+
+Imagine you want to send a message to your mother, but you don't have a ham radio license. A licensed amateur friend offers to transmit the message on your behalf — you dictate it, the amateur sends it, and another amateur on the receiving end relays it to the destination. In this scenario, your mother is the **third party**: a person who is not licensed and whose message is being carried by the amateur radio network.
+
+This kind of traffic — called **third-party traffic** — is legal, but only under carefully defined conditions. The reason for restriction is that amateur radio must not become a substitute for commercial communication services. If amateurs could freely pass messages for anyone in any country, they would be competing with phone and telegraph companies — which is explicitly against the spirit of Part 97.
+
+### Third-party agreements
+
+Third-party traffic between the US and a foreign country is only permitted when the US has a **third-party agreement** with that country. The FCC maintains a list of countries with which such agreements exist. Without an agreement, you may not pass third-party traffic to or from that country — period. The only exception is a genuine emergency situation (when lives are at risk), in which case the prohibition may be set aside.
+
+When a third-party agreement does exist, the content of the messages is still restricted: messages must relate to amateur radio, be of a personal character, or concern emergencies or disaster relief. You cannot use a third-party agreement to run a business communications service over ham radio.
+
+### Who cannot be a third party?
+
+Not everyone is allowed to participate as a third party in international amateur communications. A person whose amateur license has been **revoked** by the FCC cannot participate as a third party in international communications — they are specifically barred from using amateur radio even through the proxy of another operator.
+
+::: {.callout-note collapse="true"}
+## G1E01: Which of the following would disqualify a third party from participating in sending a message via an amateur station?
+
+- **A) The third party's amateur license has been revoked and not reinstated**
+- B) The third party is not a US citizen
+- C) The third party is speaking in a language other than English
+- D) All these choices are correct
+:::
+
+::: {.callout-note collapse="true"}
+## G1E05: What are the restrictions on messages sent to a third party in a country with which there is a Third-Party Agreement?
+
+- A) They must relate to emergencies or disaster relief
+- B) They must be for other licensed amateurs
+- **C) They must relate to amateur radio, or remarks of a personal character, or messages relating to emergencies or disaster relief**
+- D) The message must be limited to no longer than 1 minute in duration and the name of the third party must be recorded in the station log
+:::
+
+::: {.callout-note collapse="true"}
+## G1E12: When may third-party messages be transmitted via remote control?
+
+- **A) Under any circumstances in which third party messages are permitted by FCC rules**
+- B) Under no circumstances except for emergencies
+- C) Only when the message is intended for licensed radio amateurs
+- D) Only when the message is intended for third parties in areas where licensing is controlled by the FCC
+:::
+
+---
+
+## Special spectrum allocations and spread spectrum
+
+### The 2.4 GHz band and Wi-Fi coexistence
+
+The amateur radio **2.4 GHz band** (2300–2450 MHz — the same frequency range used by most Wi-Fi routers and microwave ovens) presents an interesting overlap with unlicensed consumer devices. The FCC Part 15 rules govern unlicensed devices — things like Wi-Fi routers that operate legally without a license, subject to strict power and interference limitations.
+
+Amateurs hold a secondary allocation across the 2.4 GHz band. Can a licensed amateur communicate directly with an unlicensed Wi-Fi station? The FCC's answer is: **no**. Amateur stations may not communicate with unlicensed Part 15 devices (such as Wi-Fi stations), regardless of which part of the 2.4 GHz band is used. The amateur service is a licensed service; Part 15 devices are unlicensed. The FCC does not permit cross-service communication between these two categories.
+
+::: {.callout-note collapse="true"}
+## G1E07: In what part of the 2.4 GHz band may an amateur station communicate with non-licensed Wi-Fi stations?
+
+- A) Anywhere in the band
+- B) Channels 1 through 4
+- C) Channels 42 through 45
+- **D) No part**
+:::
+
+### Spread spectrum transmission
+
+**Spread spectrum** (SS) is a modulation technique developed originally for military communications. Rather than concentrating a signal's power on a single narrow frequency, spread spectrum deliberately spreads the signal's energy across a much wider band of frequencies using a pseudo-random code. The result is a signal that:
+- Is highly resistant to intentional jamming
+- Appears as low-level noise to receivers that don't know the spreading code
+- Can share spectrum with other signals with minimal interference
+
+Amateur spread spectrum operation is subject to specific FCC rules that differ significantly from other modes:
+
+- **Maximum power**: 10 W PEP output — dramatically lower than the 1500 W allowed on most HF bands. The rationale is that spread spectrum, by its nature, affects a wide bandwidth, and higher power could cause widespread interference even if no single frequency is hit hard.
+- The output must be indistinguishable from noise to a receiver without the spreading code — this is by design, not a violation.
+
+::: {.callout-note collapse="true"}
+## G1E08: What is the maximum PEP output allowed for spread spectrum transmissions?
+
+- A) 100 milliwatts
+- **B) 10 watts**
+- C) 100 watts
+- D) 1500 watts
+:::
+
+### The International Beacon Project frequencies
+
+The **International Beacon Project** (IBP) operates a coordinated worldwide network of propagation-assessment beacons on five specific HF frequencies:
+
+- 14.100 MHz (20 meters)
+- 18.110 MHz (17 meters)
+- 21.150 MHz (15 meters)
+- 24.930 MHz (12 meters)
+- 28.200 MHz (10 meters)
+
+These beacons transmit in sequence on a precisely coordinated schedule, allowing operators worldwide to assess propagation on all five bands within three minutes just by listening. This is a priceless tool for the amateur community — and it only works if the frequencies remain clear of other traffic. For this reason, amateurs are strongly advised to avoid transmitting on these five frequencies to prevent interference with the beacon network.
+
+::: {.callout-note collapse="true"}
+## G1E10: Why should an amateur operator normally avoid transmitting on 14.100, 18.110, 21.150, 24.930 and 28.200 MHz?
+
+- **A) A system of propagation beacon stations operates on those frequencies**
+- B) A system of automatic digital stations operates on those frequencies
+- C) These frequencies are set aside for emergency operations
+- D) These frequencies are set aside for bulletins from the FCC
+:::
+
+---
+
+## Emergency communications and RACES
+
+**RACES** stands for Radio Amateur Civil Emergency Service — a specific mode of amateur radio operation that activates during declared civil emergencies. RACES is defined in FCC Part 97 and is distinct from general emergency communication. RACES stations operate under the direction of civil defense agencies (such as emergency management offices), and RACES operation may only occur when the appropriate civil defense organization has officially activated it.
+
+### 10-meter repeaters and Technician operators
+
+Recall that Technician class licensees have very limited HF privileges — essentially, only a small slice of the 10-meter CW sub-band. However, Technician class operators have full privileges on VHF and UHF, including the 2-meter band (144–148 MHz).
+
+A 10-meter repeater can potentially retransmit signals from a 2-meter Technician station. Is this permitted? Yes — but only if the **control operator of the 10-meter repeater** holds at least a **General class license** and authorizes and takes responsibility for the retransmission. The Technician operator is not operating on 10 meters — the repeater's control operator is, and that operator's license class governs the repeater's operation.
+
+::: {.callout-note collapse="true"}
+## G1E02: When may a 10-meter repeater retransmit the 2-meter signal from a station that has a Technician class control operator?
+
+- A) Under no circumstances
+- B) Only if the station on 10-meters is operating under a Special Temporary Authorization allowing such retransmission
+- C) Only during an FCC-declared general state of communications emergency
+- **D) Only if the 10-meter repeater control operator holds at least a General class license**
+:::
+
