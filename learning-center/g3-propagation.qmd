@@ -1,0 +1,533 @@
+---
+title: "G3: Radio Wave Propagation"
+---
+
+How does a radio signal originating in Iowa arrive at a receiver in Japan? The answer involves plasma physics, solar astrophysics, and the geometry of a sphere — all hiding inside what appears to be a straightforward electronics hobby. This section develops the physics of HF propagation from first principles, with enough depth to make the mechanisms genuinely clear rather than memorized.
+
+---
+
+## The Electromagnetic Spectrum and Radio Waves
+
+Electromagnetic radiation is a self-sustaining oscillation of electric and magnetic fields that propagates through vacuum at *c* ≈ 2.998 × 10⁸ m/s — the speed of light. The frequency *f* and wavelength *λ* are related by *c* = *fλ*: higher frequency means shorter wavelength.
+
+The electromagnetic spectrum is continuous, but we carve it into named regions by convention and by the dominant physical interactions at each scale:
+
+| Region | Frequency | Wavelength |
+|---|---|---|
+| Radio (HF) | 3–30 MHz | 10–100 m |
+| Microwave | 300 MHz–300 GHz | 1 mm–1 m |
+| Infrared | 300 GHz–430 THz | 700 nm–1 mm |
+| Visible | 430–750 THz | 400–700 nm |
+| Ultraviolet | 750 THz–30 PHz | 10–400 nm |
+| X-ray | 30 PHz–30 EHz | 0.01–10 nm |
+| Gamma | > 30 EHz | < 0.01 nm |
+
+Amateur HF communication occupies 3–30 MHz — wavelengths of 10 to 100 meters. These are *non-ionizing* photons: the photon energy (*E* = *hf* ≈ 10–100 neV) is orders of magnitude too small to ionize a hydrogen atom (13.6 eV), so HF waves do not chemically damage tissue or materials. Yet, paradoxically, it is ionization of the upper atmosphere — caused by *solar* ultraviolet and X-rays at far higher energies — that makes long-distance HF communication possible.
+
+The key physics: when an electromagnetic wave propagates through a medium containing free electrons (a plasma), the electrons oscillate in response to the electric field. This oscillation produces a *plasma frequency* — a characteristic resonance. If the wave frequency is below the plasma frequency, the wave is reflected; if above, it passes through. The ionosphere is a plasma, and the plasma frequency varies with altitude and solar conditions. This is the entire mechanism of ionospheric propagation.
+
+---
+
+## The Ionosphere: Formation and Structure
+
+### What Creates It
+
+The sun emits radiation across the full electromagnetic spectrum. At extreme ultraviolet (EUV, ~10–100 nm) and soft X-ray wavelengths, individual photons carry enough energy (12–100 eV) to photoionize atmospheric molecules — to knock electrons free from O₂, N₂, O, and NO. The result is a mixture of positive ions and free electrons: a *plasma*.
+
+The ionosphere occupies roughly 60–1,000 km altitude — the transition zone where the atmosphere is still substantial enough to absorb solar photons but thin enough that the ion-electron recombination rate is slow enough to maintain a significant free-electron population.
+
+The *critical player* for HF propagation is the free-electron number density *N* (electrons/m³). The plasma frequency is:
+
+$$f_p = \frac{1}{2\pi}\sqrt{\frac{Ne^2}{\epsilon_0 m_e}} \approx 9\sqrt{N} \text{ Hz}$$
+
+where *e* is the electron charge, *ε₀* the permittivity of free space, and *m_e* the electron mass. In SI units, if *N* ≈ 10¹² electrons/m³, then *f_p* ≈ 9 MHz — right in the amateur HF range. This is not a coincidence: it is why HF propagation via the ionosphere works at all.
+
+The refractive index of the ionosphere for a radio wave of frequency *f* is approximately:
+
+$$n \approx \sqrt{1 - \left(\frac{f_p}{f}\right)^2}$$
+
+When *f* > *f_p*, *n* is real and the wave propagates (though bent). When *f* < *f_p*, *n* is imaginary — the wave is evanescent and cannot propagate, reflecting back. Because the ionosphere is not a sharp boundary but a gradual density gradient, the reflection is actually continuous refraction — the wave curves progressively back toward Earth as it ascends into higher-density regions, exactly like Snell's law applied to a continuously varying medium.
+
+### The Four Layers
+
+The ionosphere stratifies into distinct regions because different solar radiation wavelengths are absorbed at different altitudes (higher-energy radiation penetrates deeper):
+
+**D layer (60–90 km altitude)**
+
+Ionized primarily by Lyman-alpha radiation (121.6 nm) and galactic cosmic rays. Critically, the D layer forms *only in daylight* and collapses at night — at 60–90 km altitude, the atmospheric density is high enough that ions and electrons recombine within minutes of ionization stopping. The D layer does *not* reflect HF signals back to Earth. Instead, it *absorbs* them — collisions between oscillating electrons and the dense neutral gas dissipate wave energy before it can reach the reflecting F layer above. This absorption is strongest at lower frequencies (absorption ∝ *N*/(*f*²) approximately) and makes the bands below 10 MHz essentially useless for long-distance communication during daylight hours. This is why 40m, 80m, and 160m "open up" after sunset: the D layer disappears, removing the absorber.
+
+::: {.callout-note collapse="true"}
+## G3C11: Which ionospheric region is the most absorbent of signals below 10 MHz during daylight hours?
+
+- A) The F2 region
+- B) The F1 region
+- C) The E region
+- **D) The D region**
+:::
+
+::: {.callout-note collapse="true"}
+## G3C05: Why is long-distance communication on the 40-, 60-, 80-, and 160-meter bands more difficult during the day?
+
+- A) The F region absorbs signals at these frequencies during daylight hours
+- B) The F region is unstable during daylight hours
+- **C) The D region absorbs signals at these frequencies during daylight hours**
+- D) The E region is unstable during daylight hours
+:::
+
+::: {.callout-note collapse="true"}
+## G3C01: Which ionospheric region is closest to the surface of Earth?
+
+- **A) The D region**
+- B) The E region
+- C) The F1 region
+- D) The F2 region
+:::
+
+**E layer (90–120 km altitude)**
+
+Ionized by soft X-rays and EUV radiation. More tenacious than the D layer — persists weakly at night — but substantially reduced. The E layer can reflect signals in the 1.5–20 MHz range under normal conditions, supporting *E-layer skip* distances up to about 1,200 miles (the question bank's figure) per hop.
+
+*Sporadic-E (E_s)*: The E layer occasionally develops intense, patchy regions of ionization — far denser than normal E-layer values, appearing unpredictably, lasting from minutes to hours, and moving with the wind. The mechanism is debated (wind shear concentrating metallic ions from meteors is a leading hypothesis). Sporadic-E can reflect signals up to 150 MHz or even higher, enabling sudden, unexpected VHF propagation over 1,000–2,500 km. If your 6-meter station suddenly hears stations from 1,200 miles away — that's sporadic-E.
+
+**F1 layer (150–200 km altitude)**
+
+Present only in daylight. A transitional sublayer; at night, its ionization merges with F2.
+
+**F2 layer (200–500 km altitude)**
+
+The workhouse of long-distance HF communication. Ionized by hard EUV and X-rays. At 200–500 km altitude, the atmospheric density is so low that ion-electron recombination is extremely slow — the F2 layer maintains significant ionization for hours after sunset and throughout the night. This persistence, combined with its great height, makes F2 the primary layer for intercontinental radio contacts.
+
+Geometry matters: a signal reflecting from 400 km altitude can travel approximately 2,500 miles (4,000 km) in a single hop — the figure given in the exam. Multiple hops allow global propagation.
+
+Mnemonic: **"D Destroys (absorbs), E Enables (reflects medium HF and sporadic VHF), F is Far-reaching (intercontinental DX)"**
+
+::: {.callout-note collapse="true"}
+## G3C03: Why is skip propagation via the F2 region longer than that via the other ionospheric regions?
+
+- A) Because it is the densest
+- B) Because of the Doppler effect
+- **C) Because it is the highest**
+- D) Because of temperature inversions
+:::
+
+---
+
+## Skip Propagation: Geometry of the Ionospheric Bounce
+
+### The Geometry
+
+When an HF antenna transmits a signal upward at an angle, the wave travels through the troposphere (essentially transparent to HF), enters the ionosphere, and — if conditions are right — is progressively refracted back to Earth at some distant point. Think of it as a very gentle curve: the wave isn't snapping off a mirror, it's bending through a gradient, like a light ray in a glass rod with a refractive index that decreases as you go deeper.
+
+Key geometric concepts:
+
+**Skip distance**: The minimum ground distance from the transmitter at which the sky-wave signal arrives. If you are closer than the skip distance, the sky wave passes overhead — only the ground wave (which travels along Earth's surface and attenuates rapidly with distance, effective to ~100 km at HF) can reach you.
+
+**Skip zone**: The annular "silent zone" between the maximum ground-wave range and the minimum skip-distance. Stations in the skip zone receive neither the ground wave (too far) nor the sky wave (not yet reflected to Earth at that distance). This is why you can hear a station 1,000 miles away perfectly but not one 200 miles away on the same band.
+
+**Critical angle**: The maximum elevation angle above the horizon at which a signal is still refracted back to Earth for a given frequency and ionospheric condition. Signals transmitted at steeper angles than the critical angle punch through the ionosphere and escape into space. The critical angle decreases as frequency increases (harder to bend higher-frequency waves back).
+
+::: {.callout-note collapse="true"}
+## G3C04: What does the term "critical angle" mean, as applied to radio wave propagation?
+
+- A) The long path azimuth of a distant station
+- B) The short path azimuth of a distant station
+- C) The lowest takeoff angle that will return a radio wave to Earth under specific ionospheric conditions
+- **D) The highest takeoff angle that will return a radio wave to Earth under specific ionospheric conditions**
+:::
+
+**Critical frequency (f_c)**: The highest frequency at which a signal sent *straight up* (vertical incidence) is still refracted back. Above *f_c* at vertical incidence, the wave escapes. However, at shallower angles, higher frequencies can still be reflected — the longer path through the ionosphere compensates. The MUF for a given path is related to *f_c* by the secant law: MUF ≈ *f_c* × sec(θ), where θ is the angle of incidence from vertical.
+
+::: {.callout-note collapse="true"}
+## G3C02: What is meant by the term "critical frequency" at a given incidence angle?
+
+- **A) The highest frequency which is refracted back to Earth**
+- B) The lowest frequency which is refracted back to Earth
+- C) The frequency at which the signal-to-noise ratio approaches unity
+- D) The frequency at which the signal-to-noise ratio is 6 dB
+:::
+
+### MUF and LUF
+
+**MUF (Maximum Usable Frequency)**: The highest frequency that, for a specific transmitter-receiver path and current ionospheric conditions, will be refracted back to Earth rather than escaping through the ionosphere. Above the MUF, the sky wave disappears — you have no path. The MUF depends on:
+
+- Solar activity (determines electron density, which sets plasma frequency)
+- Time of day and season (affect ionization levels)
+- Path geometry (longer paths use shallower incidence angles, allowing higher MUF)
+
+Operating just below the MUF gives the best signal-to-noise ratio: D-layer absorption (which is inversely related to frequency) is minimized, while the F layer still provides the reflection.
+
+::: {.callout-note collapse="true"}
+## G3B08: What does MUF stand for?
+
+- A) The Minimum Usable Frequency for communications between two points
+- **B) The Maximum Usable Frequency for communications between two points**
+- C) The Minimum Usable Frequency during a 24-hour period
+- D) The Maximum Usable Frequency during a 24-hour period
+:::
+
+::: {.callout-note collapse="true"}
+## G3B02: What factors affect the MUF?
+
+- A) Path distance and location
+- B) Time of day and season
+- C) Solar radiation and ionospheric disturbances
+- **D) All these choices are correct**
+:::
+
+::: {.callout-note collapse="true"}
+## G3B05: How does the ionosphere affect radio waves with frequencies below the MUF and above the LUF?
+
+- **A) They are refracted back to Earth**
+- B) They pass through the ionosphere
+- C) They are amplified by interaction with the ionosphere
+- D) They are refracted and trapped in the ionosphere to circle Earth
+:::
+
+::: {.callout-note collapse="true"}
+## G3B03: Which frequency will have the least attenuation for long-distance skip propagation?
+
+- **A) Just below the MUF**
+- B) Just above the LUF
+- C) Just below the critical frequency
+- D) Just above the critical frequency
+:::
+
+**LUF (Lowest Usable Frequency)**: The lowest frequency at which a given path provides adequate signal-to-noise ratio, determined by D-layer absorption (which increases steeply as frequency decreases). Signals below the LUF are absorbed by the D layer before they can reach the F layer and return — like trying to shine a flashlight through a fog bank that gets thicker as the light frequency decreases.
+
+::: {.callout-note collapse="true"}
+## G3B07: What does LUF stand for?
+
+- **A) The Lowest Usable Frequency for communications between two specific points**
+- B) The Lowest Usable Frequency for communications to any point outside a 100-mile radius
+- C) The Lowest Usable Frequency during a 24-hour period
+- D) The Lowest Usable Frequency during the past 60 minutes
+:::
+
+::: {.callout-note collapse="true"}
+## G3B06: What usually happens to radio waves with frequencies below the LUF?
+
+- A) They are refracted back to Earth
+- B) They pass through the ionosphere
+- **C) They are attenuated before reaching the destination**
+- D) They are refracted and trapped in the ionosphere to circle Earth
+:::
+
+**When LUF > MUF**: The useful frequency window has collapsed entirely — there is no frequency that is both high enough to avoid D-layer absorption and low enough to be reflected by the F layer. Sky-wave propagation on that path is simply impossible.
+
+::: {.callout-note collapse="true"}
+## G3B11: What happens to HF propagation when the LUF exceeds the MUF?
+
+- **A) Propagation via ordinary skywave communications is not possible over that path**
+- B) HF communications over the path are enhanced
+- C) Double-hop propagation along the path is more common
+- D) Propagation over the path on all HF frequencies is enhanced
+:::
+
+### Hop Distances
+
+The height of the reflecting layer determines the maximum single-hop distance. Using simple geometry (and the actual curvature of the Earth):
+
+- **E-layer single hop (90–120 km altitude)**: maximum ~1,200 miles
+- **F2-layer single hop (200–500 km altitude)**: maximum ~2,500 miles
+
+Multiple hops extend these distances further — a signal can bounce off the ionosphere, hit the Earth, and reflect back up again. In principle, this allows global propagation in several hops.
+
+::: {.callout-note collapse="true"}
+## G3B10: What is the approximate maximum distance along the Earth's surface normally covered in one hop using the E region?
+
+- A) 180 miles
+- **B) 1,200 miles**
+- C) 2,500 miles
+- D) 12,000 miles
+:::
+
+::: {.callout-note collapse="true"}
+## G3B09: What is the approximate maximum distance along the Earth's surface normally covered in one hop using the F2 region?
+
+- A) 180 miles
+- B) 1,200 miles
+- **C) 2,500 miles**
+- D) 12,000 miles
+:::
+
+### Short-Path and Long-Path Propagation
+
+Any two points on Earth are connected by two great-circle paths — the short path (shorter arc, direct bearing) and the long path (going the "other way around" the globe, 180° offset from the short-path bearing). Both paths can simultaneously support propagation, particularly at sunrise and sunset when the ionosphere transitions between its day and night configurations along a path. When both arrive simultaneously:
+
+- The two signals travel different total distances
+- They arrive with different time delays
+- The superposition creates phase interference that flutters and echoes
+
+::: {.callout-note collapse="true"}
+## G3B01: What is a characteristic of skywave signals arriving at your location by both short-path and long-path propagation?
+
+- A) Periodic fading approximately every 10 seconds
+- B) Signal strength increased by 3 dB
+- C) The signal might be cancelled causing severe attenuation
+- **D) A slightly delayed echo might be heard**
+:::
+
+### Determining Current Propagation
+
+The ionosphere changes continuously — the only reliable way to know if a band is open to a given region right now is to check empirically. The most direct method: use an online network of automated receiving stations (such as the Reverse Beacon Network or WSPRnet) that detect your transmitted signals and report where they're being heard. Check the A-index for broad conditions, but use real-time reception reports for operational decisions.
+
+::: {.callout-note collapse="true"}
+## G3B04: Which of the following is a way to determine current propagation on a desired band from your station?
+
+- **A) Use a network of automated receiving stations on the internet to see where your transmissions are being received**
+- B) Check the A-index
+- C) Send a series of dots and listen for echoes
+- D) All these choices are correct
+:::
+
+### Summertime Lower-HF Conditions
+
+In summer, the higher sun angle and longer days mean stronger D-layer ionization during daylight hours — more absorption on the lower HF bands. Additionally, summer brings increased atmospheric noise (thunderstorm static) from the abundant convective activity in the tropics. The combination of high absorption and high noise makes lower HF bands (40m, 80m, 160m) particularly difficult during summer days.
+
+::: {.callout-note collapse="true"}
+## G3B12: Which of the following is typical of the lower HF frequencies during the summer?
+
+- A) Poor propagation at any time of day
+- B) World-wide propagation during daylight hours
+- C) Heavy distortion on signals due to photon absorption
+- **D) High levels of atmospheric noise or static**
+:::
+
+---
+
+## Solar Activity and Its Effects on HF Propagation
+
+The ionosphere is a solar-powered plasma — its behavior is entirely driven by the sun's output. Understanding the sun's variability is therefore inseparable from understanding HF propagation.
+
+### The Sunspot Cycle
+
+Sunspots are dark, magnetically complex regions on the solar photosphere where intense magnetic fields suppress convection, creating cooler (and thus darker) patches. They are not important in themselves for propagation — they are *indicators* of overall solar magnetic activity, which correlates strongly with EUV and X-ray output. More sunspots → more EUV/X-ray → stronger ionosphere → higher electron density → higher MUF → better conditions for the upper HF bands.
+
+The sunspot cycle averages approximately 11 years, cycling between solar minimum (few sunspots, weak ionosphere) and solar maximum (many sunspots, strong ionosphere). The high HF bands — 15m (21 MHz), 12m (24.9 MHz), 10m (28 MHz) — may be essentially dead at solar minimum but support global communication at solar maximum. A zero sunspot number does not mean radio propagation is impossible — lower bands still work; it merely means the upper bands are less productive.
+
+::: {.callout-note collapse="true"}
+## G3A01: How does a higher sunspot number affect HF propagation?
+
+- **A) Higher sunspot numbers generally indicate a greater probability of good propagation at higher frequencies**
+- B) Lower sunspot numbers generally indicate greater probability of sporadic E propagation
+- C) A zero sunspot number indicates that radio propagation is not possible on any band
+- D) A zero sunspot number indicates undisturbed conditions
+:::
+
+::: {.callout-note collapse="true"}
+## G3A04: Which of the following are the least reliable bands for long-distance communications during periods of low solar activity?
+
+- A) 80 meters and 160 meters
+- B) 60 meters and 40 meters
+- C) 30 meters and 20 meters
+- **D) 15 meters, 12 meters, and 10 meters**
+:::
+
+**The 20-meter band (14 MHz) is the single most reliable DX band** — it supports worldwide propagation throughout the entire sunspot cycle, because 14 MHz sits in a frequency range where the F2 layer provides refraction even at solar minimum electron densities. At solar maximum, higher bands also open; at minimum, 20m remains.
+
+::: {.callout-note collapse="true"}
+## G3A07: At what point in the solar cycle does the 20-meter band usually support worldwide propagation during daylight hours?
+
+- A) At the summer solstice
+- B) Only at the maximum point
+- C) Only at the minimum point
+- **D) At any point**
+:::
+
+### Solar Flux Index
+
+The **Solar Flux Index (SFI)** is a daily measurement of the sun's radio emission at 10.7 cm wavelength (2.8 GHz), recorded at a fixed observatory. The 10.7 cm flux correlates well with EUV output (both are produced by the same magnetically active solar regions) but is far easier to measure than EUV directly. SFI > 150 indicates excellent HF conditions; SFI < 70 suggests poor conditions on the upper bands. The SFI is widely published in real-time and is a key daily input for operators planning HF contacts.
+
+::: {.callout-note collapse="true"}
+## G3A05: What is the solar flux index?
+
+- A) A measure of the highest frequency that is useful for ionospheric propagation between two points on Earth
+- B) A count of sunspots that is adjusted for solar emissions
+- C) Another name for the American sunspot number
+- **D) A measure of solar radiation with a wavelength of 10.7 centimeters**
+:::
+
+### Solar Flares and Sudden Ionospheric Disturbances
+
+A solar flare is a sudden, intense brightening in the solar atmosphere caused by magnetic energy release — analogous to a magnetic reconnection event releasing stored energy as radiation. Flares emit a broad-spectrum pulse of radiation, with the X-ray and EUV components being the most damaging to HF propagation.
+
+This radiation travels at *c* — it arrives at Earth approximately 8 minutes after the flare (the Earth-Sun distance is about 8 light-minutes). It hits the sunlit hemisphere's D layer essentially instantaneously in radio terms, causing a **Sudden Ionospheric Disturbance (SID)**: massive overionization of the D layer, which dramatically increases absorption and can black out HF communication on the sunlit side of Earth within seconds. Lower frequencies (which experience more D-layer absorption under normal conditions) are hit hardest.
+
+Recovery takes 30 minutes to several hours depending on flare intensity, as the excess ionization slowly recombines.
+
+::: {.callout-note collapse="true"}
+## G3A02: What effect does a sudden ionospheric disturbance have on the daytime ionospheric propagation?
+
+- A) It enhances propagation on all HF frequencies
+- **B) It disrupts signals on lower frequencies more than those on higher frequencies**
+- C) It disrupts communications via satellite more than direct communications
+- D) None, because only areas on the night side of the Earth are affected
+:::
+
+::: {.callout-note collapse="true"}
+## G3A03: Approximately how long does it take the increased ultraviolet and X-ray radiation from a solar flare to affect radio propagation on Earth?
+
+- A) 28 days
+- B) 1 to 2 hours
+- **C) 8 minutes**
+- D) 20 to 40 hours
+:::
+
+### Coronal Mass Ejections and Geomagnetic Storms
+
+A **Coronal Mass Ejection (CME)** is a large eruption of magnetized plasma from the solar corona — billions of tons of charged particles accelerated to hundreds to thousands of km/s. Unlike photons, this plasma cloud travels at 400–2,000 km/s, taking **15 hours to several days** to reach Earth. When it arrives, it interacts with Earth's magnetosphere (Earth's intrinsic magnetic field) and causes a **geomagnetic storm**.
+
+::: {.callout-note collapse="true"}
+## G3A11: How long does it take a coronal mass ejection to affect radio propagation on Earth?
+
+- A) 28 days
+- B) 14 days
+- C) 4 to 8 minutes
+- **D) 15 hours to several days**
+:::
+
+::: {.callout-note collapse="true"}
+## G3A06: What is a geomagnetic storm?
+
+- A) A sudden drop in the solar flux index
+- B) A thunderstorm that affects radio propagation
+- C) Ripples in the geomagnetic force
+- **D) A temporary disturbance in Earth's geomagnetic field**
+:::
+
+A geomagnetic storm compresses and distorts the magnetosphere, injects energetic particles into the auroral zones, and enhances ionospheric absorption — particularly at high latitudes. Trans-polar HF paths (e.g., North America to Europe over the pole) are severely degraded or blacked out during strong geomagnetic storms.
+
+::: {.callout-note collapse="true"}
+## G3A08: How can a geomagnetic storm affect HF propagation?
+
+- A) Improve high-latitude HF propagation
+- B) Degrade ground wave propagation
+- C) Improve ground wave propagation
+- **D) Degrade high-latitude HF propagation**
+:::
+
+However, geomagnetic storms are not uniformly harmful to all radio communication. The intense particle precipitation into the auroral oval creates the aurora borealis (and australis) — curtains of ionized gas that can *scatter and reflect VHF signals*. Operators on 6 meters and 2 meters can sometimes make contacts via *auroral scatter* during geomagnetic storms, using the aurora itself as a scattering medium. The signals sound distinctly distorted ("auroral buzz") because the aurora is a dynamic, turbulent medium.
+
+::: {.callout-note collapse="true"}
+## G3A09: How can high geomagnetic activity benefit radio communications?
+
+- **A) Creates auroras that can reflect VHF signals**
+- B) Increases signal strength for HF signals passing through the polar regions
+- C) Improve HF long path propagation
+- D) Reduce long delayed echoes
+:::
+
+### Geomagnetic Activity Indices
+
+Two indices quantify the state of Earth's magnetic field disturbance:
+
+**K-index**: A quasi-logarithmic index (0–9) measuring the variability of the horizontal component of Earth's magnetic field at a given station over a 3-hour period. K = 0–1 indicates quiet conditions; K ≥ 5 indicates a geomagnetic storm. Because the scale is logarithmic, each step represents roughly a factor of 2 increase in field variability. Higher K generally correlates with worse HF propagation, particularly on high-latitude paths.
+
+::: {.callout-note collapse="true"}
+## G3A12: What does the K-index measure?
+
+- A) The relative position of sunspots on the surface of the Sun
+- **B) The short-term stability of Earth's geomagnetic field**
+- C) The short-term stability of the Sun's magnetic field
+- D) The solar radio flux at Boulder, Colorado
+:::
+
+**A-index**: A daily linear index (0–400) derived from averaging the 8 three-hour K values over 24 hours, with a conversion to linearize the logarithmic K scale. The A-index represents the overall daily geomagnetic activity level — a longer-term indicator than the K-index. High A-index → disturbed conditions → expect degraded HF propagation.
+
+::: {.callout-note collapse="true"}
+## G3A13: What does the A-index measure?
+
+- A) The relative position of sunspots on the surface of the Sun
+- B) The amount of polarization of the Sun's electric field
+- **C) The long-term stability of Earth's geomagnetic field**
+- D) The solar radio flux at Boulder, Colorado
+:::
+
+### Solar Coronal Holes and 27-Day Periodicity
+
+In addition to flares and CMEs, the sun continually emits a steady outflow of plasma called the *solar wind*. Coronal holes — open magnetic field regions in the corona — allow faster, denser solar wind streams to escape. When these streams sweep past Earth, they enhance geomagnetic activity and disturb HF propagation — similar in effect to a CME but often more predictable.
+
+Because the sun rotates approximately once every 27 days as seen from Earth (the *synodic rotation period*), recurring active regions and coronal holes revisit the Earth-facing side with a ~27-day period. Experienced operators notice this: a band that was poor last month at roughly this date may be poor again for the same reason.
+
+::: {.callout-note collapse="true"}
+## G3A10: What causes HF propagation conditions to vary periodically in a 26- to 28-day cycle?
+
+- A) Long term oscillations in the upper atmosphere
+- B) Cyclic variation in Earth's radiation belts
+- **C) Rotation of the Sun's surface layers around its axis**
+- D) The position of the Moon in its orbit
+:::
+
+::: {.callout-note collapse="true"}
+## G3A14: How is long distance radio communication usually affected by the charged particles that reach Earth from solar coronal holes?
+
+- A) HF communication is improved
+- **B) HF communication is disturbed**
+- C) VHF/UHF ducting is improved
+- D) VHF/UHF ducting is disturbed
+:::
+
+---
+
+## Scatter Propagation and Beyond-Skip Communication
+
+The skip zone — the silent zone between the ground wave range and the minimum skip distance — is not absolute. Small amounts of signal arrive there by *scatter*: diffraction and reflection from irregularities in the ionosphere or troposphere.
+
+### HF Ionospheric Scatter
+
+The ionosphere is not a smooth, uniform slab. Small-scale density irregularities scatter some of the radio wave energy in all directions, including downward into the skip zone. This scattered energy is weak (typically 20–40 dB below what you'd receive on a normal sky-wave path of equivalent distance) because only a tiny fraction of the transmitted energy is redirected toward any given point.
+
+The scattered signal also sounds distorted — specifically, it has a characteristic "flutter" or "hollow" quality. Why? Because scatter involves *multiple paths* from the irregular medium, each with a slightly different path length and therefore different propagation delay. The received signal is the superposition of many copies of the transmitted signal, each delayed by a slightly different amount — *multipath distortion*. The delays smear the signal in time, blurring any sharp features and creating a reverberant, fluttery quality.
+
+::: {.callout-note collapse="true"}
+## G3C09: What type of propagation allows signals to be heard in the transmitting station's skip zone?
+
+- A) Faraday rotation
+- **B) Scatter**
+- C) Chordal hop
+- D) Short-path
+:::
+
+::: {.callout-note collapse="true"}
+## G3C08: Why are HF scatter signals in the skip zone usually weak?
+
+- **A) Only a small part of the signal energy is scattered into the skip zone**
+- B) Signals are scattered from the magnetosphere, which is not a good reflector
+- C) Propagation is via ground waves, which absorb most of the signal energy
+- D) Propagation is via ducts in the F region, which absorb most of the energy
+:::
+
+::: {.callout-note collapse="true"}
+## G3C07: What makes HF scatter signals often sound distorted?
+
+- A) The ionospheric region involved is unstable
+- B) Ground waves are absorbing much of the signal
+- C) The E region is not present
+- **D) Energy is scattered into the skip zone through several different paths**
+:::
+
+::: {.callout-note collapse="true"}
+## G3C06: What is a characteristic of HF scatter?
+
+- A) Phone signals have high intelligibility
+- **B) Signals have a fluttering sound**
+- C) There are very large, sudden swings in signal strength
+- D) Scatter propagation occurs only at night
+:::
+
+### NVIS: Near Vertical Incidence Skywave
+
+**NVIS (Near Vertical Incidence Skywave)** is a deliberate exploitation of the geometry of ionospheric reflection to provide regional short-distance coverage — the opposite of what most HF operators are trying to do.
+
+Normally, you want to maximize skip distance — aim for shallow takeoff angles to reach distant stations. But in emergency communications or regional coordination, you want to reach stations within 100–500 km, which fall in the skip zone of normal HF propagation. The solution: transmit nearly straight up (elevation angles > 75° from horizontal). The signal hits the ionosphere nearly overhead, is reflected back, and comes down in the region immediately surrounding the transmitter — covering the area within roughly 500 km with reliable sky-wave signal, including mountainous terrain that blocks VHF line-of-sight.
+
+NVIS works best on the 40m and 80m bands, which are reflected by the F layer even at near-vertical incidence. Antennas for NVIS are horizontal and mounted very low (λ/10 above ground is often cited — counterintuitively, a low horizontal antenna is deliberately used because it produces a high-angle radiation pattern).
+
+::: {.callout-note collapse="true"}
+## G3C10: What is near vertical incidence skywave (NVIS) propagation?
+
+- A) Propagation near the MUF
+- **B) Short distance MF or HF propagation at high elevation angles**
+- C) Long path HF propagation at sunrise and sunset
+- D) Double hop propagation near the LUF
+:::
