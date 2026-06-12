@@ -1,0 +1,834 @@
+---
+title: "G2: Operating Procedures"
+---
+
+This section covers how amateur radio operators actually *use* the radio — the conventions, protocols, and courtesies that make the shared spectrum work. Many of these are not FCC rules but universally accepted practices. Violations are social, not legal, but they matter enormously in a community that depends on mutual respect for shared resources.
+
+---
+
+## Making Contact on HF — the Basics
+
+**HF (High Frequency)** refers to the radio spectrum from 3 MHz to 30 MHz. At these frequencies, radio waves can reflect off the *ionosphere* — a layer of ionized gas roughly 60–1000 km above the Earth's surface — allowing signals to travel thousands of miles. This ionospheric skip is what makes HF unique: a 100-watt station in Iowa can talk to someone in Japan.
+
+### Calling CQ
+
+To initiate contact, a station transmits **CQ** — from the French *sécu* (short for *sécurité*, meaning "attention/security"), a maritime radio tradition meaning "I am calling any station." The conventional format:
+
+> "CQ CQ CQ, this is W1ABC W1ABC W1ABC, calling CQ and standing by"
+
+**CQ DX** is a more specific call: the operator is seeking contacts with *distant* (DX) stations only. **DX** is shorthand for "distance" or "distant station," and conventionally refers to a station in another country or at least very far away. Nearby stations are expected not to respond to a CQ DX — doing so is poor operating practice.
+
+::: {.callout-note collapse="true"}
+## G2A11: Generally, who should respond to a station in the contiguous 48 states calling "CQ DX"?
+
+- A) Any caller is welcome to respond
+- B) Only stations in Germany
+- **C) Any stations outside the lower 48 states**
+- D) Only contest stations
+:::
+
+### Calling CQ — the procedure
+
+Calling CQ is simple: repeat "CQ" a few times, say "this is" and your callsign a few times, then pause and listen. If no answer, repeat.
+
+::: {.callout-note collapse="true"}
+## G2D05: Which of the following indicates that you are looking for an HF contact with any station?
+
+- A) Sign your call sign once, followed by the words "listening for a call" -- if no answer, change frequency and repeat
+- B) Say "QTC" followed by "this is" and your call sign -- if no answer, change frequency and repeat
+- **C) Repeat "CQ" a few times, followed by "this is," then your call sign a few times, then pause to listen, repeat as necessary**
+- D) Transmit an unmodulated carrier for approximately 10 seconds, followed by "this is" and your call sign, and pause to listen -- repeat as necessary
+:::
+
+### PTT vs. VOX
+
+Two ways to key (activate) your transmitter during a voice contact:
+
+- **PTT (Push to Talk)**: You press a button — on the microphone or the transceiver — to activate the transmitter. Release to receive. Simple, reliable, universal.
+- **VOX (Voice Operated Transmission)**: A circuit in the transceiver automatically keys the transmitter when it detects audio from the microphone, and drops back to receive when you stop speaking. Hands-free. Convenient for operators who type while talking, or for third-party phone patching.
+
+::: {.callout-note collapse="true"}
+## G2A10: Which of the following statements is true of VOX operation versus PTT operation?
+
+- A) The received signal is more natural sounding
+- **B) It allows "hands free" operation**
+- C) It occupies less bandwidth
+- D) It provides more power output
+:::
+
+### Azimuthal Projection Maps and Long-Path Communication
+
+**Azimuthal projection maps** (also called *great-circle maps*) are centered on a specific location and show true compass bearings and distances from that point to everywhere else on Earth. They're essential for aiming directional antennas at distant stations.
+
+Every pair of points on a globe has two great-circle paths between them — a *short path* (the shorter arc) and a *long path* (going "the other way around" the globe, 180° from the short-path heading). Sometimes the long path produces better propagation than the short path. To use long-path, simply point your antenna 180° away from the direction you'd normally point it.
+
+::: {.callout-note collapse="true"}
+## G2D04: Which of the following describes an azimuthal projection map?
+
+- A) A map that shows accurate land masses
+- **B) A map that shows true bearings and distances from a specific location**
+- C) A map that shows the angle at which an amateur satellite crosses the equator
+- D) A map that shows the number of degrees longitude that an amateur satellite appears to move westward at the equator with each orbit
+:::
+
+::: {.callout-note collapse="true"}
+## G2D06: How is a directional antenna pointed when making a "long-path" contact with another station?
+
+- A) Toward the rising sun
+- B) Along the gray line
+- **C) 180 degrees from the station's short-path heading**
+- D) Toward the north
+:::
+
+### NATO Phonetic Alphabet
+
+When spelling out callsigns or words over a voice link, individual letters are easily confused ("B" and "D" sound identical through static). The **NATO Phonetic Alphabet** solves this by substituting a unique word for each letter — words chosen to sound maximally distinct even in noisy conditions: Alpha, Bravo, Charlie, Delta, Echo, Foxtrot, Golf, Hotel, India, Juliet, Kilo, Lima, Mike, November, Oscar, Papa, Quebec, Romeo, Sierra, Tango, Uniform, Victor, Whiskey, X-ray, Yankee, Zulu.
+
+::: {.callout-note collapse="true"}
+## G2D07: Which of the following are examples of the NATO Phonetic Alphabet?
+
+- A) Able, Baker, Charlie, Dog
+- B) Adam, Boy, Charles, David
+- C) America, Boston, Canada, Denmark
+- **D) Alpha, Bravo, Charlie, Delta**
+:::
+
+### Station Logs
+
+The FCC does **not** require most amateur operators to keep a station log. However, experienced operators often keep one anyway — it creates a record of contacts that can be valuable if the FCC ever inquires about your operation, and it's necessary for certain award programs and contest submissions.
+
+::: {.callout-note collapse="true"}
+## G2D08: Why do many amateurs keep a station log?
+
+- A) The FCC requires a log of all international contacts
+- B) The FCC requires a log of all international third-party traffic
+- C) The log provides evidence of operation needed to renew a license without retest
+- **D) To help with a reply if the FCC requests information about your station**
+:::
+
+### HF Contests and Station Identification
+
+During HF contests, stations rapidly exchange contact information (signal report, zone, state, serial number — depending on contest rules). Even in the frenzy of contest operation, FCC identification rules still apply: you must identify your station at least every 10 minutes during an exchange and at the end of your operation.
+
+::: {.callout-note collapse="true"}
+## G2D09: Which of the following is required when participating in a contest on HF frequencies?
+
+- A) Submit a log to the contest sponsor
+- B) Send a QSL card to the stations worked, or QSL via Logbook of The World
+- **C) Identify your station according to normal FCC regulations**
+- D) All these choices are correct
+:::
+
+### QRP Operation
+
+**QRP** (from the CW Q-code "QRP" meaning "reduce power") refers to operating at very low power levels — conventionally 5 watts or less for CW (Morse code), and 10 watts or less for voice. QRP operating is a popular challenge because making contacts with minimal power requires good antennas, skill, and favorable propagation. It is entirely legal on all amateur frequencies, though contacts are harder to make.
+
+::: {.callout-note collapse="true"}
+## G2D10: What is QRP operation?
+
+- A) Remote piloted model control
+- **B) Low-power transmit operation**
+- C) Transmission using Quick Response Protocol
+- D) Traffic relay procedure net operation
+:::
+
+### Signal Reports — Why They're Exchanged First
+
+At the start of an HF contact, both stations typically exchange signal reports. The standard system is **RST** (Readability 1–5, Signal Strength 1–9, Tone 1–9 for CW). The point is practical: if you know the other station is barely copyable (R2, S3), you'll speak more slowly, repeat information, and consider QSYing (moving) to a better frequency. Signal reports allow each station to calibrate their operating strategy to actual conditions.
+
+::: {.callout-note collapse="true"}
+## G2D11: Why are signal reports typically exchanged at the beginning of an HF contact?
+
+- **A) To allow each station to operate according to conditions**
+- B) To be sure the contact will count for award programs
+- C) To follow standard radiogram structure
+- D) To allow each station to calibrate their frequency display
+:::
+
+---
+
+## Voice Modes on HF — SSB Dominates
+
+### Why SSB?
+
+To understand SSB (Single Sideband), start with AM (Amplitude Modulation):
+
+**AM** encodes audio by varying the amplitude (strength) of a radio carrier wave. The result is three components: the carrier (at the center frequency), the lower sideband (carrier frequency minus audio frequency), and the upper sideband (carrier frequency plus audio frequency). For 3 kHz audio bandwidth, an AM signal occupies about 6 kHz total. Critically: both sidebands carry *identical* information, and the carrier itself carries *no* information — it's pure wasted power.
+
+**SSB** fixes this by suppressing the carrier entirely and transmitting only one sideband. The result:
+
+- **Half the bandwidth** of AM (3 kHz instead of 6 kHz for the same audio)
+- **All transmit power goes into the information-bearing signal** — no power wasted on the carrier or the redundant sideband
+- **Better SNR (signal-to-noise ratio)** at the receiver, because the noise power in the narrower bandwidth is lower
+
+These advantages — especially efficiency and bandwidth — make SSB the dominant voice mode on HF.
+
+::: {.callout-note collapse="true"}
+## G2A05: Which mode of voice communication is most commonly used on the HF amateur bands?
+
+- A) Frequency modulation
+- B) Double sideband
+- **C) Single sideband**
+- D) Single phase modulation
+:::
+
+::: {.callout-note collapse="true"}
+## G2A06: Which of the following is an advantage of using single sideband, as compared to other analog voice modes on the HF amateur bands?
+
+- A) Very high-fidelity voice modulation
+- B) Less subject to interference from atmospheric static crashes
+- C) Ease of tuning on receive and immunity to impulse noise
+- **D) Less bandwidth used and greater power efficiency**
+:::
+
+::: {.callout-note collapse="true"}
+## G2A07: Which of the following statements is true of single sideband (SSB)?
+
+- A) Only one sideband and the carrier are transmitted; the other sideband is suppressed
+- **B) Only one sideband is transmitted; the other sideband and carrier are suppressed**
+- C) SSB is the only voice mode authorized on the 20-, 15-, and 10-meter amateur bands
+- D) SSB is the only voice mode authorized on the 160-, 75-, and 40-meter amateur bands
+:::
+
+### USB vs. LSB — Which Sideband and When
+
+SSB has two variants: **USB (Upper Sideband)** transmits the frequencies *above* the carrier, and **LSB (Lower Sideband)** transmits the frequencies *below* it. Mathematically, they're mirror images of each other, and either works equally well technically.
+
+By convention (not FCC regulation), the amateur community settled on:
+
+| Bands | Sideband |
+|---|---|
+| 160m, 75/80m, 40m | **LSB** |
+| 20m, 17m, 15m, 12m, 10m | **USB** |
+| VHF and UHF SSB | **USB** |
+
+This convention predates widespread equipment standardization. Early HF transceivers for lower bands used LSB by default; as equipment evolved for higher HF frequencies, USB became the standard, and the convention stuck. The line falls at 14 MHz (the 20-meter band).
+
+::: {.callout-note collapse="true"}
+## G2A01: Which mode is most commonly used for voice communications on frequencies of 14 MHz or higher?
+
+- **A) Upper sideband**
+- B) Lower sideband
+- C) Suppressed sideband
+- D) Double sideband
+:::
+
+::: {.callout-note collapse="true"}
+## G2A02: Which mode is most commonly used for voice communications on the 160-, 75-, and 40-meter bands?
+
+- A) Upper sideband
+- **B) Lower sideband**
+- C) Suppressed sideband
+- D) Double sideband
+:::
+
+::: {.callout-note collapse="true"}
+## G2A03: Which mode is most commonly used for SSB voice communications in the VHF and UHF bands?
+
+- **A) Upper sideband**
+- B) Lower sideband
+- C) Suppressed sideband
+- D) Double sideband
+:::
+
+::: {.callout-note collapse="true"}
+## G2A04: Which mode is most commonly used for voice communications on the 17- and 12-meter bands?
+
+- **A) Upper sideband**
+- B) Lower sideband
+- C) Suppressed sideband
+- D) Double sideband
+:::
+
+### Why Do Lower Bands Use LSB?
+
+The short answer: historical convention. Early SSB equipment on the lower amateur bands defaulted to LSB, and once a convention is established, everybody follows it so everyone can hear everyone else.
+
+::: {.callout-note collapse="true"}
+## G2A09: Why do most amateur stations use lower sideband on the 160-, 75-, and 40-meter bands?
+
+- A) Lower sideband is more efficient than upper sideband at these frequencies
+- B) Lower sideband is the only sideband legal on these frequency bands
+- C) Because it is fully compatible with an AM detector
+- **D) It is commonly accepted amateur practice**
+:::
+
+### ALC — Automatic Level Control
+
+**ALC (Automatic Level Control)** is a feedback circuit in a transmitter's power amplifier section. Its job: prevent overdriving the finals (the final power amplifier transistors or tubes). On SSB, the audio level varies constantly with speech. If peaks are too high, the amplifier *clips* — producing a harsh, distorted signal that splashes into adjacent frequencies, causing interference.
+
+ALC works by sensing the output power level and feeding back a control voltage that automatically reduces the gain before clipping occurs. The ALC meter on the transceiver front panel shows this control voltage — it should only deflect on voice peaks. If it's pegged continuously, you're overdriving the transmitter.
+
+To set ALC properly, adjust the **transmit audio level** or **microphone gain** — not the antenna tuner or RF power output control. The microphone gain determines how hard you're driving the amplifier chain from the input end.
+
+::: {.callout-note collapse="true"}
+## G2A12: What control is typically adjusted for proper ALC setting on a single sideband transceiver?
+
+- A) RF clipping level
+- **B) Transmit audio or microphone gain**
+- C) Antenna inductance or capacitance
+- D) Attenuator level
+:::
+
+---
+
+## VOX Operation
+
+**VOX (Voice Operated Transmission)** keys the transmitter automatically when the microphone picks up audio above a threshold level. The transmitter switches back to receive after a short delay (the "VOX hang time" — long enough that you don't drop carrier between words).
+
+Advantages over PTT:
+- Hands-free operation (useful when taking notes, typing, or handling other equipment during a contact)
+- Can provide a more natural conversational rhythm — the radio switches faster than a human pressing buttons
+
+Disadvantages:
+- Background noise (a fan, street noise, a TV in the background) can trigger unintentional transmissions
+- Received audio from the speaker can cause feedback and key the transmitter — the *anti-VOX* control is adjusted to prevent this by sensing receive audio and inhibiting VOX triggering when it's present
+
+::: {.callout-note collapse="true"}
+## G2A08: What is the recommended way to break into a phone contact?
+
+- A) Say "QRZ" several times, followed by your call sign
+- **B) Say your call sign once**
+- C) Say "Breaker Breaker"
+- D) Say "CQ" followed by the call sign of either station
+:::
+
+*(If you want to join a conversation already in progress between two other stations, transmit your callsign once during a pause between transmissions. This is polite, unambiguous, and efficient.)*
+
+---
+
+## Operating Courtesy and Frequency Access
+
+### No One Owns a Frequency
+
+This is foundational: **no amateur station has a right to exclusive use of any frequency.** The amateur spectrum is a shared commons. When the FCC says "except during emergencies, no amateur station has priority access to any frequency," they're reinforcing that even well-established repeaters or long-running nets have no legal claim to a particular frequency — just social convention and courtesy.
+
+::: {.callout-note collapse="true"}
+## G2B01: Which of the following is true concerning access to frequencies?
+
+- A) Nets have priority
+- B) QSOs in progress have priority
+- **C) Except during emergencies, no amateur station has priority access to any frequency**
+- D) Contest operations should yield to non-contest use of frequencies
+:::
+
+### Distress Has Priority Over Everything
+
+The one exception to the shared-commons rule: **a station in distress has absolute priority.** If you're in a contact and another station breaks in with a distress call, your obligation is to acknowledge the distress station and find out what assistance is needed. Everything else waits.
+
+::: {.callout-note collapse="true"}
+## G2B02: What is the first thing you should do if you are communicating with another amateur station and hear a station in distress break in?
+
+- A) Inform your local emergency coordinator
+- **B) Acknowledge the station in distress and determine what assistance may be needed**
+- C) Immediately decrease power to avoid interfering with the station in distress
+- D) Immediately cease all transmissions
+:::
+
+### When Propagation Creates Interference
+
+HF propagation changes constantly. You might be mid-contact on a clear frequency when ionospheric conditions shift and suddenly your signal overlaps with another station's. This isn't anyone's fault — it's the nature of HF. Good practice: try to resolve the problem cooperatively. Move to a new frequency (QSY) if necessary. Claiming priority or insisting on staying put creates unnecessary conflict.
+
+::: {.callout-note collapse="true"}
+## G2B03: What is good amateur practice if propagation changes during a contact creating interference from other stations using the frequency?
+
+- A) Advise the interfering stations that you are on the frequency and that you have priority
+- B) Decrease power and continue to transmit
+- **C) Attempt to resolve the interference problem with the other stations in a mutually acceptable manner**
+- D) Switch to the opposite sideband
+:::
+
+### Minimum Frequency Separation
+
+Because radio signals have finite bandwidth, stations operating too close together will interfere. Conventional minimums:
+
+- **CW**: 150–500 Hz separation. CW signals are extremely narrow (under 100 Hz when properly sent), but a little extra room prevents interference from heterodyne tones.
+- **SSB**: 2–3 kHz separation. An SSB voice signal occupies about 3 kHz of bandwidth (300 Hz to 3000 Hz audio, translated up to RF). Two SSB stations need at least 2–3 kHz of center-frequency separation to avoid overlapping.
+
+::: {.callout-note collapse="true"}
+## G2B04: When selecting a CW transmitting frequency, what minimum separation from other stations should be used to minimize interference to stations on adjacent frequencies?
+
+- A) 5 Hz to 50 Hz
+- **B) 150 Hz to 500 Hz**
+- C) 1 kHz to 3 kHz
+- D) 3 kHz to 6 kHz
+:::
+
+::: {.callout-note collapse="true"}
+## G2B05: When selecting an SSB transmitting frequency, what minimum separation should be used to minimize interference to stations on adjacent frequencies?
+
+- A) 5 Hz to 50 Hz
+- B) 150 Hz to 500 Hz
+- **C) 2 kHz to 3 kHz**
+- D) Approximately 6 kHz
+:::
+
+### Before Calling CQ — Check First
+
+Before transmitting on any frequency, listen first. A frequency might *seem* clear because you can't hear one of the stations on it (HF propagation is asymmetric — they might be hearing each other fine but you can't hear either of them due to skip distance). The protocol:
+
+1. Listen for at least a moment
+2. Ask: "Is this frequency in use?" (on phone) or send **QRL?** (on CW) followed by your callsign
+3. If no response, proceed
+
+::: {.callout-note collapse="true"}
+## G2B06: How can you avoid harmful interference on an apparently clear frequency before calling CQ on CW or phone?
+
+- **A) Send "QRL?" on CW, followed by your call sign; or, if using phone, ask if the frequency is in use, followed by your call sign**
+- B) Listen for 2 minutes before calling CQ
+- C) Send the letter "V" in Morse code several times and listen for a response, or say "test" several times and listen for a response
+- D) Send "QSY" on CW or if using phone, announce "the frequency is in use," then give your call sign and listen for a response
+:::
+
+### Band Plans — Voluntary but Important
+
+Beyond FCC frequency allocations (which specify which license classes can use which frequencies), the amateur community maintains **voluntary band plans** — more detailed agreements about what modes go where within a band. For example, the bottom portion of 20m is CW by convention, the middle is digital modes, and the top is SSB phone. Following the band plan means you're likely to find other operators using the same mode and to minimize cross-mode interference.
+
+::: {.callout-note collapse="true"}
+## G2B07: Which of the following complies with commonly accepted amateur practice when choosing a frequency on which to initiate a call?
+
+- A) Listen on the frequency for at least two minutes to be sure it is clear
+- B) Identify your station by transmitting your call sign at least 3 times
+- **C) Follow the voluntary band plan**
+- D) All these choices are correct
+:::
+
+### The 6-Meter DX Window
+
+The 50 MHz (6-meter) band has a special voluntary restriction: the sub-band from 50.1 MHz to 50.125 MHz is reserved for DX contacts only — US stations in the contiguous 48 states should only use this segment to work stations *outside* the 48 states. This "DX window" protects rare long-distance openings on 6m from being cluttered by domestic contacts that could just as easily happen elsewhere in the band.
+
+::: {.callout-note collapse="true"}
+## G2B08: What is the voluntary band plan restriction for US stations transmitting within the 48 contiguous states in the 50.1 MHz to 50.125 MHz band segment?
+
+- **A) Only contacts with stations not within the 48 contiguous states**
+- B) Only contacts with other stations within the 48 contiguous states
+- C) Only digital contacts
+- D) Only SSTV contacts
+:::
+
+---
+
+## Net Operations and RACES
+
+### What is a Net?
+
+A **net** (short for *network*) is a scheduled on-air meeting of amateur stations with a specific purpose. Types of nets include:
+
+- **Traffic nets**: Pass formal written messages (radiograms) from station to station
+- **Emergency nets**: Coordinate communications during disasters or public safety events
+- **Club/social nets**: Regular check-ins among club members or a regional amateur community
+- **DX nets**: Coordinate DX contacts
+
+Each net is managed by a **Net Control Station (NCS)** — the station that runs the net session, calls for check-ins, directs traffic, and manages the flow of the meeting. Other stations are "check-ins" — they wait to be recognized by the NCS before transmitting.
+
+Good net management means: have a backup frequency in case conditions on the primary frequency deteriorate or interference strikes. The NCS announces the backup frequency at the start of the net so all check-ins know where to go if needed.
+
+::: {.callout-note collapse="true"}
+## G2B10: Which of the following is good amateur practice for net management?
+
+- A) Always use multiple sets of phonetics during check-in
+- **B) Have a backup frequency in case of interference or poor conditions**
+- C) Transmit the full net roster at the beginning of every session
+- D) All these choices are correct
+:::
+
+### RACES — Radio Amateur Civil Emergency Service
+
+**RACES** (Radio Amateur Civil Emergency Service) is defined in FCC Part 97 and operates under civil defense authority. RACES stations provide communications support during declared emergencies — specifically when authorized by the local civil defense agency.
+
+Key RACES rules:
+
+- The control operator of a RACES station must hold a valid FCC-issued amateur license
+- RACES training drills can be conducted routinely **up to 1 hour per week** without special authorization from the civil defense agency
+- More frequent drills require explicit authorization
+
+::: {.callout-note collapse="true"}
+## G2B09: Who may be the control operator of an amateur station transmitting in RACES to assist relief operations during a disaster?
+
+- **A) Only a person holding an FCC-issued amateur operator license**
+- B) Only a RACES net control operator
+- C) A person holding an FCC-issued amateur operator license or an appropriate government official
+- D) Any control operator when normal communication systems are operational
+:::
+
+::: {.callout-note collapse="true"}
+## G2B11: How often may RACES training drills and tests be routinely conducted without special authorization?
+
+- A) No more than 1 hour per month
+- B) No more than 2 hours per month
+- **C) No more than 1 hour per week**
+- D) No more than 2 hours per week
+:::
+
+---
+
+## CW (Morse Code) Operating Procedures
+
+### Why CW Still Matters
+
+**CW (Continuous Wave)** is Morse code: an on-off keyed radio carrier where dots and dashes represent letters and numbers. It was the original mode of amateur radio — and it's still highly relevant because:
+
+- **Narrowest bandwidth** of any analog mode: a clean CW signal is less than 150 Hz wide, compared to 3 kHz for SSB voice
+- **Exceptional weak-signal performance**: the narrow bandwidth means receiver noise is proportionally lower, so CW contacts can be made when voice is impossible
+- **Low-cost and simple equipment**: a carrier that's simply keyed on and off requires much simpler circuitry than SSB
+
+Speed is measured in **WPM (words per minute)**, based on the standard word "PARIS" (50 elements). Experienced operators may run 30+ WPM; beginners may start at 5–10 WPM.
+
+### Full Break-in CW (QSK)
+
+In normal (semi-break-in) CW operation, the transmitter switches to receive only between full transmissions. In **full break-in** (designated by the Q-code *QSK*), the transceiver switches between transmit and receive so fast that the operator can hear the band *between individual dots and dashes* — faster than the shortest Morse element. This allows another station to "break in" mid-transmission at any moment, without waiting for the other operator to finish their sentence.
+
+::: {.callout-note collapse="true"}
+## G2C01: Which of the following describes full break-in CW operation (QSK)?
+
+- A) Breaking stations send the Morse code prosign "BK"
+- B) Automatic keyers, instead of hand keys, are used to send Morse code
+- C) An operator must activate a manual send/receive switch before and after every transmission
+- **D) Transmitting stations can receive between code characters and elements**
+:::
+
+### Matching Speed — Basic Courtesy
+
+When answering a CQ, send at the same speed as the calling station — or *slower* if you can't copy that fast, but never faster. Answering a 13 WPM CQ at 25 WPM is inconsiderate; you'll overwhelm the other operator.
+
+::: {.callout-note collapse="true"}
+## G2C05: What is the best speed to use when answering a CQ in Morse code?
+
+- A) The fastest speed at which you are comfortable copying, but no slower than the CQ
+- **B) The fastest speed at which you are comfortable copying, but no faster than the CQ**
+- C) At the standard calling speed of 10 wpm
+- D) At the standard calling speed of 5 wpm
+:::
+
+### Zero Beat
+
+**Zero beat** means tuning your transmit frequency to exactly match the frequency of the station you want to work. In CW, the received signal appears as an audio tone in the receiver — if you're exactly zero-beat with the other station, you'll both hear each other as the same pitch. If you're slightly off frequency, you'll hear each other as different tones and may have trouble finding each other on the dial.
+
+::: {.callout-note collapse="true"}
+## G2C06: What does the term "zero beat" mean in CW operation?
+
+- A) Matching the speed of the transmitting station
+- B) Operating split to avoid interference on frequency
+- C) Sending without error
+- **D) Matching the transmit frequency to the frequency of a received signal**
+:::
+
+### Q-Codes
+
+**Q-codes** are standardized three-letter codes starting with Q, developed for CW operation (and retained in digital/voice contexts). Each code stands for a full sentence. Sent as a statement: "QRL" = "This frequency is busy." Sent with a question mark: "QRL?" = "Is this frequency busy?"
+
+Key Q-codes:
+
+| Code | Meaning |
+|---|---|
+| **QRS** | Send more slowly |
+| **QRL** | This frequency is busy / Is this frequency busy? |
+| **QSL** | I confirm receipt / acknowledge |
+| **QRN** | I am troubled by atmospheric noise (static) |
+| **QRV** | I am ready to receive |
+
+Mnemonic: **QRS=Slow, QRL=Listening/Busy, QSL=Confirmed, QRN=Noise, QRV=Ready**
+
+::: {.callout-note collapse="true"}
+## G2C02: What should you do if a CW station sends "QRS?"
+
+- **A) Send slower**
+- B) Change frequency
+- C) Increase your power
+- D) Repeat everything twice
+:::
+
+::: {.callout-note collapse="true"}
+## G2C04: What does the Q signal "QRL?" mean?
+
+- A) "Will you keep the frequency clear?"
+- B) "Are you operating full break-in?" or "Can you operate full break-in?"
+- C) "Are you listening only for a specific station?"
+- **D) "Are you busy?" or "Is this frequency in use?"**
+:::
+
+::: {.callout-note collapse="true"}
+## G2C09: What does the Q signal "QSL" mean?
+
+- A) Send slower
+- B) We have already confirmed the contact
+- **C) I have received and understood**
+- D) We have worked before
+:::
+
+::: {.callout-note collapse="true"}
+## G2C10: What does the Q signal "QRN" mean?
+
+- A) Send more slowly
+- B) Stop sending
+- C) Zero beat my signal
+- **D) I am troubled by static**
+:::
+
+::: {.callout-note collapse="true"}
+## G2C11: What does the Q signal "QRV" mean?
+
+- A) You are sending too fast
+- B) There is interference on the frequency
+- C) I am quitting for the day
+- **D) I am ready to receive**
+:::
+
+### Prosigns
+
+**Prosigns** (procedural signs) are special Morse code symbols sent as single characters with no space between the component letters. They serve structural roles in CW communication:
+
+| Prosign | Sent as | Meaning |
+|---|---|---|
+| **AR** | dit-dah-dit-dah-dit | End of message (used between callsigns in formal traffic) |
+| **SK** | dit-dit-dit-dah-dit-dah | End of contact, signing off — "Silent Key" |
+| **KN** | dah-dit-dah-dah | Invitation for the *named/specific* station only to reply |
+| **BK** | dah-dit-dit-dah-dit-dah | Break — brief invitation for any station to reply |
+| **K** | dah-dit-dah | Go ahead — any station may reply |
+
+::: {.callout-note collapse="true"}
+## G2C03: What does it mean when a CW operator sends "KN" at the end of a transmission?
+
+- A) No US stations should call
+- B) Operating full break-in
+- **C) Listening only for a specific station or stations**
+- D) Closing station now
+:::
+
+::: {.callout-note collapse="true"}
+## G2C08: What prosign is sent to indicate the end of a formal message when using CW?
+
+- A) SK
+- B) BK
+- **C) AR**
+- D) KN
+:::
+
+### Chirpy Signal — the "C" Suffix in RST
+
+The **RST** (Readability-Signal-Tone) report is the standard signal quality report in CW. A perfect signal is 599 — perfectly readable, maximum signal strength, perfect tone. When a CW operator adds the letter **C** to an RST report (e.g., "599C"), it indicates a *chirpy* signal: the pitch of the CW tone varies slightly with each keying action, usually because the transmitter's oscillator is unstable. A chirpy signal is technically defective and should be corrected.
+
+::: {.callout-note collapse="true"}
+## G2C07: When sending CW, what does a "C" mean when added to the RST report?
+
+- **A) Chirpy or unstable signal**
+- B) Report was read from an S meter rather than estimated
+- C) 100 percent copy
+- D) Key clicks
+:::
+
+---
+
+## The Volunteer Monitor Program
+
+The **Volunteer Monitor (VM) Program** is coordinated by the ARRL (American Radio Relay League, the major US amateur radio organization) — not run by the FCC directly. Volunteer Monitors are experienced licensed amateurs who volunteer to help identify and address on-air problems: improper signals, excessive bandwidth, ID violations, interference sources, and stuck transmitters.
+
+The program's core purpose is **self-regulation**: the amateur community takes responsibility for maintaining standards on the air, rather than relying entirely on FCC enforcement resources. When operators see a problem, they can report it; Volunteer Monitors can investigate.
+
+::: {.callout-note collapse="true"}
+## G2D01: What is the Volunteer Monitor Program?
+
+- **A) Amateur volunteers who are formally enlisted to monitor the airwaves for rules violations**
+- B) Amateur volunteers who conduct amateur licensing examinations
+- C) Amateur volunteers who conduct frequency coordination for amateur VHF repeaters
+- D) Amateur volunteers who use their station equipment to help civil defense organizations in times of emergency
+:::
+
+::: {.callout-note collapse="true"}
+## G2D02: Which of the following are objectives of the Volunteer Monitor Program?
+
+- A) To conduct efficient and orderly amateur licensing examinations
+- B) To provide emergency and public safety communications
+- C) To coordinate repeaters for efficient and orderly spectrum usage
+- **D) To encourage amateur radio operators to self-regulate and comply with the rules**
+:::
+
+### Direction Finding — Locating a Stuck Transmitter
+
+A common task for Volunteer Monitors: a repeater in their area is being held open by a station transmitting a continuous carrier — typically someone whose PTT is stuck. The solution is **direction finding (DF)**: multiple monitors take compass bearings toward the signal from different geographic locations. Where the bearing lines intersect on a map, that's where the transmitting station is located.
+
+::: {.callout-note collapse="true"}
+## G2D03: What procedure may be used by Volunteer Monitors to localize a station whose continuous carrier is holding a repeater on in their area?
+
+- A) Compare vertical and horizontal signal strengths on the input frequency
+- **B) Compare beam headings on the repeater input from their home locations with that of other Volunteer Monitors**
+- C) Compare signal strengths between the input and output of the repeater
+- D) All these choices are correct
+:::
+
+---
+
+## Digital Modes on HF
+
+### How Digital Modes Interface with SSB Radios
+
+Most HF digital modes don't require a special radio — they work through a standard SSB transceiver. The computer's sound card generates audio tones that represent data. These audio tones feed into the transceiver's microphone input as if they were voice audio. The SSB radio then transmits those tones just as it would transmit voice.
+
+This technique is called **AFSK (Audio Frequency Shift Keying)**: the "shift keying" (switching between tones) happens in the audio domain, and the SSB radio carries it. The receiving station decodes the received audio tones back into data.
+
+### RTTY — RadioTeletype
+
+**RTTY** (RadioTeletype) is the oldest HF digital mode still in common use. It uses two discrete audio tones:
+
+- **Mark**: represents a binary "1"
+- **Space**: represents a binary "0"
+
+Characters are encoded in **Baudot code**, a 5-bit character set (32 combinations, with shift characters to access letters and figures). The standard frequency shift between mark and space in amateur RTTY is **170 Hz** — close enough to pack multiple signals in a band segment, wide enough to separate cleanly.
+
+RTTY is transmitted using **LSB** with AFSK (this is an exception to the "USB for digital" convention that applies to newer modes). If the mark and space tones are accidentally reversed in the receiving software, the decoded text is garbled — a common troubleshooting step is to try reversing the tone assignment.
+
+::: {.callout-note collapse="true"}
+## G2E01: Which mode is normally used when sending RTTY signals via AFSK with an SSB transmitter?
+
+- A) USB
+- B) DSB
+- C) CW
+- **D) LSB**
+:::
+
+::: {.callout-note collapse="true"}
+## G2E06: What is the most common frequency shift for RTTY emissions in the amateur HF bands?
+
+- A) 85 Hz
+- **B) 170 Hz**
+- C) 425 Hz
+- D) 850 Hz
+:::
+
+::: {.callout-note collapse="true"}
+## G2E14: What could be wrong if you cannot decode an RTTY or other FSK signal even though it is apparently tuned in properly?
+
+- A) The mark and space frequencies may be reversed
+- B) You may have selected the wrong baud rate
+- C) You may be listening on the wrong sideband
+- **D) All these choices are correct**
+:::
+
+### JT65, JT9, FT8, FT4 — Weak Signal Digital Modes
+
+These modes, developed primarily by Nobel laureate Joe Taylor (K1JT) and collaborators, are designed for extreme weak-signal conditions — contacts under ionospheric scatter, moonbounce (EME), or across vast distances on marginal paths.
+
+All use **USB** via AFSK. All use sophisticated forward error correction and structured message formats. They exchange information in defined time windows (FT8: 15-second windows; FT4: 7.5 seconds) — meaning **accurate computer clock synchronization** (within approximately 1 second of UTC) is essential. If your computer clock is off, your transmitted signal won't be in the right time slot and won't be decoded by other stations.
+
+::: {.callout-note collapse="true"}
+## G2E05: What is the standard sideband for JT65, JT9, FT4, or FT8 digital signal when using AFSK?
+
+- A) LSB
+- **B) USB**
+- C) DSB
+- D) SSB
+:::
+
+::: {.callout-note collapse="true"}
+## G2E07: Which of the following is required when using FT8?
+
+- A) A special hardware modem
+- **B) Computer time accurate to within approximately 1 second**
+- C) Receiver attenuator set to -12 dB
+- D) A vertically polarized antenna
+:::
+
+### Where to Find Digital Mode Contacts
+
+Most HF digital activity on 20 meters is found between **14.070 MHz and 14.100 MHz**. FT8 specifically clusters around **14.074 MHz to 14.077 MHz** — the most commonly used digital sub-band on 20m.
+
+::: {.callout-note collapse="true"}
+## G2E08: In what segment of the 20-meter band are most digital mode operations commonly found?
+
+- A) At the bottom of the slow-scan TV segment, near 14.230 MHz
+- B) At the top of the SSB phone segment, near 14.325 MHz
+- C) In the middle of the CW segment, near 14.100 MHz
+- **D) Between 14.070 MHz and 14.100 MHz**
+:::
+
+::: {.callout-note collapse="true"}
+## G2E15: Which of the following is a common location for FT8?
+
+- A) Anywhere in the voice portion of the band
+- B) Anywhere in the CW portion of the band
+- **C) Approximately 14.074 MHz to 14.077 MHz**
+- D) Approximately 14.110 MHz to 14.113 MHz
+:::
+
+### Responding to a Digital CQ — FT8 Timing
+
+In FT8, stations take turns in alternating 15-second time slots. When you see a station calling CQ, you respond during the *opposite* time slot — not the same one. This ensures you're not transmitting while the other station is transmitting.
+
+::: {.callout-note collapse="true"}
+## G2E04: Which of the following is good practice when choosing a transmitting frequency to answer a station calling CQ using FT8?
+
+- A) Always call on the station's frequency
+- B) Call on any frequency in the waterfall except the station's frequency
+- C) Find a clear frequency during the same time slot as the calling station
+- **D) Find a clear frequency during the alternate time slot to the calling station**
+:::
+
+### PACTOR and VARA — ARQ Error-Corrected Protocols
+
+**PACTOR** and **VARA** are protocols that use **ARQ (Automatic Repeat reQuest)**: the receiving station acknowledges each block of data; if not acknowledged, the transmitting station resends. This produces error-free data transfer. ARQ connections are point-to-point: they establish a handshaked session between exactly two stations. Once a session is in progress, no third station can "join" — the protocol has no mechanism for it.
+
+If another station's signal interferes with a PACTOR or VARA contact in progress, the symptoms can include: frequent retries, long pauses, failure to maintain the connection, or timeouts.
+
+::: {.callout-note collapse="true"}
+## G2E03: What symptoms may result from other signals interfering with a PACTOR or VARA transmission?
+
+- A) Frequent retries or timeouts
+- B) Long pauses in message transmission
+- C) Failure to establish a connection between stations
+- **D) All these choices are correct**
+:::
+
+::: {.callout-note collapse="true"}
+## G2E09: How do you join a contact between two stations using the PACTOR protocol?
+
+- A) Send broadcast packets containing your call sign while in MONITOR mode
+- B) Transmit a steady carrier until the PACTOR protocol times out and disconnects
+- **C) Joining an existing contact is not possible, PACTOR connections are limited to two stations**
+- D) Send a NAK code
+:::
+
+### Winlink — Email Over Radio
+
+**Winlink** is a global email system that uses amateur radio for the radio link. A Winlink user's computer sends email via radio to a **Remote Message Server (RMS)** — also called a **gateway** — which bridges the radio side to the internet and delivers the email. Winlink is widely used for emergency communications precisely because it functions when the internet is unavailable: the RMS gateway is reached by radio, not internet.
+
+::: {.callout-note collapse="true"}
+## G2E12: Which of the following describes Winlink?
+
+- A) An amateur radio wireless network to send and receive email on the internet
+- B) A form of Packet Radio
+- C) A wireless network capable of both VHF and HF band operation
+- **D) All these choices are correct**
+:::
+
+::: {.callout-note collapse="true"}
+## G2E13: What is another name for a Winlink Remote Message Server?
+
+- A) Terminal Node Controller
+- **B) Gateway**
+- C) RJ-45
+- D) Printer/Server
+:::
+
+::: {.callout-note collapse="true"}
+## G2E10: Which of the following is a way to establish contact with a digital messaging system gateway station?
+
+- A) Send an email to the system control operator
+- B) Send QRL in Morse code
+- C) Respond when the station broadcasts its SSID
+- **D) Transmit a connect message on the station's published frequency**
+:::
+
+### AREDN — Amateur Radio Emergency Data Network
+
+**AREDN** (Amateur Radio Emergency Data Network) repurposes modified commercial Wi-Fi hardware (operating on amateur-allocated frequencies) to form a **mesh network** — a self-organizing network where each node can relay traffic for other nodes. The result is a broadband IP network that can carry email, VoIP telephone calls, video, and file transfer without any internet infrastructure.
+
+AREDN's primary purpose is emergency and community event communications — when normal infrastructure fails, AREDN provides IP-based services using only radio equipment.
+
+::: {.callout-note collapse="true"}
+## G2E11: What is the primary purpose of an Amateur Radio Emergency Data Network (AREDN) mesh network?
+
+- A) To provide FM repeater coverage in remote areas
+- B) To provide real time propagation data by monitoring amateur radio transmissions worldwide
+- **C) To provide high-speed data services during an emergency or community event**
+- D) To provide DX spotting reports to aid contesters and DXers
+:::
