@@ -1,0 +1,827 @@
+---
+title: "G5: Electrical Principles"
+---
+
+This section covers the electrical principles underlying every circuit in your radio station — from the battery that powers a portable rig to the transformer that matches your antenna's impedance to coaxial cable. The treatment starts from the absolute fundamentals of charge and field, then builds through Ohm's Law, AC waveforms, decibels, reactance, and impedance matching. Every formula is derived conceptually and then applied to the exact numerical problems tested on the exam.
+
+---
+
+## The Four Fundamental Electrical Quantities
+
+All of electrical engineering rests on four measurable quantities. Understanding what they *are* physically — not just their formulas — makes everything downstream intuitive rather than arbitrary.
+
+### Electric Charge
+
+*Electric charge* (symbol Q, unit: coulombs, C) is the fundamental electromagnetic property of matter. At the atomic level, electrons carry a charge of −1.602×10⁻¹⁹ C each, and protons carry +1.602×10⁻¹⁹ C. These are the smallest freely-existing charges in nature (quarks have fractional charges but don't appear free). The law of charge interaction is simple: **like charges repel, unlike charges attract**, with force proportional to the product of the charges and inversely proportional to the square of their separation (Coulomb's Law).
+
+One coulomb is an enormous number of electrons: approximately 6.24×10¹⁸ of them. A modest current of 1 ampere flowing for 1 second moves exactly 1 coulomb past a cross-section.
+
+### Electric Current
+
+*Electric current* (symbol I, unit: amperes, A) is the rate of charge flow:
+
+$$I = \frac{Q}{t} \quad \text{(coulombs per second)}$$
+
+One ampere means one coulomb of charge passes a cross-section every second. In a metallic conductor, the charge carriers are electrons, which move from the negative terminal toward the positive terminal. However, by historical convention (established before the electron was discovered), **conventional current** is defined as flowing from positive to negative — opposite to actual electron motion. All circuit analysis uses conventional current; the sign convention is purely a bookkeeping choice, not a physical error.
+
+### Voltage
+
+*Voltage* (symbol V or E, unit: volts, V) is the electric potential energy difference per unit charge between two points:
+
+$$V = \frac{\text{energy}}{Q} \quad \text{(joules per coulomb)}$$
+
+One volt equals one joule per coulomb. The physical picture: charges in an electric field have potential energy, exactly as a mass in a gravitational field has gravitational potential energy. Voltage is the "height difference" for charges — moving a positive charge from a low-voltage point to a high-voltage point requires work (you are storing energy); releasing it lets the charge "fall" and deliver that energy to a load.
+
+The water-pipe analogy is helpful: voltage is to current as pressure is to flow rate. Higher pressure (voltage) drives more flow (current) through a given pipe (resistance).
+
+### Resistance
+
+*Resistance* (symbol R, unit: ohms, Ω) is the opposition to current flow in a material. It arises microscopically from electrons scattering off lattice vibrations (phonons) and impurities as they drift through a conductor. The energy lost to scattering appears as heat — that is Joule heating.
+
+Ohm's Law defines resistance as the ratio of voltage to current:
+
+$$R = \frac{V}{I}$$
+
+For a *linear* (ohmic) resistor, R is constant regardless of applied voltage — it is a material and geometric property of the resistor, not a function of operating conditions.
+
+---
+
+## Ohm's Law and DC Power
+
+### Ohm's Law
+
+The central relationship of DC circuits:
+
+$$V = I \times R$$
+
+This rearranges trivially to two equally useful forms:
+
+$$I = \frac{V}{R} \qquad R = \frac{V}{I}$$
+
+These three are a single equation, not three separate laws. If you know any two of {V, I, R}, you know the third.
+
+### Electrical Power
+
+Power is the rate of energy transfer (joules per second = watts):
+
+$$P = V \times I$$
+
+This is exact and universal. Substituting Ohm's Law in two ways gives two additional forms that are enormously useful when you know only two of the three variables:
+
+$$P = I^2 \times R \qquad (\text{substitute } V = IR)$$
+
+$$P = \frac{V^2}{R} \qquad (\text{substitute } I = V/R)$$
+
+**When to use which form:**
+
+- Know V and R (but not I)? Use P = V²/R.
+- Know I and R (but not V)? Use P = I²R.
+- Know V and I? Use P = VI directly.
+
+### Worked Numerical Examples
+
+**Example 1 — 400 VDC across an 800 Ω load:**
+
+$$P = \frac{V^2}{R} = \frac{400^2}{800} = \frac{160{,}000}{800} = \mathbf{200 \text{ W}}$$
+
+**Example 2 — 12 VDC light bulb drawing 0.2 A:**
+
+$$P = V \times I = 12 \times 0.2 = \mathbf{2.4 \text{ W}}$$
+
+**Example 3 — 7 mA through 1,250 Ω:**
+
+$$P = I^2 R = (0.007)^2 \times 1250 = 4.9 \times 10^{-5} \times 1250 = 0.06125 \text{ W} \approx \mathbf{61 \text{ mW}}$$
+
+::: {.callout-note collapse="true"}
+## G5B03: How many watts of electrical power are consumed if 400 VDC is supplied to an 800-ohm load?
+
+- A) 0.5 watts
+- **B) 200 watts**
+- C) 400 watts
+- D) 3200 watts
+:::
+
+::: {.callout-note collapse="true"}
+## G5B04: How many watts of electrical power are consumed by a 12 VDC light bulb that draws 0.2 amperes?
+
+- **A) 2.4 watts**
+- B) 24 watts
+- C) 6 watts
+- D) 60 watts
+:::
+
+::: {.callout-note collapse="true"}
+## G5B05: How many watts are consumed when a current of 7.0 milliamperes flows through a 1,250-ohm resistance?
+
+- **A) Approximately 61 milliwatts**
+- B) Approximately 61 watts
+- C) Approximately 11 milliwatts
+- D) Approximately 11 watts
+:::
+
+---
+
+## Resistors in Series and Parallel
+
+### Series Resistors
+
+When resistors are connected end-to-end (in series), the **same current** flows through all of them. The voltage drops across each one, and those drops add to equal the total applied voltage. Total resistance is simply the sum:
+
+$$R_{\text{total}} = R_1 + R_2 + R_3 + \cdots$$
+
+This follows directly from Ohm's Law: each resistor requires V = IR volts across it, so the total voltage required for the same current I through the string is I(R₁ + R₂ + R₃ + ...).
+
+### Parallel Resistors
+
+When resistors are connected side-by-side (in parallel), the **same voltage** appears across all of them. Each one independently draws current I = V/R, so the total current is the sum of all the branch currents.
+
+$$I_{\text{total}} = I_1 + I_2 + I_3 = \frac{V}{R_1} + \frac{V}{R_2} + \frac{V}{R_3} = V \left(\frac{1}{R_1} + \frac{1}{R_2} + \frac{1}{R_3}\right)$$
+
+Dividing both sides by V and applying R = V/I gives:
+
+$$\frac{1}{R_{\text{total}}} = \frac{1}{R_1} + \frac{1}{R_2} + \frac{1}{R_3} + \cdots$$
+
+For exactly **two** parallel resistors this simplifies elegantly to the "product over sum" formula:
+
+$$R_{\text{total}} = \frac{R_1 \times R_2}{R_1 + R_2}$$
+
+Note: the total resistance of a parallel combination is always **less than** the smallest individual resistor, because each added path gives the current another route to flow.
+
+### Total Current in a Parallel Circuit
+
+Because each branch draws current independently, the total current drawn from the source equals the sum of the individual branch currents. This is a direct consequence of Kirchhoff's Current Law (charge conservation at a node).
+
+::: {.callout-note collapse="true"}
+## G5B02: How does the total current relate to the individual currents in a circuit of parallel resistors?
+
+- A) It equals the average of the branch currents
+- B) It decreases as more parallel branches are added to the circuit
+- **C) It equals the sum of the currents through each branch**
+- D) It is the sum of the reciprocal of each individual voltage drop
+:::
+
+### Worked Examples
+
+**Example 1 — 10 Ω, 20 Ω, and 50 Ω in parallel:**
+
+$$\frac{1}{R} = \frac{1}{10} + \frac{1}{20} + \frac{1}{50} = \frac{10}{100} + \frac{5}{100} + \frac{2}{100} = \frac{17}{100}$$
+
+$$R_{\text{total}} = \frac{100}{17} \approx \mathbf{5.9 \text{ Ω}}$$
+
+**Example 2 — 100 Ω and 200 Ω in parallel:**
+
+$$R_{\text{total}} = \frac{100 \times 200}{100 + 200} = \frac{20{,}000}{300} \approx \mathbf{66.7 \text{ Ω}}$$
+
+(The answer choices round this to 67 Ω.)
+
+::: {.callout-note collapse="true"}
+## G5C03: What is the total resistance of a 10-, a 20-, and a 50-ohm resistor connected in parallel?
+
+- **A) 5.9 ohms**
+- B) 0.17 ohms
+- C) 17 ohms
+- D) 80 ohms
+:::
+
+::: {.callout-note collapse="true"}
+## G5C04: What is the approximate total resistance of a 100- and a 200-ohm resistor in parallel?
+
+- A) 300 ohms
+- B) 150 ohms
+- C) 75 ohms
+- **D) 67 ohms**
+:::
+
+---
+
+## AC Electricity — Frequency, Period, Peak, and RMS
+
+### What is Alternating Current?
+
+Direct current (DC) flows steadily in one direction. Alternating current (AC) periodically reverses direction, tracing a sinusoidal waveform. US household power completes 60 full cycles per second (60 Hz). Each cycle is one complete sine wave: the voltage rises from zero to a positive maximum, falls back through zero to a negative maximum, and returns to zero.
+
+**Period** T = 1/f (seconds per cycle). At 60 Hz, T = 16.7 ms.
+
+### Voltage Quantities for a Sine Wave
+
+A sine wave has several ways to characterize its magnitude:
+
+**Peak voltage** (V_peak): The maximum instantaneous voltage — the amplitude of the sine wave.
+
+**Peak-to-peak voltage** (V_pp): The total swing from the negative extreme to the positive extreme:
+
+$$V_{\text{pp}} = 2 \times V_{\text{peak}}$$
+
+**RMS voltage** (V_rms, "Root Mean Square"): The most important quantity for power calculations. For a sine wave, the voltage is not at its peak most of the time — it spends most of its time near zero and only briefly at the extremes. The RMS value is the square root of the time-average of the squared voltage:
+
+$$V_{\text{rms}} = \frac{V_{\text{peak}}}{\sqrt{2}} \approx V_{\text{peak}} \times 0.7071$$
+
+Why does squaring matter? Power dissipated in a resistor is P = V²/R. The average power depends on the *average of V²*, not the average of V (which is zero for a symmetric sine wave). Taking the square root of that average gives the "effective" voltage — the DC voltage that would produce identical power dissipation. This is exactly what RMS means.
+
+::: {.callout-note collapse="true"}
+## G5B07: What value of an AC signal produces the same power dissipation in a resistor as a DC voltage of the same value?
+
+- A) The peak-to-peak value
+- B) The peak value
+- **C) The RMS value**
+- D) The reciprocal of the RMS value
+:::
+
+### Worked Conversions
+
+**US household voltage: 120 V_rms**
+
+$$V_{\text{peak}} = 120 \times \sqrt{2} \approx 169.7 \text{ V}$$
+
+$$V_{\text{pp}} = 2 \times 169.7 \approx \mathbf{339.4 \text{ V}}$$
+
+**Peak voltage of 17 V:**
+
+$$V_{\text{rms}} = 17 \times 0.7071 \approx \mathbf{12.0 \text{ V}}$$
+
+::: {.callout-note collapse="true"}
+## G5B08: What is the peak-to-peak voltage of a sine wave with an RMS voltage of 120 volts?
+
+- A) 84.8 volts
+- B) 169.7 volts
+- C) 240.0 volts
+- **D) 339.4 volts**
+:::
+
+::: {.callout-note collapse="true"}
+## G5B09: What is the RMS voltage of a sine wave with a value of 17 volts peak?
+
+- A) 8.5 volts
+- **B) 12 volts**
+- C) 24 volts
+- D) 34 volts
+:::
+
+### RMS Voltage from Known Power
+
+Rearranging P = V²/R gives V_rms = √(P × R):
+
+**1,200 W into 50 Ω:**
+
+$$V_{\text{rms}} = \sqrt{P \times R} = \sqrt{1200 \times 50} = \sqrt{60{,}000} \approx \mathbf{245 \text{ V}}$$
+
+::: {.callout-note collapse="true"}
+## G5B12: What is the RMS voltage across a 50-ohm dummy load dissipating 1200 watts?
+
+- A) 173 volts
+- **B) 245 volts**
+- C) 346 volts
+- D) 692 volts
+:::
+
+### Peak Envelope Power (PEP)
+
+For a single-sideband (SSB) transmitter or any signal whose amplitude varies, the instantaneous power fluctuates. **PEP (Peak Envelope Power)** is defined as the average power during one complete RF cycle at the highest-amplitude modulation peak. It characterizes the maximum power the transmitter produces, which is what determines legal power limits.
+
+For a sinusoidal RF voltage with peak-to-peak voltage V_pp into a resistive load R:
+
+$$\text{PEP} = \frac{(V_{\text{pp}})^2}{8R} = \frac{(V_{\text{peak}})^2}{2R}$$
+
+*Derivation:* PEP is average power at the amplitude peak. At the peak, the instantaneous amplitude is V_peak (a sine wave). Average power of a sine wave of amplitude V_peak into resistance R is (V_peak)²/(2R) = (V_pp/2)²/(2R) = V_pp²/(8R).
+
+**Example — 200 V_pp across 50 Ω:**
+
+$$\text{PEP} = \frac{200^2}{8 \times 50} = \frac{40{,}000}{400} = \mathbf{100 \text{ W}}$$
+
+**Example — 500 V_pp across 50 Ω:**
+
+$$\text{PEP} = \frac{500^2}{8 \times 50} = \frac{250{,}000}{400} = \mathbf{625 \text{ W}}$$
+
+For an **unmodulated carrier** (a steady, constant-amplitude sine wave), the envelope amplitude never changes, so every cycle is "the peak cycle." PEP equals average power — the ratio is exactly 1:1.
+
+::: {.callout-note collapse="true"}
+## G5B06: What is the PEP produced by 200 volts peak-to-peak across a 50-ohm dummy load?
+
+- A) 1.4 watts
+- **B) 100 watts**
+- C) 353.5 watts
+- D) 400 watts
+:::
+
+::: {.callout-note collapse="true"}
+## G5B11: What is the ratio of PEP to average power for an unmodulated carrier?
+
+- A) 0.707
+- **B) 1.00**
+- C) 1.414
+- D) 2.00
+:::
+
+::: {.callout-note collapse="true"}
+## G5B13: What is the output PEP of an unmodulated carrier if the average power is 1060 watts?
+
+- A) 530 watts
+- **B) 1060 watts**
+- C) 1500 watts
+- D) 2120 watts
+:::
+
+::: {.callout-note collapse="true"}
+## G5B14: What is the output PEP of 500 volts peak-to-peak across a 50-ohm load?
+
+- A) 8.75 watts
+- **B) 625 watts**
+- C) 2500 watts
+- D) 5000 watts
+:::
+
+---
+
+## Decibels (dB)
+
+### The Logarithmic Scale
+
+The decibel is a logarithmic measure of a power ratio. Named after Alexander Graham Bell (a "decibel" is one-tenth of a "bel"), it was invented by telephone engineers who noticed that human perception of loudness is approximately logarithmic: doubling the sound power does not feel twice as loud, it feels only slightly louder.
+
+For **power ratios**:
+
+$$\text{dB} = 10 \times \log_{10}\!\left(\frac{P_2}{P_1}\right)$$
+
+For **voltage (or current) ratios** (when the impedances are equal):
+
+$$\text{dB} = 20 \times \log_{10}\!\left(\frac{V_2}{V_1}\right)$$
+
+The factor of 20 instead of 10 arises because power scales as V² — so a voltage ratio of 2:1 is a power ratio of 4:1, which is log₁₀(4) × 10 = 6 dB = log₁₀(2) × 20.
+
+### Critical Relationships to Memorize
+
+| Change | Power ratio | Voltage ratio |
+|---|---|---|
+| +3 dB | 2× | √2 ≈ 1.41× |
+| −3 dB | ½× | 1/√2 ≈ 0.71× |
+| +6 dB | 4× | 2× |
+| +10 dB | 10× | √10 ≈ 3.16× |
+| +20 dB | 100× | 10× |
+
+**Mnemonic: "3 dB = double/half, 10 dB = ×10/÷10."**
+
+These can be combined: +13 dB = +10 dB + 3 dB = ×10 × ×2 = ×20. This additive property is exactly why logarithms are so useful — cascaded gain stages multiply their power ratios, but you just add their dB values.
+
+### 1 dB Loss
+
+One decibel of loss means:
+
+$$\frac{P_{\text{out}}}{P_{\text{in}}} = 10^{-0.1} = 10^{-1/10} \approx 0.794$$
+
+So you retain about 79.4% of the power — you lose approximately **20.6%**.
+
+::: {.callout-note collapse="true"}
+## G5B01: What dB change represents a factor of two increase or decrease in power?
+
+- A) Approximately 2 dB
+- **B) Approximately 3 dB**
+- C) Approximately 6 dB
+- D) Approximately 9 dB
+:::
+
+::: {.callout-note collapse="true"}
+## G5B10: What percentage of power loss is equivalent to a loss of 1 dB?
+
+- A) 10.9 percent
+- B) 12.2 percent
+- **C) 20.6 percent**
+- D) 25.9 percent
+:::
+
+---
+
+## Capacitors and Capacitive Reactance
+
+### What is a Capacitor?
+
+A *capacitor* stores energy in an **electric field** between two conducting plates separated by a dielectric (insulating) material. When a voltage is applied, positive charge accumulates on one plate and negative charge on the other; the energy is stored in the electric field between them — not as moving charge, but as field energy.
+
+**Capacitance** (C, unit: farads, F) measures how much charge a capacitor stores per unit of applied voltage: C = Q/V. One farad is enormous in practice; real capacitors range from picofarads (pF = 10⁻¹² F) to microfarads (μF = 10⁻⁶ F) to millifarads (mF = 10⁻³ F).
+
+### Capacitors in Parallel and Series
+
+**Parallel** capacitors: Total capacitance is the **sum** (like resistors in series):
+
+$$C_{\text{total}} = C_1 + C_2 + C_3 + \cdots$$
+
+Why? In parallel, all capacitors share the same voltage, and their plate areas add — you effectively have one big capacitor.
+
+**Series** capacitors: Total capacitance follows the reciprocal rule (like resistors in parallel):
+
+$$\frac{1}{C_{\text{total}}} = \frac{1}{C_1} + \frac{1}{C_2} + \frac{1}{C_3} + \cdots$$
+
+Why? In series, the same charge must accumulate on each capacitor (charge conservation between plates), but the voltage drop adds across each — you effectively have the plates spaced farther apart, which reduces capacitance.
+
+To **increase** capacitance: add capacitors **in parallel**.
+
+::: {.callout-note collapse="true"}
+## G5C13: Which of the following components should be added to a capacitor to increase the capacitance?
+
+- A) An inductor in series
+- B) An inductor in parallel
+- **C) A capacitor in parallel**
+- D) A capacitor in series
+:::
+
+### Worked Examples
+
+**Two 5.0 nF + one 750 pF in parallel:**
+
+Convert to a common unit: 5.0 nF = 5,000 pF
+
+$$C = 5{,}000 + 5{,}000 + 750 = \mathbf{10{,}750 \text{ pF}} = 10.75 \text{ nF}$$
+
+**Three 100 μF in series:**
+
+$$\frac{1}{C} = \frac{1}{100} + \frac{1}{100} + \frac{1}{100} = \frac{3}{100} \implies C = \frac{100}{3} \approx \mathbf{33.3 \text{ μF}}$$
+
+**20 μF and 50 μF in series:**
+
+$$\frac{1}{C} = \frac{1}{20} + \frac{1}{50} = \frac{5}{100} + \frac{2}{100} = \frac{7}{100} \implies C = \frac{100}{7} \approx \mathbf{14.3 \text{ μF}}$$
+
+::: {.callout-note collapse="true"}
+## G5C08: What is the equivalent capacitance of two 5.0-nanofarad capacitors and one 750-picofarad capacitor connected in parallel?
+
+- A) 576.9 nanofarads
+- B) 1,733 picofarads
+- C) 3,583 picofarads
+- **D) 10.750 nanofarads**
+:::
+
+::: {.callout-note collapse="true"}
+## G5C09: What is the capacitance of three 100-microfarad capacitors connected in series?
+
+- A) 0.33 microfarads
+- B) 3.0 microfarads
+- **C) 33.3 microfarads**
+- D) 300 microfarads
+:::
+
+::: {.callout-note collapse="true"}
+## G5C12: What is the capacitance of a 20-microfarad capacitor connected in series with a 50-microfarad capacitor?
+
+- A) 0.07 microfarads
+- **B) 14.3 microfarads**
+- C) 70 microfarads
+- D) 1,000 microfarads
+:::
+
+### Capacitive Reactance
+
+*Capacitive reactance* (X_C, unit: ohms) is the opposition a capacitor presents to alternating current:
+
+$$X_C = \frac{1}{2\pi f C}$$
+
+Key behaviors:
+
+- At DC (f = 0): X_C = ∞ — the capacitor **blocks DC completely**.
+- As frequency increases, X_C decreases — a capacitor becomes a **better conductor at higher frequencies**.
+- In the limit of very high frequency, X_C → 0 (short circuit).
+
+The physical picture: at high frequencies, the voltage reverses so rapidly that charge is constantly being pushed onto and pulled off the plates — even though charge never actually flows through the dielectric, it appears as if current flows through the capacitor. The faster the reversal (higher f), the easier this process, hence lower reactance.
+
+In a purely capacitive circuit, **current leads voltage by 90°** — the capacitor charges after the voltage is applied, but the current pulse arrives first.
+
+::: {.callout-note collapse="true"}
+## G5A04: Which of the following is opposition to the flow of alternating current in a capacitor?
+
+- A) Conductance
+- B) Reluctance
+- **C) Reactance**
+- D) Admittance
+:::
+
+::: {.callout-note collapse="true"}
+## G5A06: How does a capacitor react to AC?
+
+- **A) As the frequency of the applied AC increases, the reactance decreases**
+- B) As the frequency of the applied AC increases, the reactance increases
+- C) As the amplitude of the applied AC increases, the reactance increases
+- D) As the amplitude of the applied AC increases, the reactance decreases
+:::
+
+---
+
+## Inductors and Inductive Reactance
+
+### What is an Inductor?
+
+An *inductor* (coil) stores energy in a **magnetic field** created by current flowing through its windings. When current flows through a coil, it creates a magnetic flux threading through the coil. Changing that flux induces a back-EMF (Faraday's Law) that opposes the change — this is self-inductance, and it is why inductors resist changes in current.
+
+**Inductance** (L, unit: henries, H) quantifies the ratio of magnetic flux linkage to current: L = NΦ/I. Practical values are millihenries (mH) and microhenries (μH).
+
+### Inductors in Series and Parallel
+
+**Series** inductors: Total inductance is the **sum** (like resistors in series):
+
+$$L_{\text{total}} = L_1 + L_2 + L_3 + \cdots$$
+
+Each additional coil adds more turns, more flux linkage, more inductance.
+
+**Parallel** inductors: Total inductance follows the reciprocal rule:
+
+$$\frac{1}{L_{\text{total}}} = \frac{1}{L_1} + \frac{1}{L_2} + \frac{1}{L_3} + \cdots$$
+
+To **increase** inductance: add inductors **in series**, or add more turns to the existing coil.
+
+::: {.callout-note collapse="true"}
+## G5C14: Which of the following components should be added to an inductor to increase the inductance?
+
+- A) A capacitor in series
+- B) A capacitor in parallel
+- C) An inductor in parallel
+- **D) An inductor in series**
+:::
+
+### Worked Examples
+
+**Three 10 mH inductors in parallel:**
+
+$$\frac{1}{L} = \frac{1}{10} + \frac{1}{10} + \frac{1}{10} = \frac{3}{10} \implies L = \frac{10}{3} \approx \mathbf{3.33 \text{ mH}}$$
+
+**20 mH in series with 50 mH:**
+
+$$L = 20 + 50 = \mathbf{70 \text{ mH}}$$
+
+::: {.callout-note collapse="true"}
+## G5C10: What is the inductance of three 10-millihenry inductors connected in parallel?
+
+- A) 0.30 henries
+- B) 3.3 henries
+- **C) 3.3 millihenries**
+- D) 30 millihenries
+:::
+
+::: {.callout-note collapse="true"}
+## G5C11: What is the inductance of a circuit with a 20-millihenry inductor connected in series with a 50-millihenry inductor?
+
+- A) 7 millihenries
+- B) 14.3 millihenries
+- **C) 70 millihenries**
+- D) 1,000 millihenries
+:::
+
+### Inductive Reactance
+
+*Inductive reactance* (X_L, unit: ohms) is the opposition an inductor presents to alternating current:
+
+$$X_L = 2\pi f L$$
+
+Key behaviors — exactly opposite to a capacitor:
+
+- At DC (f = 0): X_L = 0 — the inductor is just a wire and **passes DC freely**.
+- As frequency increases, X_L increases — an inductor becomes a **better blocker at higher frequencies**.
+- In the limit of very high frequency, X_L → ∞ (open circuit for RF).
+
+The physical picture: at high frequencies, the current tries to change rapidly. The inductor's back-EMF opposes every change, and the faster the change (higher f), the stronger the opposition.
+
+In a purely inductive circuit, **current lags voltage by 90°** — the magnetic field must build before the current reaches its peak.
+
+::: {.callout-note collapse="true"}
+## G5A03: Which of the following is opposition to the flow of alternating current in an inductor?
+
+- A) Conductance
+- B) Reluctance
+- C) Admittance
+- **D) Reactance**
+:::
+
+::: {.callout-note collapse="true"}
+## G5A05: How does an inductor react to AC?
+
+- A) As the frequency of the applied AC increases, the reactance decreases
+- B) As the amplitude of the applied AC increases, the reactance increases
+- C) As the amplitude of the applied AC increases, the reactance decreases
+- **D) As the frequency of the applied AC increases, the reactance increases**
+:::
+
+---
+
+## Impedance, Reactance, and Admittance
+
+### Reactance
+
+*Reactance* (symbol X, unit: ohms) is the generalized AC opposition to current flow from energy-storing elements. It comes in two flavors:
+
+- **Capacitive reactance**: X_C = 1/(2πfC) — by convention, treated as negative in complex notation
+- **Inductive reactance**: X_L = 2πfL — by convention, treated as positive
+
+Unlike resistance, reactance **stores** energy (in electric or magnetic fields) rather than dissipating it. This is why reactance causes a phase shift between voltage and current: energy sloshes back and forth between source and reactive element rather than being converted to heat.
+
+::: {.callout-note collapse="true"}
+## G5A02: What is reactance?
+
+- A) Opposition to the flow of direct current caused by resistance
+- **B) Opposition to the flow of alternating current caused by capacitance or inductance**
+- C) Reinforcement of the flow of direct current caused by resistance
+- D) Reinforcement of the flow of alternating current caused by capacitance or inductance
+:::
+
+::: {.callout-note collapse="true"}
+## G5A09: What unit is used to measure reactance?
+
+- A) Farad
+- **B) Ohm**
+- C) Ampere
+- D) Siemens
+:::
+
+::: {.callout-note collapse="true"}
+## G5A11: What letter is used to represent reactance?
+
+- A) Z
+- **B) X**
+- C) B
+- D) Y
+:::
+
+### Impedance
+
+*Impedance* (symbol Z, unit: ohms) is the total AC opposition to current — the combination of resistance and reactance. In complex notation:
+
+$$Z = R + jX$$
+
+where R is resistance (the real part) and X is net reactance (the imaginary part). The magnitude is:
+
+$$|Z| = \sqrt{R^2 + X^2}$$
+
+Impedance is the generalization of resistance to AC circuits. Ohm's Law extends to AC as V = I × Z, where V, I, and Z can all be complex phasors (amplitude + phase).
+
+::: {.callout-note collapse="true"}
+## G5A08: What is impedance?
+
+- A) The ratio of current to voltage
+- B) The product of current and voltage
+- **C) The ratio of voltage to current**
+- D) The product of current and reactance
+:::
+
+### Admittance
+
+*Admittance* (symbol Y, unit: siemens, S) is the inverse of impedance:
+
+$$Y = \frac{1}{Z}$$
+
+It measures how easily a circuit allows current to flow — the AC generalization of conductance (G = 1/R for DC). Admittance is convenient when analyzing parallel circuits, where admittances add just as conductances add in DC parallel circuits.
+
+::: {.callout-note collapse="true"}
+## G5A07: What is the term for the inverse of impedance?
+
+- A) Conductance
+- B) Susceptance
+- C) Reluctance
+- **D) Admittance**
+:::
+
+### Resonance in an LC Circuit
+
+In a circuit containing both an inductor and a capacitor, the two reactances behave oppositely with frequency: X_L increases with f, while X_C decreases with f. At exactly one frequency — the *resonant frequency* f₀ — they are equal in magnitude and cancel:
+
+$$X_L = X_C \implies 2\pi f_0 L = \frac{1}{2\pi f_0 C} \implies f_0 = \frac{1}{2\pi\sqrt{LC}}$$
+
+At resonance in a **series LC circuit**:
+
+- X_L and X_C cancel: net reactance = 0
+- Impedance reduces to only the ohmic resistance: Z = R (minimum impedance)
+- Current is at its **maximum** (for a given applied voltage)
+
+At resonance in a **parallel LC circuit**:
+
+- The reactances cancel in the parallel combination, making the tank circuit appear as very high impedance
+- Current from the source is at its **minimum** (for a given applied voltage)
+
+::: {.callout-note collapse="true"}
+## G5A01: What happens when inductive and capacitive reactance are equal in a series LC circuit?
+
+- A) Resonance causes impedance to be very high
+- B) Impedance is equal to the geometric mean of the inductance and capacitance
+- **C) Resonance causes impedance to be very low**
+- D) Impedance is equal to the arithmetic mean of the inductance and capacitance
+:::
+
+::: {.callout-note collapse="true"}
+## G5A12: What occurs in an LC circuit at resonance?
+
+- A) Current and voltage are equal
+- B) Resistance is cancelled
+- C) The circuit radiates all its energy in the form of radio waves
+- **D) Inductive reactance and capacitive reactance cancel**
+:::
+
+### Impedance Matching at Radio Frequencies
+
+Efficient power transfer requires that the source impedance be matched to the load impedance. Mismatches cause power to be reflected back toward the source (standing waves on transmission lines) and reduce efficiency. Several devices are used to transform impedances at RF:
+
+- **Transformer** (including balun/unun): uses turns ratio to transform impedance by the square of the voltage ratio
+- **Pi-network** (and T-network): lumped L/C filter networks that can transform impedances while also filtering harmonics
+- **Length of transmission line**: a quarter-wavelength line acts as an impedance transformer (Z_in = Z₀²/Z_load)
+
+::: {.callout-note collapse="true"}
+## G5A10: Which of the following devices can be used for impedance matching at radio frequencies?
+
+- A) A transformer
+- B) A Pi-network
+- C) A length of transmission line
+- **D) All these choices are correct**
+:::
+
+---
+
+## Transformers
+
+### Physical Principle: Mutual Inductance
+
+A transformer consists of two inductors (the *primary* winding and the *secondary* winding) sharing a common magnetic core. When AC flows in the primary, it creates a time-varying magnetic flux in the core. By Faraday's Law, this changing flux induces a voltage in the secondary. The energy is transferred magnetically — no direct electrical connection is needed between primary and secondary.
+
+The mechanism is called **mutual inductance**: a change in current in one coil induces a voltage in a nearby coil. This is the operating principle of every power transformer, audio transformer, RF balun, and impedance-matching transformer.
+
+::: {.callout-note collapse="true"}
+## G5C01: What causes a voltage to appear across the secondary winding of a transformer when an AC voltage source is connected across its primary winding?
+
+- A) Capacitive coupling
+- B) Displacement current coupling
+- **C) Mutual inductance**
+- D) Mutual capacitance
+:::
+
+### Turns Ratio and Voltage Transformation
+
+The voltage induced in a coil is proportional to its number of turns (each turn "sees" the same changing flux, and the voltages add). Therefore:
+
+$$\frac{V_2}{V_1} = \frac{N_2}{N_1}$$
+
+where N₁ and N₂ are the number of turns on the primary and secondary, respectively. A transformer with more secondary turns than primary turns is a *step-up* transformer; fewer secondary turns is a *step-down* transformer.
+
+**Power conservation**: An ideal transformer conserves power (P_in = P_out), so:
+
+$$V_1 I_1 = V_2 I_2 \implies \frac{I_2}{I_1} = \frac{N_1}{N_2}$$
+
+Current steps down when voltage steps up, and vice versa. This is why high-voltage power transmission is efficient: stepping up the voltage by 100× steps down the current by 100×, reducing I²R resistive losses in the transmission line by a factor of 10,000.
+
+### Wire Size: Why Primary Uses Heavier Wire in a Step-Up Transformer
+
+In a step-up transformer, V₂ > V₁ and therefore I₂ < I₁. The **primary carries more current** than the secondary. Since resistive heating in a wire scales as I²R, higher current requires a heavier gauge wire to prevent overheating. Hence the primary winding of a step-up transformer uses larger-diameter wire.
+
+::: {.callout-note collapse="true"}
+## G5C05: Why is the primary winding wire of a voltage step-up transformer usually a larger size than that of the secondary winding?
+
+- A) To improve the coupling between the primary and secondary
+- **B) To accommodate the higher current of the primary**
+- C) To prevent parasitic oscillations due to resistive losses in the primary
+- D) To ensure that the volume of the primary winding is equal to the volume of the secondary winding
+:::
+
+### Worked Transformer Examples
+
+**500-turn primary, 1500-turn secondary, 120 VAC input:**
+
+$$V_2 = V_1 \times \frac{N_2}{N_1} = 120 \times \frac{1500}{500} = 120 \times 3 = \mathbf{360 \text{ V}}$$
+
+::: {.callout-note collapse="true"}
+## G5C06: What is the voltage output of a transformer with a 500-turn primary and a 1500-turn secondary when 120 VAC is applied to the primary?
+
+- **A) 360 volts**
+- B) 120 volts
+- C) 40 volts
+- D) 25.5 volts
+:::
+
+**4:1 step-down transformer — what if you apply voltage to the secondary instead of the primary?**
+
+A "4:1 step-down transformer" has N₁/N₂ = 4, meaning the primary has 4× more turns than the secondary. If you now connect your source to the *secondary* (the fewer-turn winding), the roles reverse: the secondary becomes the new primary and the original primary (with 4× the turns) becomes the new secondary. The output voltage is multiplied by 4.
+
+$$V_{\text{output}} = V_{\text{input}} \times \frac{N_{\text{original primary}}}{N_{\text{original secondary}}} = V_{\text{input}} \times 4$$
+
+::: {.callout-note collapse="true"}
+## G5C02: What is the output voltage if an input signal is applied to the secondary winding of a 4:1 voltage step-down transformer instead of the primary winding?
+
+- **A) The input voltage is multiplied by 4**
+- B) The input voltage is divided by 4
+- C) Additional resistance must be added in series with the primary to prevent overload
+- D) Additional resistance must be added in parallel with the secondary to prevent overload
+:::
+
+### Impedance Transformation
+
+The impedance transformation ratio equals the **square** of the turns ratio:
+
+$$\frac{Z_2}{Z_1} = \left(\frac{N_2}{N_1}\right)^2$$
+
+This follows from the voltage and current scaling: Z = V/I, V scales as N, I scales as 1/N, so Z scales as N². To find the turns ratio needed to match impedances:
+
+$$\frac{N_1}{N_2} = \sqrt{\frac{Z_1}{Z_2}}$$
+
+**Matching a 600 Ω antenna feed point to a 50 Ω coaxial cable:**
+
+$$\frac{N_1}{N_2} = \sqrt{\frac{600}{50}} = \sqrt{12} = 2\sqrt{3} \approx \mathbf{3.46:1}$$
+
+The answer choices round to 3.5:1.
+
+::: {.callout-note collapse="true"}
+## G5C07: What transformer turns ratio matches an antenna's 600-ohm feed point impedance to a 50-ohm coaxial cable?
+
+- **A) 3.5 to 1**
+- B) 12 to 1
+- C) 24 to 1
+- D) 144 to 1
+:::
